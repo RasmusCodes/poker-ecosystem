@@ -1,0 +1,41 @@
+{
+  "meta": {
+    "note": "CPU seconds on a shared laptop (AMD Ryzen AI 7 PRO 350, 8 cores / 16 threads) running other jobs; compare iterations and nodes touched for convergence",
+    "peak_working_set_bytes": 78266368,
+    "process_cpu_seconds": 0.671875,
+    "quick": false,
+    "suite": "eval",
+    "threads": 4,
+    "wall_seconds": 0.6978056
+  },
+  "rows": [
+    {
+      "checksum": 333717835779490,
+      "cpu_seconds": 0.046875,
+      "evals": 3000000,
+      "evaluator": "hold'em 7-card",
+      "ns_per_eval": 15.625
+    },
+    {
+      "checksum": 494011971188399,
+      "cpu_seconds": 0.046875,
+      "evals": 3000000,
+      "evaluator": "short deck 7-card",
+      "ns_per_eval": 15.625
+    },
+    {
+      "checksum": 52930585552314,
+      "cpu_seconds": 0.203125,
+      "evals": 300000,
+      "evaluator": "Omaha high (2+3 of 4+5)",
+      "ns_per_eval": 677.0833333333334
+    },
+    {
+      "checksum": 12436937,
+      "cpu_seconds": 0.03125,
+      "evals": 300000,
+      "evaluator": "Omaha 8-or-better low",
+      "ns_per_eval": 104.16666666666667
+    }
+  ]
+}

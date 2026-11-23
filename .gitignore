@@ -1,0 +1,10 @@
+# build output
+/target/
+# the simulated corpus is large and regenerated from a seed: pe hh simulate --hands 20000 --seed 1 ...
+/data/synthetic/
+# local tool settings
+/.claude/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.db

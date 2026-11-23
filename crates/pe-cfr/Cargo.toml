@@ -1,0 +1,13 @@
+[package]
+name = "pe-cfr"
+description = "Tabular CFR family, Monte Carlo CFR, best response and exploitability on compiled game trees."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+pe-cards.workspace = true
+serde.workspace = true
+rayon.workspace = true

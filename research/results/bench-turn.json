@@ -1,0 +1,221 @@
+{
+  "meta": {
+    "note": "CPU seconds on a shared laptop (AMD Ryzen AI 7 PRO 350, 8 cores / 16 threads) running other jobs; compare iterations and nodes touched for convergence",
+    "peak_working_set_bytes": 22667264,
+    "process_cpu_seconds": 35.109375,
+    "quick": false,
+    "suite": "turn",
+    "threads": 4,
+    "wall_seconds": 9.3336476
+  },
+  "rows": [
+    {
+      "algorithm": "DCFR",
+      "build_cpu_seconds": 0.0,
+      "curve": [
+        {
+          "cpu_seconds": 1.109375,
+          "iteration": 20,
+          "pct_pot": 16.06903660598275
+        },
+        {
+          "cpu_seconds": 2.125,
+          "iteration": 40,
+          "pct_pot": 4.321865148980827
+        },
+        {
+          "cpu_seconds": 3.234375,
+          "iteration": 60,
+          "pct_pot": 1.842490586748676
+        },
+        {
+          "cpu_seconds": 4.359375,
+          "iteration": 80,
+          "pct_pot": 1.0083159222468496
+        },
+        {
+          "cpu_seconds": 5.40625,
+          "iteration": 100,
+          "pct_pot": 0.8139991565773127
+        },
+        {
+          "cpu_seconds": 6.09375,
+          "iteration": 120,
+          "pct_pot": 0.5686775340805084
+        },
+        {
+          "cpu_seconds": 6.734375,
+          "iteration": 140,
+          "pct_pot": 0.39880606777126976
+        },
+        {
+          "cpu_seconds": 7.671875,
+          "iteration": 160,
+          "pct_pot": 0.296910687116303
+        },
+        {
+          "cpu_seconds": 8.78125,
+          "iteration": 180,
+          "pct_pot": 0.23184816023120725
+        },
+        {
+          "cpu_seconds": 9.796875,
+          "iteration": 200,
+          "pct_pot": 0.18691836572711415
+        },
+        {
+          "cpu_seconds": 10.875,
+          "iteration": 220,
+          "pct_pot": 0.15177482155324107
+        },
+        {
+          "cpu_seconds": 12.015625,
+          "iteration": 240,
+          "pct_pot": 0.12707345444121035
+        },
+        {
+          "cpu_seconds": 13.046875,
+          "iteration": 260,
+          "pct_pot": 0.10812221519802916
+        },
+        {
+          "cpu_seconds": 14.03125,
+          "iteration": 280,
+          "pct_pot": 0.09328765938123595
+        }
+      ],
+      "decision_nodes": 3562,
+      "final_pct_pot": 0.09328765938123595,
+      "hands": [
+        69,
+        76
+      ],
+      "iterations": 280,
+      "memory_bytes": 10386640,
+      "nodes": 9387,
+      "peak_working_set_bytes": 22327296,
+      "solve_cpu_seconds": 14.03125,
+      "solve_wall_seconds": 3.9194518,
+      "spot": "NLH turn Qs8h5d3c"
+    },
+    {
+      "algorithm": "CFR+",
+      "build_cpu_seconds": 0.015625,
+      "curve": [
+        {
+          "cpu_seconds": 0.859375,
+          "iteration": 20,
+          "pct_pot": 17.26113580726166
+        },
+        {
+          "cpu_seconds": 2.0,
+          "iteration": 40,
+          "pct_pot": 7.237245941572682
+        },
+        {
+          "cpu_seconds": 3.125,
+          "iteration": 60,
+          "pct_pot": 3.8365107112379833
+        },
+        {
+          "cpu_seconds": 4.203125,
+          "iteration": 80,
+          "pct_pot": 2.4374252057019707
+        },
+        {
+          "cpu_seconds": 5.34375,
+          "iteration": 100,
+          "pct_pot": 1.7167304224097697
+        },
+        {
+          "cpu_seconds": 6.46875,
+          "iteration": 120,
+          "pct_pot": 1.2939535902230441
+        },
+        {
+          "cpu_seconds": 7.53125,
+          "iteration": 140,
+          "pct_pot": 1.0037109071109513
+        },
+        {
+          "cpu_seconds": 8.578125,
+          "iteration": 160,
+          "pct_pot": 0.8088643975102857
+        },
+        {
+          "cpu_seconds": 9.59375,
+          "iteration": 180,
+          "pct_pot": 0.667941751180845
+        },
+        {
+          "cpu_seconds": 10.71875,
+          "iteration": 200,
+          "pct_pot": 0.5668171956694187
+        },
+        {
+          "cpu_seconds": 11.78125,
+          "iteration": 220,
+          "pct_pot": 0.4886493533168131
+        },
+        {
+          "cpu_seconds": 12.8125,
+          "iteration": 240,
+          "pct_pot": 0.4280534014852548
+        },
+        {
+          "cpu_seconds": 13.984375,
+          "iteration": 260,
+          "pct_pot": 0.3788021215543373
+        },
+        {
+          "cpu_seconds": 15.046875,
+          "iteration": 280,
+          "pct_pot": 0.3372291713436189
+        },
+        {
+          "cpu_seconds": 16.125,
+          "iteration": 300,
+          "pct_pot": 0.30271141515911815
+        },
+        {
+          "cpu_seconds": 17.203125,
+          "iteration": 320,
+          "pct_pot": 0.2725806179245745
+        },
+        {
+          "cpu_seconds": 18.203125,
+          "iteration": 340,
+          "pct_pot": 0.24665383442218358
+        },
+        {
+          "cpu_seconds": 19.296875,
+          "iteration": 360,
+          "pct_pot": 0.22473186000974144
+        },
+        {
+          "cpu_seconds": 20.28125,
+          "iteration": 380,
+          "pct_pot": 0.20675279827275053
+        },
+        {
+          "cpu_seconds": 21.03125,
+          "iteration": 400,
+          "pct_pot": 0.1914534517029387
+        }
+      ],
+      "decision_nodes": 3562,
+      "final_pct_pot": 0.1914534517029387,
+      "hands": [
+        69,
+        76
+      ],
+      "iterations": 400,
+      "memory_bytes": 10386640,
+      "nodes": 9387,
+      "peak_working_set_bytes": 22667264,
+      "solve_cpu_seconds": 21.03125,
+      "solve_wall_seconds": 5.3728489,
+      "spot": "NLH turn Qs8h5d3c"
+    }
+  ]
+}

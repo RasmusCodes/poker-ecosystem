@@ -1,0 +1,14 @@
+[package]
+name = "pe-equity"
+description = "Exact and Monte Carlo equity: multiway, ranges, double board, hi-lo, run it twice."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+pe-cards.workspace = true
+pe-eval.workspace = true
+rayon.workspace = true
+serde.workspace = true

@@ -1,0 +1,2513 @@
+{
+  "meta": {
+    "note": "CPU seconds on a shared laptop (AMD Ryzen AI 7 PRO 350, 8 cores / 16 threads) running other jobs; compare iterations and nodes touched for convergence",
+    "peak_working_set_bytes": 108953600,
+    "process_cpu_seconds": 693.375,
+    "quick": false,
+    "suite": "river",
+    "threads": 4,
+    "wall_seconds": 1028.9466681
+  },
+  "rows": [
+    {
+      "algorithm": "CFR",
+      "cpu_seconds": 0.40625,
+      "curve": [
+        {
+          "cpu_seconds": 0.015625,
+          "iteration": 50,
+          "pct_pot": 2.7243593519026867
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "iteration": 100,
+          "pct_pot": 1.3106504140172448
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "iteration": 150,
+          "pct_pot": 0.920118867964966
+        },
+        {
+          "cpu_seconds": 0.03125,
+          "iteration": 200,
+          "pct_pot": 0.677753689892822
+        },
+        {
+          "cpu_seconds": 0.03125,
+          "iteration": 250,
+          "pct_pot": 0.5409952006855937
+        },
+        {
+          "cpu_seconds": 0.046875,
+          "iteration": 300,
+          "pct_pot": 0.46129300910448534
+        },
+        {
+          "cpu_seconds": 0.046875,
+          "iteration": 350,
+          "pct_pot": 0.38995201540735214
+        },
+        {
+          "cpu_seconds": 0.0625,
+          "iteration": 400,
+          "pct_pot": 0.34914097707512787
+        },
+        {
+          "cpu_seconds": 0.0625,
+          "iteration": 450,
+          "pct_pot": 0.3168475860591176
+        },
+        {
+          "cpu_seconds": 0.078125,
+          "iteration": 500,
+          "pct_pot": 0.2838074056887796
+        },
+        {
+          "cpu_seconds": 0.078125,
+          "iteration": 550,
+          "pct_pot": 0.26010667448949826
+        },
+        {
+          "cpu_seconds": 0.078125,
+          "iteration": 600,
+          "pct_pot": 0.2374431562299569
+        },
+        {
+          "cpu_seconds": 0.09375,
+          "iteration": 650,
+          "pct_pot": 0.22111293542205757
+        },
+        {
+          "cpu_seconds": 0.09375,
+          "iteration": 700,
+          "pct_pot": 0.20706472846534485
+        },
+        {
+          "cpu_seconds": 0.109375,
+          "iteration": 750,
+          "pct_pot": 0.1951800960358537
+        },
+        {
+          "cpu_seconds": 0.109375,
+          "iteration": 800,
+          "pct_pot": 0.18245950023103955
+        },
+        {
+          "cpu_seconds": 0.125,
+          "iteration": 850,
+          "pct_pot": 0.17206278562400534
+        },
+        {
+          "cpu_seconds": 0.140625,
+          "iteration": 900,
+          "pct_pot": 0.16151605943901895
+        },
+        {
+          "cpu_seconds": 0.140625,
+          "iteration": 950,
+          "pct_pot": 0.15394200933923075
+        },
+        {
+          "cpu_seconds": 0.15625,
+          "iteration": 1000,
+          "pct_pot": 0.14705910498264604
+        },
+        {
+          "cpu_seconds": 0.171875,
+          "iteration": 1050,
+          "pct_pot": 0.13816468321655173
+        },
+        {
+          "cpu_seconds": 0.171875,
+          "iteration": 1100,
+          "pct_pot": 0.13163171760087744
+        },
+        {
+          "cpu_seconds": 0.1875,
+          "iteration": 1150,
+          "pct_pot": 0.12676569437317284
+        },
+        {
+          "cpu_seconds": 0.1875,
+          "iteration": 1200,
+          "pct_pot": 0.12141269823183014
+        },
+        {
+          "cpu_seconds": 0.203125,
+          "iteration": 1250,
+          "pct_pot": 0.11682610999543448
+        },
+        {
+          "cpu_seconds": 0.21875,
+          "iteration": 1300,
+          "pct_pot": 0.11235382871572035
+        },
+        {
+          "cpu_seconds": 0.21875,
+          "iteration": 1350,
+          "pct_pot": 0.10912702583644
+        },
+        {
+          "cpu_seconds": 0.234375,
+          "iteration": 1400,
+          "pct_pot": 0.10431681442758707
+        },
+        {
+          "cpu_seconds": 0.234375,
+          "iteration": 1450,
+          "pct_pot": 0.10088463765640654
+        },
+        {
+          "cpu_seconds": 0.25,
+          "iteration": 1500,
+          "pct_pot": 0.09648648998926516
+        },
+        {
+          "cpu_seconds": 0.265625,
+          "iteration": 1550,
+          "pct_pot": 0.09331454977053825
+        },
+        {
+          "cpu_seconds": 0.28125,
+          "iteration": 1600,
+          "pct_pot": 0.09190523996753057
+        },
+        {
+          "cpu_seconds": 0.296875,
+          "iteration": 1650,
+          "pct_pot": 0.08894178476327823
+        },
+        {
+          "cpu_seconds": 0.3125,
+          "iteration": 1700,
+          "pct_pot": 0.08643068998400727
+        },
+        {
+          "cpu_seconds": 0.328125,
+          "iteration": 1750,
+          "pct_pot": 0.084037628607662
+        },
+        {
+          "cpu_seconds": 0.34375,
+          "iteration": 1800,
+          "pct_pot": 0.08096073365908008
+        },
+        {
+          "cpu_seconds": 0.359375,
+          "iteration": 1850,
+          "pct_pot": 0.0796617374763257
+        },
+        {
+          "cpu_seconds": 0.390625,
+          "iteration": 1900,
+          "pct_pot": 0.07745643307494239
+        },
+        {
+          "cpu_seconds": 0.40625,
+          "iteration": 1950,
+          "pct_pot": 0.07645925638792665
+        },
+        {
+          "cpu_seconds": 0.40625,
+          "iteration": 2000,
+          "pct_pot": 0.07305529635308801
+        }
+      ],
+      "decision_nodes": 10,
+      "final_pct_pot": 0.07305529635308801,
+      "game": "NLH",
+      "hands": [
+        323,
+        93
+      ],
+      "iterations": 2000,
+      "iterations_to": {
+        "0.1": 1500,
+        "0.3": 500,
+        "0.5": 300,
+        "1.0": 150
+      },
+      "memory_bytes": 86528,
+      "nodes": 27,
+      "spot": "NLH SRP river BTN vs BB, Qs8h5d3c2s, 2 sizes"
+    },
+    {
+      "algorithm": "CFR+",
+      "cpu_seconds": 0.09375,
+      "curve": [
+        {
+          "cpu_seconds": 0.0,
+          "iteration": 50,
+          "pct_pot": 1.2590530761757275
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "iteration": 100,
+          "pct_pot": 0.3979141941606183
+        },
+        {
+          "cpu_seconds": 0.03125,
+          "iteration": 150,
+          "pct_pot": 0.23351390706418487
+        },
+        {
+          "cpu_seconds": 0.046875,
+          "iteration": 200,
+          "pct_pot": 0.16456203002891043
+        },
+        {
+          "cpu_seconds": 0.0625,
+          "iteration": 250,
+          "pct_pot": 0.1224752278151627
+        },
+        {
+          "cpu_seconds": 0.0625,
+          "iteration": 300,
+          "pct_pot": 0.09345619547594201
+        },
+        {
+          "cpu_seconds": 0.078125,
+          "iteration": 350,
+          "pct_pot": 0.07141969166952385
+        },
+        {
+          "cpu_seconds": 0.09375,
+          "iteration": 400,
+          "pct_pot": 0.056179164081169665
+        },
+        {
+          "cpu_seconds": 0.09375,
+          "iteration": 450,
+          "pct_pot": 0.04552882135324491
+        }
+      ],
+      "decision_nodes": 10,
+      "final_pct_pot": 0.04552882135324491,
+      "game": "NLH",
+      "hands": [
+        323,
+        93
+      ],
+      "iterations": 450,
+      "iterations_to": {
+        "0.1": 300,
+        "0.3": 150,
+        "0.5": 100,
+        "1.0": 100
+      },
+      "memory_bytes": 86528,
+      "nodes": 27,
+      "spot": "NLH SRP river BTN vs BB, Qs8h5d3c2s, 2 sizes"
+    },
+    {
+      "algorithm": "LCFR",
+      "cpu_seconds": 0.046875,
+      "curve": [
+        {
+          "cpu_seconds": 0.015625,
+          "iteration": 50,
+          "pct_pot": 0.4518143326532553
+        },
+        {
+          "cpu_seconds": 0.03125,
+          "iteration": 100,
+          "pct_pot": 0.15050060651927524
+        },
+        {
+          "cpu_seconds": 0.03125,
+          "iteration": 150,
+          "pct_pot": 0.06967893707906699
+        },
+        {
+          "cpu_seconds": 0.046875,
+          "iteration": 200,
+          "pct_pot": 0.04459362180326646
+        }
+      ],
+      "decision_nodes": 10,
+      "final_pct_pot": 0.04459362180326646,
+      "game": "NLH",
+      "hands": [
+        323,
+        93
+      ],
+      "iterations": 200,
+      "iterations_to": {
+        "0.1": 150,
+        "0.3": 100,
+        "0.5": 50,
+        "1.0": 50
+      },
+      "memory_bytes": 86528,
+      "nodes": 27,
+      "spot": "NLH SRP river BTN vs BB, Qs8h5d3c2s, 2 sizes"
+    },
+    {
+      "algorithm": "DCFR",
+      "cpu_seconds": 0.0625,
+      "curve": [
+        {
+          "cpu_seconds": 0.03125,
+          "iteration": 50,
+          "pct_pot": 0.6426843700388226
+        },
+        {
+          "cpu_seconds": 0.046875,
+          "iteration": 100,
+          "pct_pot": 0.1635804591861282
+        },
+        {
+          "cpu_seconds": 0.0625,
+          "iteration": 150,
+          "pct_pot": 0.07275814544277688
+        },
+        {
+          "cpu_seconds": 0.0625,
+          "iteration": 200,
+          "pct_pot": 0.03978375394422806
+        }
+      ],
+      "decision_nodes": 10,
+      "final_pct_pot": 0.03978375394422806,
+      "game": "NLH",
+      "hands": [
+        323,
+        93
+      ],
+      "iterations": 200,
+      "iterations_to": {
+        "0.1": 150,
+        "0.3": 100,
+        "0.5": 100,
+        "1.0": 50
+      },
+      "memory_bytes": 86528,
+      "nodes": 27,
+      "spot": "NLH SRP river BTN vs BB, Qs8h5d3c2s, 2 sizes"
+    },
+    {
+      "algorithm": "PCFR+",
+      "cpu_seconds": 0.109375,
+      "curve": [
+        {
+          "cpu_seconds": 0.03125,
+          "iteration": 50,
+          "pct_pot": 0.8298244620569513
+        },
+        {
+          "cpu_seconds": 0.046875,
+          "iteration": 100,
+          "pct_pot": 0.2715721192734462
+        },
+        {
+          "cpu_seconds": 0.0625,
+          "iteration": 150,
+          "pct_pot": 0.16488341359831385
+        },
+        {
+          "cpu_seconds": 0.078125,
+          "iteration": 200,
+          "pct_pot": 0.12388783996173196
+        },
+        {
+          "cpu_seconds": 0.078125,
+          "iteration": 250,
+          "pct_pot": 0.09239439851656539
+        },
+        {
+          "cpu_seconds": 0.09375,
+          "iteration": 300,
+          "pct_pot": 0.06696731649100489
+        },
+        {
+          "cpu_seconds": 0.109375,
+          "iteration": 350,
+          "pct_pot": 0.04928077839858047
+        }
+      ],
+      "decision_nodes": 10,
+      "final_pct_pot": 0.04928077839858047,
+      "game": "NLH",
+      "hands": [
+        323,
+        93
+      ],
+      "iterations": 350,
+      "iterations_to": {
+        "0.1": 250,
+        "0.3": 100,
+        "0.5": 100,
+        "1.0": 50
+      },
+      "memory_bytes": 129792,
+      "nodes": 27,
+      "spot": "NLH SRP river BTN vs BB, Qs8h5d3c2s, 2 sizes"
+    },
+    {
+      "algorithm": "CFR",
+      "cpu_seconds": 1.5625,
+      "curve": [
+        {
+          "cpu_seconds": 0.046875,
+          "iteration": 50,
+          "pct_pot": 10.51685481165867
+        },
+        {
+          "cpu_seconds": 0.109375,
+          "iteration": 100,
+          "pct_pot": 5.616204887670502
+        },
+        {
+          "cpu_seconds": 0.171875,
+          "iteration": 150,
+          "pct_pot": 3.8245952999913313
+        },
+        {
+          "cpu_seconds": 0.21875,
+          "iteration": 200,
+          "pct_pot": 2.935449896538128
+        },
+        {
+          "cpu_seconds": 0.265625,
+          "iteration": 250,
+          "pct_pot": 2.37822081748333
+        },
+        {
+          "cpu_seconds": 0.296875,
+          "iteration": 300,
+          "pct_pot": 1.988806631560654
+        },
+        {
+          "cpu_seconds": 0.34375,
+          "iteration": 350,
+          "pct_pot": 1.6788879172755715
+        },
+        {
+          "cpu_seconds": 0.375,
+          "iteration": 400,
+          "pct_pot": 1.472447324673437
+        },
+        {
+          "cpu_seconds": 0.421875,
+          "iteration": 450,
+          "pct_pot": 1.312698309914708
+        },
+        {
+          "cpu_seconds": 0.453125,
+          "iteration": 500,
+          "pct_pot": 1.1847676888397867
+        },
+        {
+          "cpu_seconds": 0.46875,
+          "iteration": 550,
+          "pct_pot": 1.085153390425934
+        },
+        {
+          "cpu_seconds": 0.5,
+          "iteration": 600,
+          "pct_pot": 1.000229683063427
+        },
+        {
+          "cpu_seconds": 0.53125,
+          "iteration": 650,
+          "pct_pot": 0.9305345605016871
+        },
+        {
+          "cpu_seconds": 0.5625,
+          "iteration": 700,
+          "pct_pot": 0.8669884017051969
+        },
+        {
+          "cpu_seconds": 0.59375,
+          "iteration": 750,
+          "pct_pot": 0.8120340447631417
+        },
+        {
+          "cpu_seconds": 0.625,
+          "iteration": 800,
+          "pct_pot": 0.7611339658769088
+        },
+        {
+          "cpu_seconds": 0.640625,
+          "iteration": 850,
+          "pct_pot": 0.7247194745227002
+        },
+        {
+          "cpu_seconds": 0.671875,
+          "iteration": 900,
+          "pct_pot": 0.6811209732371185
+        },
+        {
+          "cpu_seconds": 0.703125,
+          "iteration": 950,
+          "pct_pot": 0.6363777742893447
+        },
+        {
+          "cpu_seconds": 0.734375,
+          "iteration": 1000,
+          "pct_pot": 0.6070944388767355
+        },
+        {
+          "cpu_seconds": 0.75,
+          "iteration": 1050,
+          "pct_pot": 0.579130252222874
+        },
+        {
+          "cpu_seconds": 0.78125,
+          "iteration": 1100,
+          "pct_pot": 0.5527226674614213
+        },
+        {
+          "cpu_seconds": 0.828125,
+          "iteration": 1150,
+          "pct_pot": 0.5292089646804684
+        },
+        {
+          "cpu_seconds": 0.84375,
+          "iteration": 1200,
+          "pct_pot": 0.5060372679892308
+        },
+        {
+          "cpu_seconds": 0.890625,
+          "iteration": 1250,
+          "pct_pot": 0.48737814100047555
+        },
+        {
+          "cpu_seconds": 0.953125,
+          "iteration": 1300,
+          "pct_pot": 0.46976144532211994
+        },
+        {
+          "cpu_seconds": 0.984375,
+          "iteration": 1350,
+          "pct_pot": 0.45047336131651683
+        },
+        {
+          "cpu_seconds": 1.0,
+          "iteration": 1400,
+          "pct_pot": 0.4327806105540362
+        },
+        {
+          "cpu_seconds": 1.046875,
+          "iteration": 1450,
+          "pct_pot": 0.4206735085448739
+        },
+        {
+          "cpu_seconds": 1.078125,
+          "iteration": 1500,
+          "pct_pot": 0.4086497964109999
+        },
+        {
+          "cpu_seconds": 1.125,
+          "iteration": 1550,
+          "pct_pot": 0.39924345878347883
+        },
+        {
+          "cpu_seconds": 1.1875,
+          "iteration": 1600,
+          "pct_pot": 0.3861442596085933
+        },
+        {
+          "cpu_seconds": 1.234375,
+          "iteration": 1650,
+          "pct_pot": 0.37343955506952314
+        },
+        {
+          "cpu_seconds": 1.28125,
+          "iteration": 1700,
+          "pct_pot": 0.35906713208326463
+        },
+        {
+          "cpu_seconds": 1.3125,
+          "iteration": 1750,
+          "pct_pot": 0.3468864627222716
+        },
+        {
+          "cpu_seconds": 1.34375,
+          "iteration": 1800,
+          "pct_pot": 0.3350411558280956
+        },
+        {
+          "cpu_seconds": 1.390625,
+          "iteration": 1850,
+          "pct_pot": 0.3262706120515842
+        },
+        {
+          "cpu_seconds": 1.421875,
+          "iteration": 1900,
+          "pct_pot": 0.3199011552071233
+        },
+        {
+          "cpu_seconds": 1.515625,
+          "iteration": 1950,
+          "pct_pot": 0.31252875441381556
+        },
+        {
+          "cpu_seconds": 1.5625,
+          "iteration": 2000,
+          "pct_pot": 0.30830172725304084
+        }
+      ],
+      "decision_nodes": 32,
+      "final_pct_pot": 0.30830172725304084,
+      "game": "NLH",
+      "hands": [
+        323,
+        93
+      ],
+      "iterations": 2000,
+      "iterations_to": {
+        "0.1": null,
+        "0.3": null,
+        "0.5": 1250,
+        "1.0": 650
+      },
+      "memory_bytes": 306176,
+      "nodes": 93,
+      "spot": "NLH SRP river, 3 sizes + all-in"
+    },
+    {
+      "algorithm": "CFR+",
+      "cpu_seconds": 0.828125,
+      "curve": [
+        {
+          "cpu_seconds": 0.046875,
+          "iteration": 50,
+          "pct_pot": 6.190623456539751
+        },
+        {
+          "cpu_seconds": 0.09375,
+          "iteration": 100,
+          "pct_pot": 2.427530287170837
+        },
+        {
+          "cpu_seconds": 0.140625,
+          "iteration": 150,
+          "pct_pot": 1.3654512874709999
+        },
+        {
+          "cpu_seconds": 0.171875,
+          "iteration": 200,
+          "pct_pot": 0.8962483802083477
+        },
+        {
+          "cpu_seconds": 0.203125,
+          "iteration": 250,
+          "pct_pot": 0.6194537189409322
+        },
+        {
+          "cpu_seconds": 0.25,
+          "iteration": 300,
+          "pct_pot": 0.47864065411426887
+        },
+        {
+          "cpu_seconds": 0.28125,
+          "iteration": 350,
+          "pct_pot": 0.3609150543557371
+        },
+        {
+          "cpu_seconds": 0.328125,
+          "iteration": 400,
+          "pct_pot": 0.2823095801621452
+        },
+        {
+          "cpu_seconds": 0.359375,
+          "iteration": 450,
+          "pct_pot": 0.23174355837548566
+        },
+        {
+          "cpu_seconds": 0.390625,
+          "iteration": 500,
+          "pct_pot": 0.19382551140459023
+        },
+        {
+          "cpu_seconds": 0.40625,
+          "iteration": 550,
+          "pct_pot": 0.16595163209575473
+        },
+        {
+          "cpu_seconds": 0.4375,
+          "iteration": 600,
+          "pct_pot": 0.14445224614649255
+        },
+        {
+          "cpu_seconds": 0.453125,
+          "iteration": 650,
+          "pct_pot": 0.12565144903153858
+        },
+        {
+          "cpu_seconds": 0.484375,
+          "iteration": 700,
+          "pct_pot": 0.1116514502335871
+        },
+        {
+          "cpu_seconds": 0.515625,
+          "iteration": 750,
+          "pct_pot": 0.1004527138176355
+        },
+        {
+          "cpu_seconds": 0.546875,
+          "iteration": 800,
+          "pct_pot": 0.09127910752579349
+        },
+        {
+          "cpu_seconds": 0.578125,
+          "iteration": 850,
+          "pct_pot": 0.08362096206248985
+        },
+        {
+          "cpu_seconds": 0.59375,
+          "iteration": 900,
+          "pct_pot": 0.07665665120363818
+        },
+        {
+          "cpu_seconds": 0.625,
+          "iteration": 950,
+          "pct_pot": 0.07115207597991335
+        },
+        {
+          "cpu_seconds": 0.65625,
+          "iteration": 1000,
+          "pct_pot": 0.0661530808072149
+        },
+        {
+          "cpu_seconds": 0.6875,
+          "iteration": 1050,
+          "pct_pot": 0.06187129927306042
+        },
+        {
+          "cpu_seconds": 0.71875,
+          "iteration": 1100,
+          "pct_pot": 0.0578367494965056
+        },
+        {
+          "cpu_seconds": 0.75,
+          "iteration": 1150,
+          "pct_pot": 0.05394751803332413
+        },
+        {
+          "cpu_seconds": 0.796875,
+          "iteration": 1200,
+          "pct_pot": 0.05041286413533149
+        },
+        {
+          "cpu_seconds": 0.828125,
+          "iteration": 1250,
+          "pct_pot": 0.0473102281848455
+        }
+      ],
+      "decision_nodes": 32,
+      "final_pct_pot": 0.0473102281848455,
+      "game": "NLH",
+      "hands": [
+        323,
+        93
+      ],
+      "iterations": 1250,
+      "iterations_to": {
+        "0.1": 800,
+        "0.3": 400,
+        "0.5": 300,
+        "1.0": 200
+      },
+      "memory_bytes": 306176,
+      "nodes": 93,
+      "spot": "NLH SRP river, 3 sizes + all-in"
+    },
+    {
+      "algorithm": "LCFR",
+      "cpu_seconds": 0.671875,
+      "curve": [
+        {
+          "cpu_seconds": 0.03125,
+          "iteration": 50,
+          "pct_pot": 2.1873036724724124
+        },
+        {
+          "cpu_seconds": 0.078125,
+          "iteration": 100,
+          "pct_pot": 0.8041058308237462
+        },
+        {
+          "cpu_seconds": 0.109375,
+          "iteration": 150,
+          "pct_pot": 0.4819814818087779
+        },
+        {
+          "cpu_seconds": 0.140625,
+          "iteration": 200,
+          "pct_pot": 0.3409628143393073
+        },
+        {
+          "cpu_seconds": 0.171875,
+          "iteration": 250,
+          "pct_pot": 0.2285618814675853
+        },
+        {
+          "cpu_seconds": 0.21875,
+          "iteration": 300,
+          "pct_pot": 0.17436809605832307
+        },
+        {
+          "cpu_seconds": 0.265625,
+          "iteration": 350,
+          "pct_pot": 0.1370721709597733
+        },
+        {
+          "cpu_seconds": 0.3125,
+          "iteration": 400,
+          "pct_pot": 0.11497474987509822
+        },
+        {
+          "cpu_seconds": 0.359375,
+          "iteration": 450,
+          "pct_pot": 0.09535024549498876
+        },
+        {
+          "cpu_seconds": 0.40625,
+          "iteration": 500,
+          "pct_pot": 0.08066949843803702
+        },
+        {
+          "cpu_seconds": 0.484375,
+          "iteration": 550,
+          "pct_pot": 0.07107089078280208
+        },
+        {
+          "cpu_seconds": 0.53125,
+          "iteration": 600,
+          "pct_pot": 0.060135016367999596
+        },
+        {
+          "cpu_seconds": 0.59375,
+          "iteration": 650,
+          "pct_pot": 0.057945753449586045
+        },
+        {
+          "cpu_seconds": 0.640625,
+          "iteration": 700,
+          "pct_pot": 0.055462050962477395
+        },
+        {
+          "cpu_seconds": 0.671875,
+          "iteration": 750,
+          "pct_pot": 0.048479353251351665
+        }
+      ],
+      "decision_nodes": 32,
+      "final_pct_pot": 0.048479353251351665,
+      "game": "NLH",
+      "hands": [
+        323,
+        93
+      ],
+      "iterations": 750,
+      "iterations_to": {
+        "0.1": 450,
+        "0.3": 250,
+        "0.5": 150,
+        "1.0": 100
+      },
+      "memory_bytes": 306176,
+      "nodes": 93,
+      "spot": "NLH SRP river, 3 sizes + all-in"
+    },
+    {
+      "algorithm": "DCFR",
+      "cpu_seconds": 0.5625,
+      "curve": [
+        {
+          "cpu_seconds": 0.078125,
+          "iteration": 50,
+          "pct_pot": 6.3485487046871105
+        },
+        {
+          "cpu_seconds": 0.15625,
+          "iteration": 100,
+          "pct_pot": 1.460496712830352
+        },
+        {
+          "cpu_seconds": 0.21875,
+          "iteration": 150,
+          "pct_pot": 0.6078730584367623
+        },
+        {
+          "cpu_seconds": 0.25,
+          "iteration": 200,
+          "pct_pot": 0.36306730138315574
+        },
+        {
+          "cpu_seconds": 0.28125,
+          "iteration": 250,
+          "pct_pot": 0.2374353411519222
+        },
+        {
+          "cpu_seconds": 0.328125,
+          "iteration": 300,
+          "pct_pot": 0.17139227828389206
+        },
+        {
+          "cpu_seconds": 0.359375,
+          "iteration": 350,
+          "pct_pot": 0.13371021545188952
+        },
+        {
+          "cpu_seconds": 0.40625,
+          "iteration": 400,
+          "pct_pot": 0.10836484029493332
+        },
+        {
+          "cpu_seconds": 0.4375,
+          "iteration": 450,
+          "pct_pot": 0.08858230439389343
+        },
+        {
+          "cpu_seconds": 0.46875,
+          "iteration": 500,
+          "pct_pot": 0.0723021843492729
+        },
+        {
+          "cpu_seconds": 0.515625,
+          "iteration": 550,
+          "pct_pot": 0.059063256866020986
+        },
+        {
+          "cpu_seconds": 0.5625,
+          "iteration": 600,
+          "pct_pot": 0.048590730028883845
+        }
+      ],
+      "decision_nodes": 32,
+      "final_pct_pot": 0.048590730028883845,
+      "game": "NLH",
+      "hands": [
+        323,
+        93
+      ],
+      "iterations": 600,
+      "iterations_to": {
+        "0.1": 450,
+        "0.3": 250,
+        "0.5": 200,
+        "1.0": 150
+      },
+      "memory_bytes": 306176,
+      "nodes": 93,
+      "spot": "NLH SRP river, 3 sizes + all-in"
+    },
+    {
+      "algorithm": "PCFR+",
+      "cpu_seconds": 0.921875,
+      "curve": [
+        {
+          "cpu_seconds": 0.0625,
+          "iteration": 50,
+          "pct_pot": 5.659730023368964
+        },
+        {
+          "cpu_seconds": 0.109375,
+          "iteration": 100,
+          "pct_pot": 2.7509864967109903
+        },
+        {
+          "cpu_seconds": 0.125,
+          "iteration": 150,
+          "pct_pot": 1.6413647612570859
+        },
+        {
+          "cpu_seconds": 0.140625,
+          "iteration": 200,
+          "pct_pot": 1.0890490207801102
+        },
+        {
+          "cpu_seconds": 0.203125,
+          "iteration": 250,
+          "pct_pot": 0.6970493702897077
+        },
+        {
+          "cpu_seconds": 0.25,
+          "iteration": 300,
+          "pct_pot": 0.49022063885317824
+        },
+        {
+          "cpu_seconds": 0.28125,
+          "iteration": 350,
+          "pct_pot": 0.40622455825236786
+        },
+        {
+          "cpu_seconds": 0.296875,
+          "iteration": 400,
+          "pct_pot": 0.3327444217940641
+        },
+        {
+          "cpu_seconds": 0.34375,
+          "iteration": 450,
+          "pct_pot": 0.2521522924554505
+        },
+        {
+          "cpu_seconds": 0.359375,
+          "iteration": 500,
+          "pct_pot": 0.2100323630816988
+        },
+        {
+          "cpu_seconds": 0.375,
+          "iteration": 550,
+          "pct_pot": 0.18503259502629654
+        },
+        {
+          "cpu_seconds": 0.375,
+          "iteration": 600,
+          "pct_pot": 0.16340829980728833
+        },
+        {
+          "cpu_seconds": 0.375,
+          "iteration": 650,
+          "pct_pot": 0.1462608708321267
+        },
+        {
+          "cpu_seconds": 0.421875,
+          "iteration": 700,
+          "pct_pot": 0.13048320567784674
+        },
+        {
+          "cpu_seconds": 0.5,
+          "iteration": 750,
+          "pct_pot": 0.11449932810525902
+        },
+        {
+          "cpu_seconds": 0.546875,
+          "iteration": 800,
+          "pct_pot": 0.0993661393838589
+        },
+        {
+          "cpu_seconds": 0.640625,
+          "iteration": 850,
+          "pct_pot": 0.0887721616200506
+        },
+        {
+          "cpu_seconds": 0.703125,
+          "iteration": 900,
+          "pct_pot": 0.08212269545451734
+        },
+        {
+          "cpu_seconds": 0.734375,
+          "iteration": 950,
+          "pct_pot": 0.07643883932108204
+        },
+        {
+          "cpu_seconds": 0.75,
+          "iteration": 1000,
+          "pct_pot": 0.0707513036165915
+        },
+        {
+          "cpu_seconds": 0.765625,
+          "iteration": 1050,
+          "pct_pot": 0.06491103615338482
+        },
+        {
+          "cpu_seconds": 0.8125,
+          "iteration": 1100,
+          "pct_pot": 0.060907508812602096
+        },
+        {
+          "cpu_seconds": 0.84375,
+          "iteration": 1150,
+          "pct_pot": 0.05743519319472146
+        },
+        {
+          "cpu_seconds": 0.890625,
+          "iteration": 1200,
+          "pct_pot": 0.054271190422167104
+        },
+        {
+          "cpu_seconds": 0.90625,
+          "iteration": 1250,
+          "pct_pot": 0.05151344135420991
+        },
+        {
+          "cpu_seconds": 0.921875,
+          "iteration": 1300,
+          "pct_pot": 0.04887714303737541
+        }
+      ],
+      "decision_nodes": 32,
+      "final_pct_pot": 0.04887714303737541,
+      "game": "NLH",
+      "hands": [
+        323,
+        93
+      ],
+      "iterations": 1300,
+      "iterations_to": {
+        "0.1": 800,
+        "0.3": 450,
+        "0.5": 300,
+        "1.0": 250
+      },
+      "memory_bytes": 459264,
+      "nodes": 93,
+      "spot": "NLH SRP river, 3 sizes + all-in"
+    },
+    {
+      "algorithm": "CFR",
+      "cpu_seconds": 0.109375,
+      "curve": [
+        {
+          "cpu_seconds": 0.0,
+          "iteration": 50,
+          "pct_pot": 2.3430361601950325
+        },
+        {
+          "cpu_seconds": 0.0,
+          "iteration": 100,
+          "pct_pot": 1.3498438822074201
+        },
+        {
+          "cpu_seconds": 0.0,
+          "iteration": 150,
+          "pct_pot": 0.8564266908878289
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "iteration": 200,
+          "pct_pot": 0.7221787117081011
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "iteration": 250,
+          "pct_pot": 0.6029969879703057
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "iteration": 300,
+          "pct_pot": 0.5113065470261721
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "iteration": 350,
+          "pct_pot": 0.4303574892941157
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "iteration": 400,
+          "pct_pot": 0.404289092908158
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "iteration": 450,
+          "pct_pot": 0.36004344357276014
+        },
+        {
+          "cpu_seconds": 0.03125,
+          "iteration": 500,
+          "pct_pot": 0.29310279853563725
+        },
+        {
+          "cpu_seconds": 0.03125,
+          "iteration": 550,
+          "pct_pot": 0.28641241244351523
+        },
+        {
+          "cpu_seconds": 0.03125,
+          "iteration": 600,
+          "pct_pot": 0.25632806282854903
+        },
+        {
+          "cpu_seconds": 0.03125,
+          "iteration": 650,
+          "pct_pot": 0.23647623467469947
+        },
+        {
+          "cpu_seconds": 0.046875,
+          "iteration": 700,
+          "pct_pot": 0.22394857553759645
+        },
+        {
+          "cpu_seconds": 0.046875,
+          "iteration": 750,
+          "pct_pot": 0.2144407281223983
+        },
+        {
+          "cpu_seconds": 0.046875,
+          "iteration": 800,
+          "pct_pot": 0.20055366529709043
+        },
+        {
+          "cpu_seconds": 0.046875,
+          "iteration": 850,
+          "pct_pot": 0.1652105916967648
+        },
+        {
+          "cpu_seconds": 0.0625,
+          "iteration": 900,
+          "pct_pot": 0.19302654330159177
+        },
+        {
+          "cpu_seconds": 0.0625,
+          "iteration": 950,
+          "pct_pot": 0.15806275008529108
+        },
+        {
+          "cpu_seconds": 0.0625,
+          "iteration": 1000,
+          "pct_pot": 0.17837779258680556
+        },
+        {
+          "cpu_seconds": 0.0625,
+          "iteration": 1050,
+          "pct_pot": 0.15846015277626807
+        },
+        {
+          "cpu_seconds": 0.0625,
+          "iteration": 1100,
+          "pct_pot": 0.14938335720060333
+        },
+        {
+          "cpu_seconds": 0.0625,
+          "iteration": 1150,
+          "pct_pot": 0.14500142590576434
+        },
+        {
+          "cpu_seconds": 0.078125,
+          "iteration": 1200,
+          "pct_pot": 0.14520740748347194
+        },
+        {
+          "cpu_seconds": 0.078125,
+          "iteration": 1250,
+          "pct_pot": 0.15403083403799114
+        },
+        {
+          "cpu_seconds": 0.078125,
+          "iteration": 1300,
+          "pct_pot": 0.1295456266734824
+        },
+        {
+          "cpu_seconds": 0.078125,
+          "iteration": 1350,
+          "pct_pot": 0.126287393686909
+        },
+        {
+          "cpu_seconds": 0.078125,
+          "iteration": 1400,
+          "pct_pot": 0.12228591648657527
+        },
+        {
+          "cpu_seconds": 0.078125,
+          "iteration": 1450,
+          "pct_pot": 0.126227093477015
+        },
+        {
+          "cpu_seconds": 0.078125,
+          "iteration": 1500,
+          "pct_pot": 0.11333382396460191
+        },
+        {
+          "cpu_seconds": 0.078125,
+          "iteration": 1550,
+          "pct_pot": 0.11402644845048422
+        },
+        {
+          "cpu_seconds": 0.09375,
+          "iteration": 1600,
+          "pct_pot": 0.11187319204725861
+        },
+        {
+          "cpu_seconds": 0.09375,
+          "iteration": 1650,
+          "pct_pot": 0.11409124421838492
+        },
+        {
+          "cpu_seconds": 0.09375,
+          "iteration": 1700,
+          "pct_pot": 0.10238930692410603
+        },
+        {
+          "cpu_seconds": 0.09375,
+          "iteration": 1750,
+          "pct_pot": 0.09911083239683655
+        },
+        {
+          "cpu_seconds": 0.109375,
+          "iteration": 1800,
+          "pct_pot": 0.10317186436900151
+        },
+        {
+          "cpu_seconds": 0.109375,
+          "iteration": 1850,
+          "pct_pot": 0.09353086809150196
+        },
+        {
+          "cpu_seconds": 0.109375,
+          "iteration": 1900,
+          "pct_pot": 0.08360008029424583
+        },
+        {
+          "cpu_seconds": 0.109375,
+          "iteration": 1950,
+          "pct_pot": 0.09076621641772586
+        },
+        {
+          "cpu_seconds": 0.109375,
+          "iteration": 2000,
+          "pct_pot": 0.09198064284229818
+        }
+      ],
+      "decision_nodes": 10,
+      "final_pct_pot": 0.09198064284229818,
+      "game": "NLH",
+      "hands": [
+        45,
+        63
+      ],
+      "iterations": 2000,
+      "iterations_to": {
+        "0.1": 1750,
+        "0.3": 500,
+        "0.5": 350,
+        "1.0": 150
+      },
+      "memory_bytes": 22464,
+      "nodes": 27,
+      "spot": "NLH 3-bet pot river, Ah9d4c4s2h"
+    },
+    {
+      "algorithm": "CFR+",
+      "cpu_seconds": 0.03125,
+      "curve": [
+        {
+          "cpu_seconds": 0.015625,
+          "iteration": 50,
+          "pct_pot": 0.6644624572562692
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "iteration": 100,
+          "pct_pot": 0.24871612663386736
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "iteration": 150,
+          "pct_pot": 0.1495493604074931
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "iteration": 200,
+          "pct_pot": 0.09956846591334062
+        },
+        {
+          "cpu_seconds": 0.03125,
+          "iteration": 250,
+          "pct_pot": 0.0665987227965898
+        },
+        {
+          "cpu_seconds": 0.03125,
+          "iteration": 300,
+          "pct_pot": 0.04954194015005116
+        }
+      ],
+      "decision_nodes": 10,
+      "final_pct_pot": 0.04954194015005116,
+      "game": "NLH",
+      "hands": [
+        45,
+        63
+      ],
+      "iterations": 300,
+      "iterations_to": {
+        "0.1": 200,
+        "0.3": 100,
+        "0.5": 100,
+        "1.0": 50
+      },
+      "memory_bytes": 22464,
+      "nodes": 27,
+      "spot": "NLH 3-bet pot river, Ah9d4c4s2h"
+    },
+    {
+      "algorithm": "LCFR",
+      "cpu_seconds": 0.03125,
+      "curve": [
+        {
+          "cpu_seconds": 0.0,
+          "iteration": 50,
+          "pct_pot": 0.9870381950900285
+        },
+        {
+          "cpu_seconds": 0.0,
+          "iteration": 100,
+          "pct_pot": 0.40500631685183835
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "iteration": 150,
+          "pct_pot": 0.2529152490430448
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "iteration": 200,
+          "pct_pot": 0.15042909692212933
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "iteration": 250,
+          "pct_pot": 0.10803919850500655
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "iteration": 300,
+          "pct_pot": 0.08345625120610535
+        },
+        {
+          "cpu_seconds": 0.03125,
+          "iteration": 350,
+          "pct_pot": 0.07230595185598472
+        },
+        {
+          "cpu_seconds": 0.03125,
+          "iteration": 400,
+          "pct_pot": 0.05363254150887049
+        },
+        {
+          "cpu_seconds": 0.03125,
+          "iteration": 450,
+          "pct_pot": 0.0455005765642482
+        }
+      ],
+      "decision_nodes": 10,
+      "final_pct_pot": 0.0455005765642482,
+      "game": "NLH",
+      "hands": [
+        45,
+        63
+      ],
+      "iterations": 450,
+      "iterations_to": {
+        "0.1": 300,
+        "0.3": 150,
+        "0.5": 100,
+        "1.0": 50
+      },
+      "memory_bytes": 22464,
+      "nodes": 27,
+      "spot": "NLH 3-bet pot river, Ah9d4c4s2h"
+    },
+    {
+      "algorithm": "DCFR",
+      "cpu_seconds": 0.015625,
+      "curve": [
+        {
+          "cpu_seconds": 0.015625,
+          "iteration": 50,
+          "pct_pot": 0.40790635992781515
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "iteration": 100,
+          "pct_pot": 0.13950063359748707
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "iteration": 150,
+          "pct_pot": 0.06788500018702802
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "iteration": 200,
+          "pct_pot": 0.04624283373214733
+        }
+      ],
+      "decision_nodes": 10,
+      "final_pct_pot": 0.04624283373214733,
+      "game": "NLH",
+      "hands": [
+        45,
+        63
+      ],
+      "iterations": 200,
+      "iterations_to": {
+        "0.1": 150,
+        "0.3": 100,
+        "0.5": 50,
+        "1.0": 50
+      },
+      "memory_bytes": 22464,
+      "nodes": 27,
+      "spot": "NLH 3-bet pot river, Ah9d4c4s2h"
+    },
+    {
+      "algorithm": "PCFR+",
+      "cpu_seconds": 0.03125,
+      "curve": [
+        {
+          "cpu_seconds": 0.0,
+          "iteration": 50,
+          "pct_pot": 0.7680845421406265
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "iteration": 100,
+          "pct_pot": 0.28960928678408815
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "iteration": 150,
+          "pct_pot": 0.1645302749579141
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "iteration": 200,
+          "pct_pot": 0.10981738382720228
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "iteration": 250,
+          "pct_pot": 0.07734538602542816
+        },
+        {
+          "cpu_seconds": 0.03125,
+          "iteration": 300,
+          "pct_pot": 0.0611411240887725
+        },
+        {
+          "cpu_seconds": 0.03125,
+          "iteration": 350,
+          "pct_pot": 0.04997418825846044
+        }
+      ],
+      "decision_nodes": 10,
+      "final_pct_pot": 0.04997418825846044,
+      "game": "NLH",
+      "hands": [
+        45,
+        63
+      ],
+      "iterations": 350,
+      "iterations_to": {
+        "0.1": 250,
+        "0.3": 100,
+        "0.5": 100,
+        "1.0": 50
+      },
+      "memory_bytes": 33696,
+      "nodes": 27,
+      "spot": "NLH 3-bet pot river, Ah9d4c4s2h"
+    },
+    {
+      "algorithm": "CFR",
+      "cpu_seconds": 439.03125,
+      "curve": [
+        {
+          "cpu_seconds": 13.84375,
+          "iteration": 50,
+          "pct_pot": 2.6525349985621283
+        },
+        {
+          "cpu_seconds": 29.125,
+          "iteration": 100,
+          "pct_pot": 1.4678473295862027
+        },
+        {
+          "cpu_seconds": 40.984375,
+          "iteration": 150,
+          "pct_pot": 1.0222442653258024
+        },
+        {
+          "cpu_seconds": 51.234375,
+          "iteration": 200,
+          "pct_pot": 0.7458270791915833
+        },
+        {
+          "cpu_seconds": 62.96875,
+          "iteration": 250,
+          "pct_pot": 0.5805045026199496
+        },
+        {
+          "cpu_seconds": 72.59375,
+          "iteration": 300,
+          "pct_pot": 0.4961594795451685
+        },
+        {
+          "cpu_seconds": 82.265625,
+          "iteration": 350,
+          "pct_pot": 0.43206724849048195
+        },
+        {
+          "cpu_seconds": 92.1875,
+          "iteration": 400,
+          "pct_pot": 0.3833659638573894
+        },
+        {
+          "cpu_seconds": 101.5625,
+          "iteration": 450,
+          "pct_pot": 0.3410000936173585
+        },
+        {
+          "cpu_seconds": 112.03125,
+          "iteration": 500,
+          "pct_pot": 0.31153902295270264
+        },
+        {
+          "cpu_seconds": 122.421875,
+          "iteration": 550,
+          "pct_pot": 0.2834667767783894
+        },
+        {
+          "cpu_seconds": 132.21875,
+          "iteration": 600,
+          "pct_pot": 0.2598122283888804
+        },
+        {
+          "cpu_seconds": 142.125,
+          "iteration": 650,
+          "pct_pot": 0.24022451893706886
+        },
+        {
+          "cpu_seconds": 150.609375,
+          "iteration": 700,
+          "pct_pot": 0.2219414316400159
+        },
+        {
+          "cpu_seconds": 159.234375,
+          "iteration": 750,
+          "pct_pot": 0.20656765599557092
+        },
+        {
+          "cpu_seconds": 168.46875,
+          "iteration": 800,
+          "pct_pot": 0.1898144220369713
+        },
+        {
+          "cpu_seconds": 177.65625,
+          "iteration": 850,
+          "pct_pot": 0.18073589015871638
+        },
+        {
+          "cpu_seconds": 186.8125,
+          "iteration": 900,
+          "pct_pot": 0.17088018600417865
+        },
+        {
+          "cpu_seconds": 194.6875,
+          "iteration": 950,
+          "pct_pot": 0.16322659488097413
+        },
+        {
+          "cpu_seconds": 203.078125,
+          "iteration": 1000,
+          "pct_pot": 0.15722346918426888
+        },
+        {
+          "cpu_seconds": 212.0625,
+          "iteration": 1050,
+          "pct_pot": 0.1481256012084775
+        },
+        {
+          "cpu_seconds": 220.125,
+          "iteration": 1100,
+          "pct_pot": 0.14322989563110955
+        },
+        {
+          "cpu_seconds": 229.8125,
+          "iteration": 1150,
+          "pct_pot": 0.13608665993847913
+        },
+        {
+          "cpu_seconds": 240.15625,
+          "iteration": 1200,
+          "pct_pot": 0.13073475381951694
+        },
+        {
+          "cpu_seconds": 250.46875,
+          "iteration": 1250,
+          "pct_pot": 0.1258220348790573
+        },
+        {
+          "cpu_seconds": 260.328125,
+          "iteration": 1300,
+          "pct_pot": 0.1211581518858007
+        },
+        {
+          "cpu_seconds": 269.8125,
+          "iteration": 1350,
+          "pct_pot": 0.11577849373207272
+        },
+        {
+          "cpu_seconds": 279.953125,
+          "iteration": 1400,
+          "pct_pot": 0.11423796792990215
+        },
+        {
+          "cpu_seconds": 290.640625,
+          "iteration": 1450,
+          "pct_pot": 0.10892835074319152
+        },
+        {
+          "cpu_seconds": 299.84375,
+          "iteration": 1500,
+          "pct_pot": 0.10563537281968571
+        },
+        {
+          "cpu_seconds": 311.359375,
+          "iteration": 1550,
+          "pct_pot": 0.10211005416408847
+        },
+        {
+          "cpu_seconds": 326.140625,
+          "iteration": 1600,
+          "pct_pot": 0.09914984969929819
+        },
+        {
+          "cpu_seconds": 343.8125,
+          "iteration": 1650,
+          "pct_pot": 0.09591970562287111
+        },
+        {
+          "cpu_seconds": 360.3125,
+          "iteration": 1700,
+          "pct_pot": 0.09324558962000351
+        },
+        {
+          "cpu_seconds": 375.640625,
+          "iteration": 1750,
+          "pct_pot": 0.09076903874449593
+        },
+        {
+          "cpu_seconds": 391.59375,
+          "iteration": 1800,
+          "pct_pot": 0.08841580210920297
+        },
+        {
+          "cpu_seconds": 406.1875,
+          "iteration": 1850,
+          "pct_pot": 0.08645644187979418
+        },
+        {
+          "cpu_seconds": 417.40625,
+          "iteration": 1900,
+          "pct_pot": 0.0824826105126597
+        },
+        {
+          "cpu_seconds": 428.296875,
+          "iteration": 1950,
+          "pct_pot": 0.08067785702445152
+        },
+        {
+          "cpu_seconds": 439.03125,
+          "iteration": 2000,
+          "pct_pot": 0.07942202384978447
+        }
+      ],
+      "decision_nodes": 10,
+      "final_pct_pot": 0.07942202384978447,
+      "game": "PLO",
+      "hands": [
+        32352,
+        41844
+      ],
+      "iterations": 2000,
+      "iterations_to": {
+        "0.1": 1600,
+        "0.3": 550,
+        "0.5": 300,
+        "1.0": 200
+      },
+      "memory_bytes": 15432768,
+      "nodes": 27,
+      "spot": "PLO river, 4-card ranges"
+    },
+    {
+      "algorithm": "CFR+",
+      "cpu_seconds": 82.015625,
+      "curve": [
+        {
+          "cpu_seconds": 12.453125,
+          "iteration": 50,
+          "pct_pot": 0.8057009895697153
+        },
+        {
+          "cpu_seconds": 23.015625,
+          "iteration": 100,
+          "pct_pot": 0.3669676793479981
+        },
+        {
+          "cpu_seconds": 33.625,
+          "iteration": 150,
+          "pct_pot": 0.1874526527928344
+        },
+        {
+          "cpu_seconds": 43.875,
+          "iteration": 200,
+          "pct_pot": 0.12146010763983028
+        },
+        {
+          "cpu_seconds": 54.734375,
+          "iteration": 250,
+          "pct_pot": 0.09437576755516375
+        },
+        {
+          "cpu_seconds": 63.984375,
+          "iteration": 300,
+          "pct_pot": 0.07363699125509493
+        },
+        {
+          "cpu_seconds": 73.140625,
+          "iteration": 350,
+          "pct_pot": 0.05964472252501629
+        },
+        {
+          "cpu_seconds": 82.015625,
+          "iteration": 400,
+          "pct_pot": 0.04999538011459581
+        }
+      ],
+      "decision_nodes": 10,
+      "final_pct_pot": 0.04999538011459581,
+      "game": "PLO",
+      "hands": [
+        32352,
+        41844
+      ],
+      "iterations": 400,
+      "iterations_to": {
+        "0.1": 250,
+        "0.3": 150,
+        "0.5": 100,
+        "1.0": 50
+      },
+      "memory_bytes": 15432768,
+      "nodes": 27,
+      "spot": "PLO river, 4-card ranges"
+    },
+    {
+      "algorithm": "LCFR",
+      "cpu_seconds": 58.265625,
+      "curve": [
+        {
+          "cpu_seconds": 8.546875,
+          "iteration": 50,
+          "pct_pot": 1.3191558161605799
+        },
+        {
+          "cpu_seconds": 17.125,
+          "iteration": 100,
+          "pct_pot": 0.3876034111715243
+        },
+        {
+          "cpu_seconds": 25.5625,
+          "iteration": 150,
+          "pct_pot": 0.182015031358429
+        },
+        {
+          "cpu_seconds": 33.875,
+          "iteration": 200,
+          "pct_pot": 0.11240683302202292
+        },
+        {
+          "cpu_seconds": 42.0625,
+          "iteration": 250,
+          "pct_pot": 0.07546882944398314
+        },
+        {
+          "cpu_seconds": 50.5,
+          "iteration": 300,
+          "pct_pot": 0.052863279658523776
+        },
+        {
+          "cpu_seconds": 58.265625,
+          "iteration": 350,
+          "pct_pot": 0.0407209871368841
+        }
+      ],
+      "decision_nodes": 10,
+      "final_pct_pot": 0.0407209871368841,
+      "game": "PLO",
+      "hands": [
+        32352,
+        41844
+      ],
+      "iterations": 350,
+      "iterations_to": {
+        "0.1": 250,
+        "0.3": 150,
+        "0.5": 100,
+        "1.0": 100
+      },
+      "memory_bytes": 15432768,
+      "nodes": 27,
+      "spot": "PLO river, 4-card ranges"
+    },
+    {
+      "algorithm": "DCFR",
+      "cpu_seconds": 34.859375,
+      "curve": [
+        {
+          "cpu_seconds": 8.984375,
+          "iteration": 50,
+          "pct_pot": 0.32744045576105885
+        },
+        {
+          "cpu_seconds": 17.625,
+          "iteration": 100,
+          "pct_pot": 0.10076388382487256
+        },
+        {
+          "cpu_seconds": 26.484375,
+          "iteration": 150,
+          "pct_pot": 0.05120193049362731
+        },
+        {
+          "cpu_seconds": 34.859375,
+          "iteration": 200,
+          "pct_pot": 0.031230889608948598
+        }
+      ],
+      "decision_nodes": 10,
+      "final_pct_pot": 0.031230889608948598,
+      "game": "PLO",
+      "hands": [
+        32352,
+        41844
+      ],
+      "iterations": 200,
+      "iterations_to": {
+        "0.1": 150,
+        "0.3": 100,
+        "0.5": 50,
+        "1.0": 50
+      },
+      "memory_bytes": 15432768,
+      "nodes": 27,
+      "spot": "PLO river, 4-card ranges"
+    },
+    {
+      "algorithm": "PCFR+",
+      "cpu_seconds": 71.25,
+      "curve": [
+        {
+          "cpu_seconds": 9.875,
+          "iteration": 50,
+          "pct_pot": 0.7309720999560687
+        },
+        {
+          "cpu_seconds": 19.015625,
+          "iteration": 100,
+          "pct_pot": 0.35784767503367565
+        },
+        {
+          "cpu_seconds": 28.0,
+          "iteration": 150,
+          "pct_pot": 0.21217778076131566
+        },
+        {
+          "cpu_seconds": 37.21875,
+          "iteration": 200,
+          "pct_pot": 0.13698246054411278
+        },
+        {
+          "cpu_seconds": 45.96875,
+          "iteration": 250,
+          "pct_pot": 0.0953295608942284
+        },
+        {
+          "cpu_seconds": 54.46875,
+          "iteration": 300,
+          "pct_pot": 0.07082692651667166
+        },
+        {
+          "cpu_seconds": 62.734375,
+          "iteration": 350,
+          "pct_pot": 0.05593905486058537
+        },
+        {
+          "cpu_seconds": 71.25,
+          "iteration": 400,
+          "pct_pot": 0.04649437362632014
+        }
+      ],
+      "decision_nodes": 10,
+      "final_pct_pot": 0.04649437362632014,
+      "game": "PLO",
+      "hands": [
+        32352,
+        41844
+      ],
+      "iterations": 400,
+      "iterations_to": {
+        "0.1": 250,
+        "0.3": 150,
+        "0.5": 100,
+        "1.0": 50
+      },
+      "memory_bytes": 23149152,
+      "nodes": 27,
+      "spot": "PLO river, 4-card ranges"
+    },
+    {
+      "algorithm": "CFR",
+      "cpu_seconds": 0.34375,
+      "curve": [
+        {
+          "cpu_seconds": 0.0,
+          "iteration": 50,
+          "pct_pot": 3.1652026214334517
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "iteration": 100,
+          "pct_pot": 1.8641714475313265
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "iteration": 150,
+          "pct_pot": 1.2287865357587258
+        },
+        {
+          "cpu_seconds": 0.03125,
+          "iteration": 200,
+          "pct_pot": 0.9537333244023415
+        },
+        {
+          "cpu_seconds": 0.03125,
+          "iteration": 250,
+          "pct_pot": 0.7846460836129898
+        },
+        {
+          "cpu_seconds": 0.046875,
+          "iteration": 300,
+          "pct_pot": 0.6957084794845358
+        },
+        {
+          "cpu_seconds": 0.046875,
+          "iteration": 350,
+          "pct_pot": 0.5968174209725907
+        },
+        {
+          "cpu_seconds": 0.0625,
+          "iteration": 400,
+          "pct_pot": 0.5166964566053611
+        },
+        {
+          "cpu_seconds": 0.078125,
+          "iteration": 450,
+          "pct_pot": 0.450118278708449
+        },
+        {
+          "cpu_seconds": 0.078125,
+          "iteration": 500,
+          "pct_pot": 0.4175750436489989
+        },
+        {
+          "cpu_seconds": 0.09375,
+          "iteration": 550,
+          "pct_pot": 0.37980161913160115
+        },
+        {
+          "cpu_seconds": 0.109375,
+          "iteration": 600,
+          "pct_pot": 0.3401177415911594
+        },
+        {
+          "cpu_seconds": 0.109375,
+          "iteration": 650,
+          "pct_pot": 0.31833186020986837
+        },
+        {
+          "cpu_seconds": 0.125,
+          "iteration": 700,
+          "pct_pot": 0.29793539631255195
+        },
+        {
+          "cpu_seconds": 0.125,
+          "iteration": 750,
+          "pct_pot": 0.27343892949628135
+        },
+        {
+          "cpu_seconds": 0.140625,
+          "iteration": 800,
+          "pct_pot": 0.24671217474395712
+        },
+        {
+          "cpu_seconds": 0.140625,
+          "iteration": 850,
+          "pct_pot": 0.23949383806363578
+        },
+        {
+          "cpu_seconds": 0.15625,
+          "iteration": 900,
+          "pct_pot": 0.23115423068078123
+        },
+        {
+          "cpu_seconds": 0.171875,
+          "iteration": 950,
+          "pct_pot": 0.22264150879319322
+        },
+        {
+          "cpu_seconds": 0.171875,
+          "iteration": 1000,
+          "pct_pot": 0.21574475385658154
+        },
+        {
+          "cpu_seconds": 0.1875,
+          "iteration": 1050,
+          "pct_pot": 0.203429158304389
+        },
+        {
+          "cpu_seconds": 0.1875,
+          "iteration": 1100,
+          "pct_pot": 0.18953709838851918
+        },
+        {
+          "cpu_seconds": 0.203125,
+          "iteration": 1150,
+          "pct_pot": 0.1817477983627236
+        },
+        {
+          "cpu_seconds": 0.203125,
+          "iteration": 1200,
+          "pct_pot": 0.18015305695479045
+        },
+        {
+          "cpu_seconds": 0.203125,
+          "iteration": 1250,
+          "pct_pot": 0.16769443721988297
+        },
+        {
+          "cpu_seconds": 0.21875,
+          "iteration": 1300,
+          "pct_pot": 0.16078668608475288
+        },
+        {
+          "cpu_seconds": 0.21875,
+          "iteration": 1350,
+          "pct_pot": 0.1568034067491042
+        },
+        {
+          "cpu_seconds": 0.234375,
+          "iteration": 1400,
+          "pct_pot": 0.1519761463996483
+        },
+        {
+          "cpu_seconds": 0.234375,
+          "iteration": 1450,
+          "pct_pot": 0.14694738198164803
+        },
+        {
+          "cpu_seconds": 0.25,
+          "iteration": 1500,
+          "pct_pot": 0.13832604874853605
+        },
+        {
+          "cpu_seconds": 0.265625,
+          "iteration": 1550,
+          "pct_pot": 0.13672634997801802
+        },
+        {
+          "cpu_seconds": 0.265625,
+          "iteration": 1600,
+          "pct_pot": 0.12979767728211522
+        },
+        {
+          "cpu_seconds": 0.28125,
+          "iteration": 1650,
+          "pct_pot": 0.1283436880998523
+        },
+        {
+          "cpu_seconds": 0.28125,
+          "iteration": 1700,
+          "pct_pot": 0.12588926853282834
+        },
+        {
+          "cpu_seconds": 0.296875,
+          "iteration": 1750,
+          "pct_pot": 0.12259588913002828
+        },
+        {
+          "cpu_seconds": 0.296875,
+          "iteration": 1800,
+          "pct_pot": 0.12111472304601856
+        },
+        {
+          "cpu_seconds": 0.3125,
+          "iteration": 1850,
+          "pct_pot": 0.1143004247937629
+        },
+        {
+          "cpu_seconds": 0.328125,
+          "iteration": 1900,
+          "pct_pot": 0.11310161637979599
+        },
+        {
+          "cpu_seconds": 0.328125,
+          "iteration": 1950,
+          "pct_pot": 0.10726377429260303
+        },
+        {
+          "cpu_seconds": 0.34375,
+          "iteration": 2000,
+          "pct_pot": 0.10391697809209122
+        }
+      ],
+      "decision_nodes": 10,
+      "final_pct_pot": 0.10391697809209122,
+      "game": "SD",
+      "hands": [
+        465,
+        97
+      ],
+      "iterations": 2000,
+      "iterations_to": {
+        "0.1": null,
+        "0.3": 700,
+        "0.5": 450,
+        "1.0": 200
+      },
+      "memory_bytes": 116896,
+      "nodes": 27,
+      "spot": "Short deck river (Triton rules)"
+    },
+    {
+      "algorithm": "CFR+",
+      "cpu_seconds": 0.078125,
+      "curve": [
+        {
+          "cpu_seconds": 0.015625,
+          "iteration": 50,
+          "pct_pot": 1.4635420122509402
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "iteration": 100,
+          "pct_pot": 0.5413027845479679
+        },
+        {
+          "cpu_seconds": 0.03125,
+          "iteration": 150,
+          "pct_pot": 0.2883022706520566
+        },
+        {
+          "cpu_seconds": 0.03125,
+          "iteration": 200,
+          "pct_pot": 0.18156407527759377
+        },
+        {
+          "cpu_seconds": 0.046875,
+          "iteration": 250,
+          "pct_pot": 0.12477287646081248
+        },
+        {
+          "cpu_seconds": 0.0625,
+          "iteration": 300,
+          "pct_pot": 0.09163873034367054
+        },
+        {
+          "cpu_seconds": 0.0625,
+          "iteration": 350,
+          "pct_pot": 0.07043945057237044
+        },
+        {
+          "cpu_seconds": 0.078125,
+          "iteration": 400,
+          "pct_pot": 0.05497364831371199
+        },
+        {
+          "cpu_seconds": 0.078125,
+          "iteration": 450,
+          "pct_pot": 0.04418700322577074
+        }
+      ],
+      "decision_nodes": 10,
+      "final_pct_pot": 0.04418700322577074,
+      "game": "SD",
+      "hands": [
+        465,
+        97
+      ],
+      "iterations": 450,
+      "iterations_to": {
+        "0.1": 300,
+        "0.3": 150,
+        "0.5": 150,
+        "1.0": 100
+      },
+      "memory_bytes": 116896,
+      "nodes": 27,
+      "spot": "Short deck river (Triton rules)"
+    },
+    {
+      "algorithm": "LCFR",
+      "cpu_seconds": 0.0625,
+      "curve": [
+        {
+          "cpu_seconds": 0.015625,
+          "iteration": 50,
+          "pct_pot": 0.9062809252017455
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "iteration": 100,
+          "pct_pot": 0.3077337727726914
+        },
+        {
+          "cpu_seconds": 0.03125,
+          "iteration": 150,
+          "pct_pot": 0.164130363477899
+        },
+        {
+          "cpu_seconds": 0.046875,
+          "iteration": 200,
+          "pct_pot": 0.10749259169211989
+        },
+        {
+          "cpu_seconds": 0.046875,
+          "iteration": 250,
+          "pct_pot": 0.07464234581850748
+        },
+        {
+          "cpu_seconds": 0.0625,
+          "iteration": 300,
+          "pct_pot": 0.053405096769403304
+        },
+        {
+          "cpu_seconds": 0.0625,
+          "iteration": 350,
+          "pct_pot": 0.04231432723504014
+        }
+      ],
+      "decision_nodes": 10,
+      "final_pct_pot": 0.04231432723504014,
+      "game": "SD",
+      "hands": [
+        465,
+        97
+      ],
+      "iterations": 350,
+      "iterations_to": {
+        "0.1": 250,
+        "0.3": 150,
+        "0.5": 100,
+        "1.0": 50
+      },
+      "memory_bytes": 116896,
+      "nodes": 27,
+      "spot": "Short deck river (Triton rules)"
+    },
+    {
+      "algorithm": "DCFR",
+      "cpu_seconds": 0.046875,
+      "curve": [
+        {
+          "cpu_seconds": 0.015625,
+          "iteration": 50,
+          "pct_pot": 0.8861595070534278
+        },
+        {
+          "cpu_seconds": 0.03125,
+          "iteration": 100,
+          "pct_pot": 0.2241224761188132
+        },
+        {
+          "cpu_seconds": 0.03125,
+          "iteration": 150,
+          "pct_pot": 0.0938306637023878
+        },
+        {
+          "cpu_seconds": 0.046875,
+          "iteration": 200,
+          "pct_pot": 0.048338063324471214
+        }
+      ],
+      "decision_nodes": 10,
+      "final_pct_pot": 0.048338063324471214,
+      "game": "SD",
+      "hands": [
+        465,
+        97
+      ],
+      "iterations": 200,
+      "iterations_to": {
+        "0.1": 150,
+        "0.3": 100,
+        "0.5": 100,
+        "1.0": 50
+      },
+      "memory_bytes": 116896,
+      "nodes": 27,
+      "spot": "Short deck river (Triton rules)"
+    },
+    {
+      "algorithm": "PCFR+",
+      "cpu_seconds": 0.09375,
+      "curve": [
+        {
+          "cpu_seconds": 0.015625,
+          "iteration": 50,
+          "pct_pot": 1.4273835665689827
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "iteration": 100,
+          "pct_pot": 0.71679883381361
+        },
+        {
+          "cpu_seconds": 0.03125,
+          "iteration": 150,
+          "pct_pot": 0.3909704018235205
+        },
+        {
+          "cpu_seconds": 0.03125,
+          "iteration": 200,
+          "pct_pot": 0.23286326478382247
+        },
+        {
+          "cpu_seconds": 0.046875,
+          "iteration": 250,
+          "pct_pot": 0.13749200356052427
+        },
+        {
+          "cpu_seconds": 0.0625,
+          "iteration": 300,
+          "pct_pot": 0.10787340254578393
+        },
+        {
+          "cpu_seconds": 0.0625,
+          "iteration": 350,
+          "pct_pot": 0.0823462972954414
+        },
+        {
+          "cpu_seconds": 0.078125,
+          "iteration": 400,
+          "pct_pot": 0.06549882601264434
+        },
+        {
+          "cpu_seconds": 0.078125,
+          "iteration": 450,
+          "pct_pot": 0.05364706737413627
+        },
+        {
+          "cpu_seconds": 0.09375,
+          "iteration": 500,
+          "pct_pot": 0.04106357888316259
+        }
+      ],
+      "decision_nodes": 10,
+      "final_pct_pot": 0.04106357888316259,
+      "game": "SD",
+      "hands": [
+        465,
+        97
+      ],
+      "iterations": 500,
+      "iterations_to": {
+        "0.1": 350,
+        "0.3": 200,
+        "0.5": 150,
+        "1.0": 100
+      },
+      "memory_bytes": 175344,
+      "nodes": 27,
+      "spot": "Short deck river (Triton rules)"
+    }
+  ]
+}

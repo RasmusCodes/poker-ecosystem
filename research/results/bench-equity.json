@@ -1,0 +1,226 @@
+{
+  "exact": [
+    {
+      "case": "NLH preflop AsAh vs KsKh",
+      "cpu_seconds": 0.125,
+      "equity": [
+        0.826366112559452,
+        0.17363388744054795
+      ],
+      "runouts": 1712304,
+      "wall_seconds": 0.0429769
+    },
+    {
+      "case": "NLH preflop AhKh vs QsQd",
+      "cpu_seconds": 0.25,
+      "equity": [
+        0.46214457245909607,
+        0.537855427540904
+      ],
+      "runouts": 1712304,
+      "wall_seconds": 0.0614538
+    },
+    {
+      "case": "NLH flop 3-way",
+      "cpu_seconds": 0.0,
+      "equity": [
+        0.5138427464008859,
+        0.2978959025470653,
+        0.18826135105204872
+      ],
+      "runouts": 903,
+      "wall_seconds": 0.0002034
+    },
+    {
+      "case": "PLO flop",
+      "cpu_seconds": 0.0,
+      "equity": [
+        0.5073170731707317,
+        0.4926829268292683
+      ],
+      "runouts": 820,
+      "wall_seconds": 0.0005373
+    },
+    {
+      "case": "PLO preflop",
+      "cpu_seconds": 1.5625,
+      "equity": [
+        0.6148131505476939,
+        0.3851868494523061
+      ],
+      "runouts": 1086008,
+      "wall_seconds": 0.5330185
+    },
+    {
+      "case": "Short deck preflop AKs vs JJ",
+      "cpu_seconds": 0.0,
+      "equity": [
+        0.5058249245193072,
+        0.49417507548069284
+      ],
+      "runouts": 201376,
+      "wall_seconds": 0.0059257
+    },
+    {
+      "case": "Double board flop",
+      "cpu_seconds": 0.09375,
+      "equity": [
+        0.40418118466898956,
+        0.5958188153310104
+      ],
+      "runouts": 671580,
+      "wall_seconds": 0.0327601
+    },
+    {
+      "case": "Omaha hi-lo flop",
+      "cpu_seconds": 0.0,
+      "equity": [
+        0.7914634146341464,
+        0.20853658536585365
+      ],
+      "runouts": 820,
+      "wall_seconds": 0.0004074
+    }
+  ],
+  "meta": {
+    "note": "CPU seconds on a shared laptop (AMD Ryzen AI 7 PRO 350, 8 cores / 16 threads) running other jobs; compare iterations and nodes touched for convergence",
+    "peak_working_set_bytes": 255647744,
+    "process_cpu_seconds": 8.71875,
+    "quick": false,
+    "suite": "equity",
+    "threads": 4,
+    "wall_seconds": 3.9361361
+  },
+  "monte_carlo": {
+    "case": "NLH preflop AhKh vs QsQd",
+    "exact_equity": 0.46214457245909607,
+    "rows": [
+      {
+        "ci95_coverage": 0.97,
+        "cpu_seconds_per_run": 0.00078125,
+        "mean_abs_error": 0.011527348695091507,
+        "repetitions": 100,
+        "rmse": 0.013983397350843639,
+        "samples": 1000
+      },
+      {
+        "ci95_coverage": 1.0,
+        "cpu_seconds_per_run": 0.00125,
+        "mean_abs_error": 0.00368,
+        "repetitions": 100,
+        "rmse": 0.004524358872994706,
+        "samples": 10000
+      },
+      {
+        "ci95_coverage": 0.95,
+        "cpu_seconds_per_run": 0.013125,
+        "mean_abs_error": 0.0012755756524542334,
+        "repetitions": 100,
+        "rmse": 0.001564743815920587,
+        "samples": 100000
+      },
+      {
+        "ci95_coverage": 1.0,
+        "cpu_seconds_per_run": 0.1265625,
+        "mean_abs_error": 0.00035484601636157076,
+        "repetitions": 20,
+        "rmse": 0.00043029271845495377,
+        "samples": 1000000
+      }
+    ]
+  },
+  "run_it_twice": [
+    {
+      "case": "preflop AsAh vs KsKh",
+      "cpu_seconds": 2.46875,
+      "result": {
+        "corr_runs": [
+          -0.08513610257992328,
+          -0.085136102579924
+        ],
+        "equity": [
+          0.826366112559452,
+          0.17363388744054795
+        ],
+        "runouts": 1712304,
+        "sd_once": [
+          0.3769962505336541,
+          0.376996250533654
+        ],
+        "sd_twice": [
+          0.2549765719431181,
+          0.254976571943118
+        ]
+      }
+    },
+    {
+      "case": "flop AhKh vs QsQd on Th7h2c",
+      "cpu_seconds": 0.0,
+      "result": {
+        "corr_runs": [
+          -0.03501774482361824,
+          -0.03501774482361836
+        ],
+        "equity": [
+          0.5444444444444444,
+          0.45555555555555555
+        ],
+        "runouts": 990,
+        "sd_once": [
+          0.4980207740225549,
+          0.4980207740225549
+        ],
+        "sd_twice": [
+          0.3459331048093639,
+          0.3459331048093639
+        ]
+      }
+    },
+    {
+      "case": "turn AhKh vs QsQd on Th7h2c3d",
+      "cpu_seconds": 0.0,
+      "result": {
+        "corr_runs": [
+          -0.023255813953488344,
+          -0.023255813953488406
+        ],
+        "equity": [
+          0.3409090909090909,
+          0.6590909090909091
+        ],
+        "runouts": 44,
+        "sd_once": [
+          0.47401485487759565,
+          0.47401485487759565
+        ],
+        "sd_twice": [
+          0.3312587597977227,
+          0.3312587597977226
+        ]
+      }
+    },
+    {
+      "case": "flop 8h9h vs AsAd on 7h6c2h (combo draw)",
+      "cpu_seconds": 0.0,
+      "result": {
+        "corr_runs": [
+          -0.03436892993380644,
+          -0.03436892993380667
+        ],
+        "equity": [
+          0.5626262626262626,
+          0.43737373737373736
+        ],
+        "runouts": 990,
+        "sd_once": [
+          0.49606244690509116,
+          0.49606244690509116
+        ],
+        "sd_twice": [
+          0.3446886387490936,
+          0.3446886387490935
+        ]
+      }
+    }
+  ]
+}

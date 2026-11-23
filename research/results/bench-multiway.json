@@ -1,0 +1,278 @@
+{
+  "meta": {
+    "note": "CPU seconds on a shared laptop (AMD Ryzen AI 7 PRO 350, 8 cores / 16 threads) running other jobs; compare iterations and nodes touched for convergence",
+    "peak_working_set_bytes": 5586944,
+    "process_cpu_seconds": 14.03125,
+    "quick": false,
+    "suite": "multiway",
+    "threads": 4,
+    "wall_seconds": 3.6768806
+  },
+  "note": "NashConv is exact; with three or more players CFR has no convergence guarantee",
+  "rows": [
+    {
+      "cpu_seconds": 0.0,
+      "cpu_seconds_per_iteration": 0.0,
+      "curve": [
+        {
+          "iteration": 0,
+          "nash_conv_pct_pot": 41.607142857142854
+        },
+        {
+          "cpu_seconds": 0.0,
+          "iteration": 1,
+          "nash_conv_pct_pot": 41.607142857142854
+        },
+        {
+          "cpu_seconds": 0.0,
+          "iteration": 2,
+          "nash_conv_pct_pot": 26.10714285714287
+        },
+        {
+          "cpu_seconds": 0.0,
+          "iteration": 5,
+          "nash_conv_pct_pot": 7.677410183024724
+        },
+        {
+          "cpu_seconds": 0.0,
+          "iteration": 10,
+          "nash_conv_pct_pot": 2.8878340662665547
+        },
+        {
+          "cpu_seconds": 0.0,
+          "iteration": 20,
+          "nash_conv_pct_pot": 1.034481043624389
+        },
+        {
+          "cpu_seconds": 0.0,
+          "iteration": 50,
+          "nash_conv_pct_pot": 0.2501584403223678
+        },
+        {
+          "cpu_seconds": 0.0,
+          "iteration": 100,
+          "nash_conv_pct_pot": 0.1017354346180177
+        },
+        {
+          "cpu_seconds": 0.0,
+          "iteration": 200,
+          "nash_conv_pct_pot": 0.0472093723369138
+        },
+        {
+          "cpu_seconds": 0.0,
+          "iteration": 300,
+          "nash_conv_pct_pot": 0.039281463435001385
+        }
+      ],
+      "decision_nodes": 4,
+      "final": {
+        "br": [
+          11.090256962577884,
+          8.91759933010912
+        ],
+        "ev": [
+          11.083718887622007,
+          8.916281112377996
+        ],
+        "gains": [
+          0.0065380749558769935,
+          0.0013182177311232834
+        ],
+        "label": "two-player: NashConv/2 is the exploitability",
+        "nash_conv": 0.007856292687000277,
+        "nash_conv_pct_pot": 0.039281463435001385,
+        "players": 2,
+        "tuples": 280
+      },
+      "hands": [
+        18,
+        18
+      ],
+      "iterations": 300,
+      "memory_bytes": 3424,
+      "nodes": 9,
+      "players": 2,
+      "tuples": 280
+    },
+    {
+      "cpu_seconds": 0.1875,
+      "cpu_seconds_per_iteration": 0.000625,
+      "curve": [
+        {
+          "iteration": 0,
+          "nash_conv_pct_pot": 91.1980659025788
+        },
+        {
+          "cpu_seconds": 0.0,
+          "iteration": 1,
+          "nash_conv_pct_pot": 91.1980659025788
+        },
+        {
+          "cpu_seconds": 0.0,
+          "iteration": 2,
+          "nash_conv_pct_pot": 69.79964183381078
+        },
+        {
+          "cpu_seconds": 0.0,
+          "iteration": 5,
+          "nash_conv_pct_pot": 30.403947541892126
+        },
+        {
+          "cpu_seconds": 0.0,
+          "iteration": 10,
+          "nash_conv_pct_pot": 9.405878361096338
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "iteration": 20,
+          "nash_conv_pct_pot": 2.694296496315742
+        },
+        {
+          "cpu_seconds": 0.03125,
+          "iteration": 50,
+          "nash_conv_pct_pot": 0.5532903055544526
+        },
+        {
+          "cpu_seconds": 0.0625,
+          "iteration": 100,
+          "nash_conv_pct_pot": 0.12882877106757581
+        },
+        {
+          "cpu_seconds": 0.125,
+          "iteration": 200,
+          "nash_conv_pct_pot": 0.044339238705174054
+        },
+        {
+          "cpu_seconds": 0.1875,
+          "iteration": 300,
+          "nash_conv_pct_pot": 0.024017233058096405
+        }
+      ],
+      "decision_nodes": 12,
+      "final": {
+        "br": [
+          14.188298334615759,
+          3.71856745043617,
+          12.100339384865482
+        ],
+        "ev": [
+          14.184651811387456,
+          3.7170351053313953,
+          12.09831308328113
+        ],
+        "gains": [
+          0.0036465232283031668,
+          0.001532345104774624,
+          0.002026301584351131
+        ],
+        "label": "multiway CFR approximation: no Nash guarantee",
+        "nash_conv": 0.007205169917428922,
+        "nash_conv_pct_pot": 0.024017233058096405,
+        "players": 3,
+        "tuples": 3490
+      },
+      "hands": [
+        18,
+        18,
+        16
+      ],
+      "iterations": 300,
+      "memory_bytes": 27596,
+      "nodes": 25,
+      "players": 3,
+      "tuples": 3490
+    },
+    {
+      "cpu_seconds": 13.828125,
+      "cpu_seconds_per_iteration": 0.04609375,
+      "curve": [
+        {
+          "iteration": 0,
+          "nash_conv_pct_pot": 141.22887400347176
+        },
+        {
+          "cpu_seconds": 0.3125,
+          "iteration": 1,
+          "nash_conv_pct_pot": 141.22887400347176
+        },
+        {
+          "cpu_seconds": 0.5625,
+          "iteration": 2,
+          "nash_conv_pct_pot": 111.2094272373665
+        },
+        {
+          "cpu_seconds": 0.8125,
+          "iteration": 5,
+          "nash_conv_pct_pot": 38.74402972276049
+        },
+        {
+          "cpu_seconds": 1.203125,
+          "iteration": 10,
+          "nash_conv_pct_pot": 16.374291493363856
+        },
+        {
+          "cpu_seconds": 1.828125,
+          "iteration": 20,
+          "nash_conv_pct_pot": 5.198955621383008
+        },
+        {
+          "cpu_seconds": 3.3125,
+          "iteration": 50,
+          "nash_conv_pct_pot": 0.7884718453766482
+        },
+        {
+          "cpu_seconds": 5.390625,
+          "iteration": 100,
+          "nash_conv_pct_pot": 0.15803541077755223
+        },
+        {
+          "cpu_seconds": 9.5625,
+          "iteration": 200,
+          "nash_conv_pct_pot": 0.055189823800688154
+        },
+        {
+          "cpu_seconds": 13.703125,
+          "iteration": 300,
+          "nash_conv_pct_pot": 0.028909101254823155
+        }
+      ],
+      "decision_nodes": 32,
+      "final": {
+        "br": [
+          19.103603115886028,
+          4.356323569303677,
+          15.01137208181243,
+          1.540264873499752
+        ],
+        "ev": [
+          19.101877772770624,
+          4.354592464728284,
+          15.005672006623696,
+          1.5378577558773534
+        ],
+        "gains": [
+          0.0017253431154031773,
+          0.0017311045753931609,
+          0.005700075188734388,
+          0.0024071176223985358
+        ],
+        "label": "multiway CFR approximation: no Nash guarantee",
+        "nash_conv": 0.011563640501929262,
+        "nash_conv_pct_pot": 0.028909101254823155,
+        "players": 4,
+        "tuples": 38885
+      },
+      "hands": [
+        18,
+        18,
+        16,
+        17
+      ],
+      "iterations": 300,
+      "memory_bytes": 328744,
+      "nodes": 65,
+      "players": 4,
+      "tuples": 38885
+    }
+  ]
+}

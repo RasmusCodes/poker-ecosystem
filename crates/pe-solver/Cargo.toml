@@ -1,0 +1,17 @@
+[package]
+name = "pe-solver"
+description = "Range-vs-range postflop solver: vector CFR/DCFR, exact best response, locking, restricted Nash response, multiway rivers."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+pe-cards.workspace = true
+pe-eval.workspace = true
+pe-equity.workspace = true
+pe-cfr.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+rayon.workspace = true

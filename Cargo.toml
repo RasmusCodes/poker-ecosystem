@@ -1,0 +1,64 @@
+[workspace]
+resolver = "3"
+members = [
+    "crates/pe-cards",
+    "crates/pe-eval",
+    "crates/pe-equity",
+    "crates/pe-cfr",
+    "crates/pe-solver",
+    "crates/pe-hh",
+    "crates/pe-cli",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+license = "MIT"
+publish = false
+repository = "https://github.com/RasmusCodes/poker-ecosystem"
+
+# Dependency policy: the engine depends only on serde, serde_json and rayon.
+# The evaluator tables, the RNG and the benchmark harness are our own, so
+# results stay reproducible across dependency upgrades.
+[workspace.dependencies]
+pe-cards = { path = "crates/pe-cards" }
+pe-eval = { path = "crates/pe-eval" }
+pe-equity = { path = "crates/pe-equity" }
+pe-cfr = { path = "crates/pe-cfr" }
+pe-solver = { path = "crates/pe-solver" }
+pe-hh = { path = "crates/pe-hh" }
+
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+rayon = "1"
+
+# Our own crates are fully optimised even in dev builds, so `cargo test` runs
+# the exhaustive evaluator checks in seconds.
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package.pe-cards]
+opt-level = 3
+[profile.dev.package.pe-eval]
+opt-level = 3
+[profile.dev.package.pe-equity]
+opt-level = 3
+[profile.dev.package.pe-cfr]
+opt-level = 3
+[profile.dev.package.pe-solver]
+opt-level = 3
+[profile.dev.package.pe-hh]
+opt-level = 3
+[profile.dev.package.pe-cli]
+opt-level = 3
+
+[profile.test]
+opt-level = 3
+debug-assertions = true
+overflow-checks = true
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1

@@ -1,0 +1,2332 @@
+{
+  "meta": {
+    "note": "CPU seconds on a shared laptop (AMD Ryzen AI 7 PRO 350, 8 cores / 16 threads) running other jobs; compare iterations and nodes touched for convergence",
+    "peak_working_set_bytes": 6438912,
+    "process_cpu_seconds": 5.75,
+    "quick": false,
+    "suite": "cfr",
+    "threads": 4,
+    "wall_seconds": 7.128285
+  },
+  "references": {
+    "kuhn_uniform_exploitability": 0.45833333333333326,
+    "kuhn_value_p1": -0.05555555555555555,
+    "leduc_infosets": 288,
+    "leduc_uniform_exploitability": 2.373611111111111
+  },
+  "runs": [
+    {
+      "abstract_infosets": 12,
+      "curve": [
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.45833333333333326,
+          "iteration": 1,
+          "nash_conv": 0.9166666666666665,
+          "nodes_touched": 80,
+          "values": [
+            0.12499999999999997,
+            -0.12499999999999997
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.2708333333333334,
+          "iteration": 2,
+          "nash_conv": 0.5416666666666669,
+          "nodes_touched": 170,
+          "values": [
+            -7.979727989493313e-17,
+            7.979727989493313e-17
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.12138888888888891,
+          "iteration": 5,
+          "nash_conv": 0.24277777777777781,
+          "nodes_touched": 404,
+          "values": [
+            -0.04816666666666664,
+            0.04816666666666664
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.06869879381715761,
+          "iteration": 10,
+          "nash_conv": 0.13739758763431523,
+          "nodes_touched": 842,
+          "values": [
+            -0.05311271033885951,
+            0.05311271033885951
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.040670197752702086,
+          "iteration": 20,
+          "nash_conv": 0.08134039550540417,
+          "nodes_touched": 1676,
+          "values": [
+            -0.05715908696151224,
+            0.05715908696151224
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.015176601954280416,
+          "iteration": 50,
+          "nash_conv": 0.030353203908560833,
+          "nodes_touched": 4180,
+          "values": [
+            -0.056711110402540295,
+            0.056711110402540295
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.008225977315915664,
+          "iteration": 100,
+          "nash_conv": 0.016451954631831328,
+          "nodes_touched": 8436,
+          "values": [
+            -0.05614724147718674,
+            0.05614724147718674
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.0033296031363213435,
+          "iteration": 200,
+          "nash_conv": 0.006659206272642687,
+          "nodes_touched": 17092,
+          "values": [
+            -0.055871281191548765,
+            0.055871281191548765
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.0011685824404747552,
+          "iteration": 500,
+          "nash_conv": 0.0023371648809495105,
+          "nodes_touched": 43396,
+          "values": [
+            -0.05568808253889055,
+            0.05568808253889055
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.0009376166469940717,
+          "iteration": 1000,
+          "nash_conv": 0.0018752332939881433,
+          "nodes_touched": 87174,
+          "values": [
+            -0.055625031582249074,
+            0.055625031582249074
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.0005392433667917862,
+          "iteration": 2000,
+          "nash_conv": 0.0010784867335835724,
+          "nodes_touched": 175114,
+          "values": [
+            -0.05559226787782768,
+            0.05559226787782768
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.00017978487542900934,
+          "iteration": 5000,
+          "nash_conv": 0.0003595697508580187,
+          "nodes_touched": 439114,
+          "values": [
+            -0.05557113231777595,
+            0.05557113231777595
+          ]
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "exploitability": 0.00011332445786496614,
+          "iteration": 10000,
+          "nash_conv": 0.0002266489157299323,
+          "nodes_touched": 879114,
+          "values": [
+            -0.055563518262057694,
+            0.055563518262057694
+          ]
+        }
+      ],
+      "game": "kuhn-2p",
+      "infosets": 12,
+      "method": "CFR",
+      "nodes": 55,
+      "players": 2,
+      "solver_bytes": 1152,
+      "tree_bytes": 3188
+    },
+    {
+      "abstract_infosets": 12,
+      "curve": [
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.45833333333333326,
+          "iteration": 1,
+          "nash_conv": 0.9166666666666665,
+          "nodes_touched": 80,
+          "values": [
+            0.12499999999999997,
+            -0.12499999999999997
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.26388888888888884,
+          "iteration": 2,
+          "nash_conv": 0.5277777777777777,
+          "nodes_touched": 170,
+          "values": [
+            -0.08796296296296308,
+            0.08796296296296308
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.07334452949594794,
+          "iteration": 5,
+          "nash_conv": 0.14668905899189588,
+          "nodes_touched": 438,
+          "values": [
+            -0.05107456889875675,
+            0.05107456889875675
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.032687090668344757,
+          "iteration": 10,
+          "nash_conv": 0.06537418133668951,
+          "nodes_touched": 878,
+          "values": [
+            -0.05872491155170661,
+            0.05872491155170661
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.010108977366395544,
+          "iteration": 20,
+          "nash_conv": 0.020217954732791088,
+          "nodes_touched": 1746,
+          "values": [
+            -0.056033291872089344,
+            0.056033291872089344
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.002797250604641463,
+          "iteration": 50,
+          "nash_conv": 0.005594501209282926,
+          "nodes_touched": 4380,
+          "values": [
+            -0.05561685887547593,
+            0.05561685887547593
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.0011944041011116013,
+          "iteration": 100,
+          "nash_conv": 0.0023888082022232027,
+          "nodes_touched": 8780,
+          "values": [
+            -0.055584006549269455,
+            0.055584006549269455
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.00029496048351490556,
+          "iteration": 200,
+          "nash_conv": 0.0005899209670298111,
+          "nodes_touched": 17580,
+          "values": [
+            -0.055562622370327934,
+            0.055562622370327934
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.00017269684974370592,
+          "iteration": 500,
+          "nash_conv": 0.00034539369948741183,
+          "nodes_touched": 43980,
+          "values": [
+            -0.05555682250393878,
+            0.05555682250393878
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.00008736532252068274,
+          "iteration": 1000,
+          "nash_conv": 0.00017473064504136548,
+          "nodes_touched": 87980,
+          "values": [
+            -0.05555591758265181,
+            0.05555591758265181
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.00004364861937351805,
+          "iteration": 2000,
+          "nash_conv": 0.0000872972387470361,
+          "nodes_touched": 175980,
+          "values": [
+            -0.05555564474217168,
+            0.05555564474217168
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.00002768785956688835,
+          "iteration": 5000,
+          "nash_conv": 0.0000553757191337767,
+          "nodes_touched": 439980,
+          "values": [
+            -0.05555556630495131,
+            0.05555556630495131
+          ]
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "exploitability": 9.632756981542423e-6,
+          "iteration": 10000,
+          "nash_conv": 0.000019265513963084846,
+          "nodes_touched": 879980,
+          "values": [
+            -0.05555555911117002,
+            0.05555555911117002
+          ]
+        }
+      ],
+      "game": "kuhn-2p",
+      "infosets": 12,
+      "method": "CFR+",
+      "nodes": 55,
+      "players": 2,
+      "solver_bytes": 1152,
+      "tree_bytes": 3188
+    },
+    {
+      "abstract_infosets": 12,
+      "curve": [
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.45833333333333326,
+          "iteration": 1,
+          "nash_conv": 0.9166666666666665,
+          "nodes_touched": 80,
+          "values": [
+            0.12499999999999997,
+            -0.12499999999999997
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.26388888888888884,
+          "iteration": 2,
+          "nash_conv": 0.5277777777777777,
+          "nodes_touched": 170,
+          "values": [
+            -0.08796296296296308,
+            0.08796296296296308
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.09614590522066152,
+          "iteration": 5,
+          "nash_conv": 0.19229181044132304,
+          "nodes_touched": 420,
+          "values": [
+            -0.056140830483467866,
+            0.056140830483467866
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.021250730612165578,
+          "iteration": 10,
+          "nash_conv": 0.042501461224331155,
+          "nodes_touched": 832,
+          "values": [
+            -0.052349619469189534,
+            0.052349619469189534
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.010854999873786714,
+          "iteration": 20,
+          "nash_conv": 0.021709999747573427,
+          "nodes_touched": 1672,
+          "values": [
+            -0.05385120564396695,
+            0.05385120564396695
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.002372107503362225,
+          "iteration": 50,
+          "nash_conv": 0.00474421500672445,
+          "nodes_touched": 4264,
+          "values": [
+            -0.05542632249505287,
+            0.05542632249505287
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.0010890273650519255,
+          "iteration": 100,
+          "nash_conv": 0.002178054730103851,
+          "nodes_touched": 8658,
+          "values": [
+            -0.05551639566565005,
+            0.05551639566565005
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.0005271778901334845,
+          "iteration": 200,
+          "nash_conv": 0.001054355780266969,
+          "nodes_touched": 17458,
+          "values": [
+            -0.05554591541919199,
+            0.05554591541919199
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.00020016299692524053,
+          "iteration": 500,
+          "nash_conv": 0.00040032599385048107,
+          "nodes_touched": 43858,
+          "values": [
+            -0.055554119675205654,
+            0.055554119675205654
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.00009352992791016035,
+          "iteration": 1000,
+          "nash_conv": 0.0001870598558203207,
+          "nodes_touched": 87858,
+          "values": [
+            -0.05555519903784962,
+            0.05555519903784962
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.000045247389042629704,
+          "iteration": 2000,
+          "nash_conv": 0.00009049477808525941,
+          "nodes_touched": 175858,
+          "values": [
+            -0.05555546572549977,
+            0.05555546572549977
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.000018284041588767508,
+          "iteration": 5000,
+          "nash_conv": 0.000036568083177535016,
+          "nodes_touched": 439858,
+          "values": [
+            -0.055555541107613876,
+            0.055555541107613876
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 8.611046698109304e-6,
+          "iteration": 10000,
+          "nash_conv": 0.000017222093396218607,
+          "nodes_touched": 879858,
+          "values": [
+            -0.05555555195812632,
+            0.05555555195812632
+          ]
+        }
+      ],
+      "game": "kuhn-2p",
+      "infosets": 12,
+      "method": "LCFR",
+      "nodes": 55,
+      "players": 2,
+      "solver_bytes": 1152,
+      "tree_bytes": 3188
+    },
+    {
+      "abstract_infosets": 12,
+      "curve": [
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.45833333333333326,
+          "iteration": 1,
+          "nash_conv": 0.9166666666666665,
+          "nodes_touched": 80,
+          "values": [
+            0.12499999999999997,
+            -0.12499999999999997
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.2583333333333333,
+          "iteration": 2,
+          "nash_conv": 0.5166666666666666,
+          "nodes_touched": 170,
+          "values": [
+            -0.17500000000000004,
+            0.17500000000000004
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.0664327761962759,
+          "iteration": 5,
+          "nash_conv": 0.1328655523925518,
+          "nodes_touched": 428,
+          "values": [
+            -0.06490318861130648,
+            0.06490318861130648
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.0227787839257636,
+          "iteration": 10,
+          "nash_conv": 0.0455575678515272,
+          "nodes_touched": 862,
+          "values": [
+            -0.0554312689728528,
+            0.0554312689728528
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.011520633113767512,
+          "iteration": 20,
+          "nash_conv": 0.023041266227535023,
+          "nodes_touched": 1730,
+          "values": [
+            -0.05638018617027786,
+            0.05638018617027786
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.0031980042290172955,
+          "iteration": 50,
+          "nash_conv": 0.006396008458034591,
+          "nodes_touched": 4352,
+          "values": [
+            -0.05555644749735754,
+            0.05555644749735754
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.001666341970341323,
+          "iteration": 100,
+          "nash_conv": 0.003332683940682646,
+          "nodes_touched": 8752,
+          "values": [
+            -0.05555940084888599,
+            0.05555940084888599
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.0009091975163238453,
+          "iteration": 200,
+          "nash_conv": 0.0018183950326476905,
+          "nodes_touched": 17552,
+          "values": [
+            -0.05554995372502503,
+            0.05554995372502503
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.0003875525120820844,
+          "iteration": 500,
+          "nash_conv": 0.0007751050241641688,
+          "nodes_touched": 43952,
+          "values": [
+            -0.055556806625736206,
+            0.055556806625736206
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.00014650022815460018,
+          "iteration": 1000,
+          "nash_conv": 0.00029300045630920035,
+          "nodes_touched": 87952,
+          "values": [
+            -0.0555555960823319,
+            0.0555555960823319
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.00009194135320976515,
+          "iteration": 2000,
+          "nash_conv": 0.0001838827064195303,
+          "nodes_touched": 175952,
+          "values": [
+            -0.05555557700325029,
+            0.05555557700325029
+          ]
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "exploitability": 0.00004464183774278985,
+          "iteration": 5000,
+          "nash_conv": 0.0000892836754855797,
+          "nodes_touched": 439952,
+          "values": [
+            -0.055555570801444756,
+            0.055555570801444756
+          ]
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "exploitability": 0.000023872325356125157,
+          "iteration": 10000,
+          "nash_conv": 0.000047744650712250314,
+          "nodes_touched": 879952,
+          "values": [
+            -0.055555559817760704,
+            0.055555559817760704
+          ]
+        }
+      ],
+      "game": "kuhn-2p",
+      "infosets": 12,
+      "method": "DCFR",
+      "nodes": 55,
+      "players": 2,
+      "solver_bytes": 1152,
+      "tree_bytes": 3188
+    },
+    {
+      "abstract_infosets": 12,
+      "curve": [
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.45833333333333326,
+          "iteration": 1,
+          "nash_conv": 0.9166666666666665,
+          "nodes_touched": 80,
+          "values": [
+            0.12499999999999997,
+            -0.12499999999999997
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.2583333333333333,
+          "iteration": 2,
+          "nash_conv": 0.5166666666666666,
+          "nodes_touched": 170,
+          "values": [
+            -0.17500000000000004,
+            0.17500000000000004
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.06645421007541594,
+          "iteration": 5,
+          "nash_conv": 0.13290842015083187,
+          "nodes_touched": 446,
+          "values": [
+            -0.08100138704807425,
+            0.08100138704807425
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.020206572052790236,
+          "iteration": 10,
+          "nash_conv": 0.04041314410558047,
+          "nodes_touched": 904,
+          "values": [
+            -0.06373754876806643,
+            0.06373754876806643
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.00263959106719297,
+          "iteration": 20,
+          "nash_conv": 0.00527918213438594,
+          "nodes_touched": 1784,
+          "values": [
+            -0.056604427641546204,
+            0.056604427641546204
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.00018309173657257705,
+          "iteration": 50,
+          "nash_conv": 0.0003661834731451541,
+          "nodes_touched": 4424,
+          "values": [
+            -0.05562604694299503,
+            0.05562604694299503
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.000023229553989756457,
+          "iteration": 100,
+          "nash_conv": 0.000046459107979512915,
+          "nodes_touched": 8824,
+          "values": [
+            -0.05556450167997709,
+            0.05556450167997709
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 2.925417647903217e-6,
+          "iteration": 200,
+          "nash_conv": 5.850835295806434e-6,
+          "nodes_touched": 17624,
+          "values": [
+            -0.05555668223815132,
+            0.05555668223815132
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 1.8806868805343324e-7,
+          "iteration": 500,
+          "nash_conv": 3.761373761068665e-7,
+          "nodes_touched": 44024,
+          "values": [
+            -0.05555562798795184,
+            0.05555562798795184
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 2.3543831301209295e-8,
+          "iteration": 1000,
+          "nash_conv": 4.708766260241859e-8,
+          "nodes_touched": 88024,
+          "values": [
+            -0.05555556462318273,
+            0.05555556462318273
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 2.9451855398932025e-9,
+          "iteration": 2000,
+          "nash_conv": 5.890371079786405e-9,
+          "nodes_touched": 176024,
+          "values": [
+            -0.05555555668985878,
+            0.05555555668985878
+          ]
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "exploitability": 1.8857668204752542e-10,
+          "iteration": 5000,
+          "nash_conv": 3.7715336409505085e-10,
+          "nodes_touched": 440024,
+          "values": [
+            -0.05555555562818358,
+            0.05555555562818358
+          ]
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "exploitability": 2.3575669194642046e-11,
+          "iteration": 10000,
+          "nash_conv": 4.715133838928409e-11,
+          "nodes_touched": 880024,
+          "values": [
+            -0.05555555556463539,
+            0.05555555556463539
+          ]
+        }
+      ],
+      "game": "kuhn-2p",
+      "infosets": 12,
+      "method": "PCFR+",
+      "nodes": 55,
+      "players": 2,
+      "solver_bytes": 1152,
+      "tree_bytes": 3188
+    },
+    {
+      "abstract_infosets": 12,
+      "curve": [
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.45833333333333326,
+          "iteration": 1,
+          "nash_conv": 0.9166666666666665,
+          "nodes_touched": 12,
+          "values": [
+            0.12499999999999997,
+            -0.12499999999999997
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.49999999999999994,
+          "iteration": 2,
+          "nash_conv": 0.9999999999999999,
+          "nodes_touched": 25,
+          "values": [
+            0.2499999999999999,
+            -0.2499999999999999
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.45833333333333326,
+          "iteration": 5,
+          "nash_conv": 0.9166666666666665,
+          "nodes_touched": 63,
+          "values": [
+            0.12239583333333331,
+            -0.12239583333333331
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.3600063131313131,
+          "iteration": 10,
+          "nash_conv": 0.7200126262626262,
+          "nodes_touched": 121,
+          "values": [
+            -0.004955808080808062,
+            0.004955808080808062
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.30076464899667193,
+          "iteration": 20,
+          "nash_conv": 0.6015292979933439,
+          "nodes_touched": 248,
+          "values": [
+            -0.1937287324704981,
+            0.1937287324704981
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.14930175215530392,
+          "iteration": 50,
+          "nash_conv": 0.29860350431060784,
+          "nodes_touched": 627,
+          "values": [
+            -0.06842696311815524,
+            0.06842696311815524
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.08614412031494233,
+          "iteration": 100,
+          "nash_conv": 0.17228824062988465,
+          "nodes_touched": 1263,
+          "values": [
+            -0.06899304719009886,
+            0.06899304719009886
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.038660965836635586,
+          "iteration": 200,
+          "nash_conv": 0.07732193167327117,
+          "nodes_touched": 2550,
+          "values": [
+            -0.05337506710882272,
+            0.05337506710882272
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.012520748626945202,
+          "iteration": 500,
+          "nash_conv": 0.025041497253890405,
+          "nodes_touched": 6364,
+          "values": [
+            -0.05820455381591047,
+            0.05820455381591047
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.03176825119317929,
+          "iteration": 1000,
+          "nash_conv": 0.06353650238635858,
+          "nodes_touched": 12850,
+          "values": [
+            -0.0491284803431119,
+            0.0491284803431119
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.01343816168928079,
+          "iteration": 2000,
+          "nash_conv": 0.02687632337856158,
+          "nodes_touched": 25518,
+          "values": [
+            -0.05570253103121646,
+            0.05570253103121646
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.015332019464324886,
+          "iteration": 5000,
+          "nash_conv": 0.030664038928649773,
+          "nodes_touched": 63176,
+          "values": [
+            -0.056699638244423624,
+            0.056699638244423624
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.005686594928801872,
+          "iteration": 10000,
+          "nash_conv": 0.011373189857603744,
+          "nodes_touched": 126314,
+          "values": [
+            -0.055649376853420314,
+            0.055649376853420314
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.005482204404226976,
+          "iteration": 20000,
+          "nash_conv": 0.010964408808453951,
+          "nodes_touched": 252592,
+          "values": [
+            -0.055603299957065824,
+            0.055603299957065824
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.0035172587161208108,
+          "iteration": 50000,
+          "nash_conv": 0.0070345174322416215,
+          "nodes_touched": 628676,
+          "values": [
+            -0.055623567123372734,
+            0.055623567123372734
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.0015059863377662464,
+          "iteration": 100000,
+          "nash_conv": 0.0030119726755324927,
+          "nodes_touched": 1254700,
+          "values": [
+            -0.05555508627527822,
+            0.05555508627527822
+          ]
+        }
+      ],
+      "game": "kuhn-2p",
+      "infosets": 12,
+      "method": "ES-MCCFR",
+      "nodes": 55,
+      "players": 2,
+      "solver_bytes": 384,
+      "tree_bytes": 3188
+    },
+    {
+      "abstract_infosets": 12,
+      "curve": [
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.45833333333333326,
+          "iteration": 1,
+          "nash_conv": 0.9166666666666665,
+          "nodes_touched": 8,
+          "values": [
+            0.12499999999999997,
+            -0.12499999999999997
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.41666666666666663,
+          "iteration": 2,
+          "nash_conv": 0.8333333333333333,
+          "nodes_touched": 16,
+          "values": [
+            0.18749999999999994,
+            -0.18749999999999994
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.5104166666666666,
+          "iteration": 5,
+          "nash_conv": 1.0208333333333333,
+          "nodes_touched": 43,
+          "values": [
+            0.010416666666666631,
+            -0.010416666666666631
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.45431746587490185,
+          "iteration": 10,
+          "nash_conv": 0.9086349317498037,
+          "nodes_touched": 88,
+          "values": [
+            0.07012179987756906,
+            -0.07012179987756906
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.28094537279285187,
+          "iteration": 20,
+          "nash_conv": 0.5618907455857037,
+          "nodes_touched": 170,
+          "values": [
+            0.04398710653424118,
+            -0.04398710653424118
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.2547185726216289,
+          "iteration": 50,
+          "nash_conv": 0.5094371452432578,
+          "nodes_touched": 424,
+          "values": [
+            0.02393551122038537,
+            -0.02393551122038537
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.23645171184775754,
+          "iteration": 100,
+          "nash_conv": 0.4729034236955151,
+          "nodes_touched": 858,
+          "values": [
+            0.048796435012698106,
+            -0.048796435012698106
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.1794328411466679,
+          "iteration": 200,
+          "nash_conv": 0.3588656822933358,
+          "nodes_touched": 1709,
+          "values": [
+            -0.08588438193900501,
+            0.08588438193900501
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.13826353403831607,
+          "iteration": 500,
+          "nash_conv": 0.27652706807663213,
+          "nodes_touched": 4267,
+          "values": [
+            -0.10084405243407114,
+            0.10084405243407114
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.06553863983528459,
+          "iteration": 1000,
+          "nash_conv": 0.13107727967056917,
+          "nodes_touched": 8651,
+          "values": [
+            -0.06619844431996409,
+            0.06619844431996409
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.0595993980965996,
+          "iteration": 2000,
+          "nash_conv": 0.1191987961931992,
+          "nodes_touched": 17244,
+          "values": [
+            -0.07542799216634914,
+            0.07542799216634914
+          ]
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "exploitability": 0.029924537971713586,
+          "iteration": 5000,
+          "nash_conv": 0.05984907594342717,
+          "nodes_touched": 43034,
+          "values": [
+            -0.06266962272560428,
+            0.06266962272560428
+          ]
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "exploitability": 0.011501584922646704,
+          "iteration": 10000,
+          "nash_conv": 0.02300316984529341,
+          "nodes_touched": 86236,
+          "values": [
+            -0.05807870026305204,
+            0.05807870026305204
+          ]
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "exploitability": 0.02087270210719129,
+          "iteration": 20000,
+          "nash_conv": 0.04174540421438258,
+          "nodes_touched": 173193,
+          "values": [
+            -0.05408314389151479,
+            0.05408314389151479
+          ]
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "exploitability": 0.013207764266500222,
+          "iteration": 50000,
+          "nash_conv": 0.026415528533000443,
+          "nodes_touched": 430280,
+          "values": [
+            -0.054837988190336626,
+            0.054837988190336626
+          ]
+        },
+        {
+          "cpu_seconds": 0.03125,
+          "exploitability": 0.010770021718057798,
+          "iteration": 100000,
+          "nash_conv": 0.021540043436115597,
+          "nodes_touched": 858540,
+          "values": [
+            -0.05602195074875768,
+            0.05602195074875768
+          ]
+        }
+      ],
+      "game": "kuhn-2p",
+      "infosets": 12,
+      "method": "OS-MCCFR(eps=0.6)",
+      "nodes": 55,
+      "players": 2,
+      "solver_bytes": 384,
+      "tree_bytes": 3188
+    },
+    {
+      "abstract_infosets": 288,
+      "curve": [
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 2.373611111111111,
+          "iteration": 1,
+          "nash_conv": 4.747222222222222,
+          "nodes_touched": 11572,
+          "values": [
+            -0.0781249999999996,
+            0.0781249999999996
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 2.0613194444444445,
+          "iteration": 2,
+          "nash_conv": 4.122638888888889,
+          "nodes_touched": 20762,
+          "values": [
+            0.08082862646854917,
+            -0.08082862646854917
+          ]
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "exploitability": 1.4713245596865683,
+          "iteration": 5,
+          "nash_conv": 2.9426491193731366,
+          "nodes_touched": 40462,
+          "values": [
+            -0.18843265934548803,
+            0.18843265934548803
+          ]
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "exploitability": 0.8885789831687692,
+          "iteration": 10,
+          "nash_conv": 1.7771579663375383,
+          "nodes_touched": 82768,
+          "values": [
+            -0.4448309409352173,
+            0.4448309409352173
+          ]
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "exploitability": 0.45314565341607516,
+          "iteration": 20,
+          "nash_conv": 0.9062913068321503,
+          "nodes_touched": 165560,
+          "values": [
+            -0.3241266276198853,
+            0.3241266276198853
+          ]
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "exploitability": 0.18908346595495562,
+          "iteration": 50,
+          "nash_conv": 0.37816693190991124,
+          "nodes_touched": 416276,
+          "values": [
+            -0.16110649651750397,
+            0.16110649651750397
+          ]
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "exploitability": 0.095716353004599,
+          "iteration": 100,
+          "nash_conv": 0.191432706009198,
+          "nodes_touched": 832736,
+          "values": [
+            -0.11397530306764421,
+            0.11397530306764421
+          ]
+        },
+        {
+          "cpu_seconds": 0.03125,
+          "exploitability": 0.05383832390274265,
+          "iteration": 200,
+          "nash_conv": 0.1076766478054853,
+          "nodes_touched": 1657150,
+          "values": [
+            -0.09609356047347162,
+            0.09609356047347162
+          ]
+        },
+        {
+          "cpu_seconds": 0.0625,
+          "exploitability": 0.021507209000055483,
+          "iteration": 500,
+          "nash_conv": 0.043014418000110966,
+          "nodes_touched": 4143116,
+          "values": [
+            -0.08909049385964529,
+            0.08909049385964529
+          ]
+        },
+        {
+          "cpu_seconds": 0.109375,
+          "exploitability": 0.011817424101402726,
+          "iteration": 1000,
+          "nash_conv": 0.023634848202805453,
+          "nodes_touched": 8350370,
+          "values": [
+            -0.08722359138695081,
+            0.08722359138695081
+          ]
+        },
+        {
+          "cpu_seconds": 0.203125,
+          "exploitability": 0.0070819011250849995,
+          "iteration": 2000,
+          "nash_conv": 0.014163802250169999,
+          "nodes_touched": 17078880,
+          "values": [
+            -0.08643133488980616,
+            0.08643133488980616
+          ]
+        },
+        {
+          "cpu_seconds": 0.53125,
+          "exploitability": 0.0035865068067770928,
+          "iteration": 5000,
+          "nash_conv": 0.0071730136135541855,
+          "nodes_touched": 44460430,
+          "values": [
+            -0.08596773859843782,
+            0.08596773859843782
+          ]
+        }
+      ],
+      "game": "leduc-2p",
+      "infosets": 288,
+      "method": "CFR",
+      "nodes": 9457,
+      "players": 2,
+      "solver_bytes": 32256,
+      "tree_bytes": 352628
+    },
+    {
+      "abstract_infosets": 288,
+      "curve": [
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 2.373611111111111,
+          "iteration": 1,
+          "nash_conv": 4.747222222222222,
+          "nodes_touched": 11572,
+          "values": [
+            -0.0781249999999996,
+            0.0781249999999996
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 2.0579166666666664,
+          "iteration": 2,
+          "nash_conv": 4.115833333333333,
+          "nodes_touched": 20858,
+          "values": [
+            -0.19206436906499308,
+            0.19206436906499308
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 1.3712323704279952,
+          "iteration": 5,
+          "nash_conv": 2.7424647408559903,
+          "nodes_touched": 48858,
+          "values": [
+            -0.526013238675489,
+            0.526013238675489
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.6104389015904065,
+          "iteration": 10,
+          "nash_conv": 1.220877803180813,
+          "nodes_touched": 108842,
+          "values": [
+            -0.35527380509979395,
+            0.35527380509979395
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.17365537344197074,
+          "iteration": 20,
+          "nash_conv": 0.3473107468839415,
+          "nodes_touched": 224764,
+          "values": [
+            -0.13423913847884894,
+            0.13423913847884894
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.034121456494549396,
+          "iteration": 50,
+          "nash_conv": 0.06824291298909879,
+          "nodes_touched": 578528,
+          "values": [
+            -0.08623878844551515,
+            0.08623878844551515
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.013415994974731414,
+          "iteration": 100,
+          "nash_conv": 0.02683198994946283,
+          "nodes_touched": 1187736,
+          "values": [
+            -0.0846327989044613,
+            0.0846327989044613
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.004996536461709319,
+          "iteration": 200,
+          "nash_conv": 0.009993072923418639,
+          "nodes_touched": 2428928,
+          "values": [
+            -0.08536123911824325,
+            0.08536123911824325
+          ]
+        },
+        {
+          "cpu_seconds": 0.046875,
+          "exploitability": 0.0009037001304343373,
+          "iteration": 500,
+          "nash_conv": 0.0018074002608686746,
+          "nodes_touched": 6160176,
+          "values": [
+            -0.08556015254392237,
+            0.08556015254392237
+          ]
+        },
+        {
+          "cpu_seconds": 0.125,
+          "exploitability": 0.00024503417168718344,
+          "iteration": 1000,
+          "nash_conv": 0.0004900683433743669,
+          "nodes_touched": 12422912,
+          "values": [
+            -0.08559347595521738,
+            0.08559347595521738
+          ]
+        },
+        {
+          "cpu_seconds": 0.25,
+          "exploitability": 0.00007938002054667936,
+          "iteration": 2000,
+          "nash_conv": 0.00015876004109335873,
+          "nodes_touched": 25006384,
+          "values": [
+            -0.08560270152099908,
+            0.08560270152099908
+          ]
+        },
+        {
+          "cpu_seconds": 0.6875,
+          "exploitability": 0.000014798820993047745,
+          "iteration": 5000,
+          "nash_conv": 0.00002959764198609549,
+          "nodes_touched": 62815296,
+          "values": [
+            -0.08560602119760316,
+            0.08560602119760316
+          ]
+        }
+      ],
+      "game": "leduc-2p",
+      "infosets": 288,
+      "method": "CFR+",
+      "nodes": 9457,
+      "players": 2,
+      "solver_bytes": 32256,
+      "tree_bytes": 352628
+    },
+    {
+      "abstract_infosets": 288,
+      "curve": [
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 2.373611111111111,
+          "iteration": 1,
+          "nash_conv": 4.747222222222222,
+          "nodes_touched": 11572,
+          "values": [
+            -0.0781249999999996,
+            0.0781249999999996
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 2.0579166666666664,
+          "iteration": 2,
+          "nash_conv": 4.115833333333333,
+          "nodes_touched": 20810,
+          "values": [
+            -0.19206436906499308,
+            0.19206436906499308
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 1.4359284895761877,
+          "iteration": 5,
+          "nash_conv": 2.8718569791523754,
+          "nodes_touched": 40390,
+          "values": [
+            -0.5792743066382817,
+            0.5792743066382817
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.7210651557072462,
+          "iteration": 10,
+          "nash_conv": 1.4421303114144923,
+          "nodes_touched": 85992,
+          "values": [
+            -0.40823094842596713,
+            0.40823094842596713
+          ]
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "exploitability": 0.2559778068055174,
+          "iteration": 20,
+          "nash_conv": 0.5119556136110348,
+          "nodes_touched": 170326,
+          "values": [
+            -0.13574889797473932,
+            0.13574889797473932
+          ]
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "exploitability": 0.06899518451990921,
+          "iteration": 50,
+          "nash_conv": 0.13799036903981843,
+          "nodes_touched": 418874,
+          "values": [
+            -0.09082919955154536,
+            0.09082919955154536
+          ]
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "exploitability": 0.03448980725695949,
+          "iteration": 100,
+          "nash_conv": 0.06897961451391899,
+          "nodes_touched": 835490,
+          "values": [
+            -0.09065446865314342,
+            0.09065446865314342
+          ]
+        },
+        {
+          "cpu_seconds": 0.03125,
+          "exploitability": 0.0235131723914076,
+          "iteration": 200,
+          "nash_conv": 0.0470263447828152,
+          "nodes_touched": 1727622,
+          "values": [
+            -0.08776605242982884,
+            0.08776605242982884
+          ]
+        },
+        {
+          "cpu_seconds": 0.078125,
+          "exploitability": 0.010412264298776758,
+          "iteration": 500,
+          "nash_conv": 0.020824528597553515,
+          "nodes_touched": 4475878,
+          "values": [
+            -0.08622975623118015,
+            0.08622975623118015
+          ]
+        },
+        {
+          "cpu_seconds": 0.140625,
+          "exploitability": 0.005143295823384075,
+          "iteration": 1000,
+          "nash_conv": 0.01028659164676815,
+          "nodes_touched": 9219844,
+          "values": [
+            -0.08595148239068119,
+            0.08595148239068119
+          ]
+        },
+        {
+          "cpu_seconds": 0.25,
+          "exploitability": 0.003304378299900157,
+          "iteration": 2000,
+          "nash_conv": 0.006608756599800314,
+          "nodes_touched": 19131632,
+          "values": [
+            -0.0857250631145526,
+            0.0857250631145526
+          ]
+        },
+        {
+          "cpu_seconds": 0.625,
+          "exploitability": 0.0017458920812816053,
+          "iteration": 5000,
+          "nash_conv": 0.0034917841625632107,
+          "nodes_touched": 49860220,
+          "values": [
+            -0.08563277588019476,
+            0.08563277588019476
+          ]
+        }
+      ],
+      "game": "leduc-2p",
+      "infosets": 288,
+      "method": "LCFR",
+      "nodes": 9457,
+      "players": 2,
+      "solver_bytes": 32256,
+      "tree_bytes": 352628
+    },
+    {
+      "abstract_infosets": 288,
+      "curve": [
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 2.373611111111111,
+          "iteration": 1,
+          "nash_conv": 4.747222222222222,
+          "nodes_touched": 11572,
+          "values": [
+            -0.0781249999999996,
+            0.0781249999999996
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 2.055194444444444,
+          "iteration": 2,
+          "nash_conv": 4.110388888888888,
+          "nodes_touched": 20810,
+          "values": [
+            -0.5276946790601492,
+            0.5276946790601492
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 1.4505468837909525,
+          "iteration": 5,
+          "nash_conv": 2.901093767581905,
+          "nodes_touched": 42894,
+          "values": [
+            -0.7961193277591161,
+            0.7961193277591161
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.7788020469962021,
+          "iteration": 10,
+          "nash_conv": 1.5576040939924043,
+          "nodes_touched": 97030,
+          "values": [
+            -0.34911971276511194,
+            0.34911971276511194
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.16679681798944296,
+          "iteration": 20,
+          "nash_conv": 0.3335936359788859,
+          "nodes_touched": 203890,
+          "values": [
+            -0.09533346609491765,
+            0.09533346609491765
+          ]
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "exploitability": 0.022921832286413535,
+          "iteration": 50,
+          "nash_conv": 0.04584366457282707,
+          "nodes_touched": 549120,
+          "values": [
+            -0.08533843097737899,
+            0.08533843097737899
+          ]
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "exploitability": 0.0077536620742233026,
+          "iteration": 100,
+          "nash_conv": 0.015507324148446605,
+          "nodes_touched": 1141370,
+          "values": [
+            -0.08583047917987283,
+            0.08583047917987283
+          ]
+        },
+        {
+          "cpu_seconds": 0.03125,
+          "exploitability": 0.0017881059952290085,
+          "iteration": 200,
+          "nash_conv": 0.003576211990458017,
+          "nodes_touched": 2351386,
+          "values": [
+            -0.08563657281891116,
+            0.08563657281891116
+          ]
+        },
+        {
+          "cpu_seconds": 0.078125,
+          "exploitability": 0.00041761408174745274,
+          "iteration": 500,
+          "nash_conv": 0.0008352281634949055,
+          "nodes_touched": 6018856,
+          "values": [
+            -0.08561025642824792,
+            0.08561025642824792
+          ]
+        },
+        {
+          "cpu_seconds": 0.140625,
+          "exploitability": 0.0001948558930865707,
+          "iteration": 1000,
+          "nash_conv": 0.0003897117861731414,
+          "nodes_touched": 12192196,
+          "values": [
+            -0.08560717983433255,
+            0.08560717983433255
+          ]
+        },
+        {
+          "cpu_seconds": 0.34375,
+          "exploitability": 0.00004178717023052558,
+          "iteration": 2000,
+          "nash_conv": 0.00008357434046105117,
+          "nodes_touched": 24726708,
+          "values": [
+            -0.08560668608224098,
+            0.08560668608224098
+          ]
+        },
+        {
+          "cpu_seconds": 1.03125,
+          "exploitability": 9.559867836239633e-6,
+          "iteration": 5000,
+          "nash_conv": 0.000019119735672479266,
+          "nodes_touched": 62436692,
+          "values": [
+            -0.08560644260956647,
+            0.08560644260956647
+          ]
+        }
+      ],
+      "game": "leduc-2p",
+      "infosets": 288,
+      "method": "DCFR",
+      "nodes": 9457,
+      "players": 2,
+      "solver_bytes": 32256,
+      "tree_bytes": 352628
+    },
+    {
+      "abstract_infosets": 288,
+      "curve": [
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 2.373611111111111,
+          "iteration": 1,
+          "nash_conv": 4.747222222222222,
+          "nodes_touched": 11572,
+          "values": [
+            -0.0781249999999996,
+            0.0781249999999996
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 2.055194444444444,
+          "iteration": 2,
+          "nash_conv": 4.110388888888888,
+          "nodes_touched": 20858,
+          "values": [
+            -0.5276946790601492,
+            0.5276946790601492
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 1.4265858519334231,
+          "iteration": 5,
+          "nash_conv": 2.8531717038668463,
+          "nodes_touched": 45868,
+          "values": [
+            -0.7112140944647926,
+            0.7112140944647926
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.5368473488520311,
+          "iteration": 10,
+          "nash_conv": 1.0736946977040622,
+          "nodes_touched": 101704,
+          "values": [
+            -0.2582686389730041,
+            0.2582686389730041
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.1465023872717256,
+          "iteration": 20,
+          "nash_conv": 0.2930047745434512,
+          "nodes_touched": 215462,
+          "values": [
+            -0.08598458924564818,
+            0.08598458924564818
+          ]
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "exploitability": 0.04231578222316529,
+          "iteration": 50,
+          "nash_conv": 0.08463156444633058,
+          "nodes_touched": 568164,
+          "values": [
+            -0.08271989127078459,
+            0.08271989127078459
+          ]
+        },
+        {
+          "cpu_seconds": 0.03125,
+          "exploitability": 0.01980125756847506,
+          "iteration": 100,
+          "nash_conv": 0.03960251513695012,
+          "nodes_touched": 1166434,
+          "values": [
+            -0.0838344374617876,
+            0.0838344374617876
+          ]
+        },
+        {
+          "cpu_seconds": 0.0625,
+          "exploitability": 0.0067322851699339464,
+          "iteration": 200,
+          "nash_conv": 0.013464570339867893,
+          "nodes_touched": 2381222,
+          "values": [
+            -0.08517644091472666,
+            0.08517644091472666
+          ]
+        },
+        {
+          "cpu_seconds": 0.140625,
+          "exploitability": 0.0013707562506176801,
+          "iteration": 500,
+          "nash_conv": 0.0027415125012353603,
+          "nodes_touched": 6013922,
+          "values": [
+            -0.08557756402943711,
+            0.08557756402943711
+          ]
+        },
+        {
+          "cpu_seconds": 0.234375,
+          "exploitability": 0.0007130071771688368,
+          "iteration": 1000,
+          "nash_conv": 0.0014260143543376735,
+          "nodes_touched": 12165836,
+          "values": [
+            -0.08559475980849514,
+            0.08559475980849514
+          ]
+        },
+        {
+          "cpu_seconds": 0.4375,
+          "exploitability": 0.0002762204281986924,
+          "iteration": 2000,
+          "nash_conv": 0.0005524408563973848,
+          "nodes_touched": 24544092,
+          "values": [
+            -0.08560095845471737,
+            0.08560095845471737
+          ]
+        },
+        {
+          "cpu_seconds": 1.0,
+          "exploitability": 0.00007416392306693054,
+          "iteration": 5000,
+          "nash_conv": 0.00014832784613386107,
+          "nodes_touched": 61958468,
+          "values": [
+            -0.08560597692134386,
+            0.08560597692134386
+          ]
+        }
+      ],
+      "game": "leduc-2p",
+      "infosets": 288,
+      "method": "PCFR+",
+      "nodes": 9457,
+      "players": 2,
+      "solver_bytes": 32256,
+      "tree_bytes": 352628
+    },
+    {
+      "abstract_infosets": 288,
+      "curve": [
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 2.373611111111111,
+          "iteration": 1,
+          "nash_conv": 4.747222222222222,
+          "nodes_touched": 34,
+          "values": [
+            -0.0781249999999996,
+            0.0781249999999996
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 2.301736111111111,
+          "iteration": 2,
+          "nash_conv": 4.603472222222222,
+          "nodes_touched": 69,
+          "values": [
+            -0.11782407407407497,
+            0.11782407407407497
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 2.462291666666667,
+          "iteration": 5,
+          "nash_conv": 4.924583333333334,
+          "nodes_touched": 216,
+          "values": [
+            -0.3467592592592633,
+            0.3467592592592633
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 2.4413387345679007,
+          "iteration": 10,
+          "nash_conv": 4.8826774691358015,
+          "nodes_touched": 414,
+          "values": [
+            -0.28245805433503623,
+            0.28245805433503623
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 2.556833751739071,
+          "iteration": 20,
+          "nash_conv": 5.113667503478142,
+          "nodes_touched": 845,
+          "values": [
+            -0.4786578139840552,
+            0.4786578139840552
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 2.429177669629999,
+          "iteration": 50,
+          "nash_conv": 4.858355339259998,
+          "nodes_touched": 2322,
+          "values": [
+            -0.2459546190138576,
+            0.2459546190138576
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 2.1186921793738027,
+          "iteration": 100,
+          "nash_conv": 4.237384358747605,
+          "nodes_touched": 4548,
+          "values": [
+            -0.052762938271717366,
+            0.052762938271717366
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 1.7035558274953546,
+          "iteration": 200,
+          "nash_conv": 3.4071116549907092,
+          "nodes_touched": 9024,
+          "values": [
+            -0.14167321111643352,
+            0.14167321111643352
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 1.0328177271305983,
+          "iteration": 500,
+          "nash_conv": 2.0656354542611965,
+          "nodes_touched": 22286,
+          "values": [
+            -0.14796133134945072,
+            0.14796133134945072
+          ]
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "exploitability": 0.6951086954965449,
+          "iteration": 1000,
+          "nash_conv": 1.3902173909930897,
+          "nodes_touched": 44588,
+          "values": [
+            -0.21834466676458034,
+            0.21834466676458034
+          ]
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "exploitability": 0.3816094756332218,
+          "iteration": 2000,
+          "nash_conv": 0.7632189512664436,
+          "nodes_touched": 87707,
+          "values": [
+            -0.16704234411859367,
+            0.16704234411859367
+          ]
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "exploitability": 0.24535857102197453,
+          "iteration": 5000,
+          "nash_conv": 0.49071714204394906,
+          "nodes_touched": 221991,
+          "values": [
+            -0.10801872434732436,
+            0.10801872434732436
+          ]
+        },
+        {
+          "cpu_seconds": 0.03125,
+          "exploitability": 0.1675136271502643,
+          "iteration": 10000,
+          "nash_conv": 0.3350272543005286,
+          "nodes_touched": 447505,
+          "values": [
+            -0.09492717803899466,
+            0.09492717803899466
+          ]
+        },
+        {
+          "cpu_seconds": 0.046875,
+          "exploitability": 0.09492528027931818,
+          "iteration": 20000,
+          "nash_conv": 0.18985056055863636,
+          "nodes_touched": 889425,
+          "values": [
+            -0.08703134443960497,
+            0.08703134443960497
+          ]
+        },
+        {
+          "cpu_seconds": 0.09375,
+          "exploitability": 0.07078850880010674,
+          "iteration": 50000,
+          "nash_conv": 0.1415770176002135,
+          "nodes_touched": 2209198,
+          "values": [
+            -0.08968903764410519,
+            0.08968903764410519
+          ]
+        },
+        {
+          "cpu_seconds": 0.140625,
+          "exploitability": 0.045170502757473835,
+          "iteration": 100000,
+          "nash_conv": 0.09034100551494767,
+          "nodes_touched": 4472516,
+          "values": [
+            -0.0898690200140946,
+            0.0898690200140946
+          ]
+        },
+        {
+          "cpu_seconds": 0.25,
+          "exploitability": 0.02721655492673622,
+          "iteration": 200000,
+          "nash_conv": 0.05443310985347244,
+          "nodes_touched": 8898992,
+          "values": [
+            -0.08906785118532266,
+            0.08906785118532266
+          ]
+        },
+        {
+          "cpu_seconds": 0.5625,
+          "exploitability": 0.015896665111871905,
+          "iteration": 500000,
+          "nash_conv": 0.03179333022374381,
+          "nodes_touched": 22228899,
+          "values": [
+            -0.08793785276465266,
+            0.08793785276465266
+          ]
+        },
+        {
+          "cpu_seconds": 0.984375,
+          "exploitability": 0.012010097369150222,
+          "iteration": 1000000,
+          "nash_conv": 0.024020194738300443,
+          "nodes_touched": 44750453,
+          "values": [
+            -0.08724630335386839,
+            0.08724630335386839
+          ]
+        }
+      ],
+      "game": "leduc-2p",
+      "infosets": 288,
+      "method": "ES-MCCFR",
+      "nodes": 9457,
+      "players": 2,
+      "solver_bytes": 10752,
+      "tree_bytes": 352628
+    },
+    {
+      "abstract_infosets": 288,
+      "curve": [
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 2.3233796296296294,
+          "iteration": 1,
+          "nash_conv": 4.646759259259259,
+          "nodes_touched": 16,
+          "values": [
+            -0.062268518518518695,
+            0.062268518518518695
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 2.3233796296296294,
+          "iteration": 2,
+          "nash_conv": 4.646759259259259,
+          "nodes_touched": 32,
+          "values": [
+            -0.062268518518518695,
+            0.062268518518518695
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 2.3983796296296296,
+          "iteration": 5,
+          "nash_conv": 4.796759259259259,
+          "nodes_touched": 80,
+          "values": [
+            0.14922839506172894,
+            -0.14922839506172894
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 2.384471541394336,
+          "iteration": 10,
+          "nash_conv": 4.768943082788672,
+          "nodes_touched": 163,
+          "values": [
+            0.242533496732026,
+            -0.242533496732026
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 2.62119630698907,
+          "iteration": 20,
+          "nash_conv": 5.24239261397814,
+          "nodes_touched": 316,
+          "values": [
+            0.37163686124567025,
+            -0.37163686124567025
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 2.6949900382566634,
+          "iteration": 50,
+          "nash_conv": 5.389980076513327,
+          "nodes_touched": 793,
+          "values": [
+            0.22615457813469203,
+            -0.22615457813469203
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 2.755057726148259,
+          "iteration": 100,
+          "nash_conv": 5.510115452296518,
+          "nodes_touched": 1629,
+          "values": [
+            0.25061795296270545,
+            -0.25061795296270545
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 2.8140856498933005,
+          "iteration": 200,
+          "nash_conv": 5.628171299786601,
+          "nodes_touched": 3304,
+          "values": [
+            0.3293961077494345,
+            -0.3293961077494345
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 2.181197780365246,
+          "iteration": 500,
+          "nash_conv": 4.362395560730492,
+          "nodes_touched": 8188,
+          "values": [
+            -0.1850831756385192,
+            0.1850831756385192
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 1.8861134602187384,
+          "iteration": 1000,
+          "nash_conv": 3.7722269204374768,
+          "nodes_touched": 16472,
+          "values": [
+            -0.5822934358361018,
+            0.5822934358361018
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 1.450455072006754,
+          "iteration": 2000,
+          "nash_conv": 2.900910144013508,
+          "nodes_touched": 32638,
+          "values": [
+            -0.45012456567645365,
+            0.45012456567645365
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.9452578055781911,
+          "iteration": 5000,
+          "nash_conv": 1.8905156111563821,
+          "nodes_touched": 81173,
+          "values": [
+            -0.36982035698923754,
+            0.36982035698923754
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.6587875162956441,
+          "iteration": 10000,
+          "nash_conv": 1.3175750325912883,
+          "nodes_touched": 159883,
+          "values": [
+            -0.2674438153623241,
+            0.2674438153623241
+          ]
+        },
+        {
+          "cpu_seconds": 0.0,
+          "exploitability": 0.53868628203829,
+          "iteration": 20000,
+          "nash_conv": 1.07737256407658,
+          "nodes_touched": 318045,
+          "values": [
+            -0.17881790966535555,
+            0.17881790966535555
+          ]
+        },
+        {
+          "cpu_seconds": 0.015625,
+          "exploitability": 0.3500333570979089,
+          "iteration": 50000,
+          "nash_conv": 0.7000667141958178,
+          "nodes_touched": 791791,
+          "values": [
+            -0.10632395181717329,
+            0.10632395181717329
+          ]
+        },
+        {
+          "cpu_seconds": 0.0625,
+          "exploitability": 0.2515070405031108,
+          "iteration": 100000,
+          "nash_conv": 0.5030140810062216,
+          "nodes_touched": 1588267,
+          "values": [
+            -0.10332632446889904,
+            0.10332632446889904
+          ]
+        },
+        {
+          "cpu_seconds": 0.109375,
+          "exploitability": 0.15551872257670257,
+          "iteration": 200000,
+          "nash_conv": 0.31103744515340515,
+          "nodes_touched": 3122188,
+          "values": [
+            -0.09954615933478461,
+            0.09954615933478461
+          ]
+        },
+        {
+          "cpu_seconds": 0.328125,
+          "exploitability": 0.09490806157926943,
+          "iteration": 500000,
+          "nash_conv": 0.18981612315853885,
+          "nodes_touched": 7812819,
+          "values": [
+            -0.0898703625200002,
+            0.0898703625200002
+          ]
+        },
+        {
+          "cpu_seconds": 0.71875,
+          "exploitability": 0.05761847180783508,
+          "iteration": 1000000,
+          "nash_conv": 0.11523694361567016,
+          "nodes_touched": 15655681,
+          "values": [
+            -0.08839487565305995,
+            0.08839487565305995
+          ]
+        }
+      ],
+      "game": "leduc-2p",
+      "infosets": 288,
+      "method": "OS-MCCFR(eps=0.6)",
+      "nodes": 9457,
+      "players": 2,
+      "solver_bytes": 10752,
+      "tree_bytes": 352628
+    }
+  ]
+}

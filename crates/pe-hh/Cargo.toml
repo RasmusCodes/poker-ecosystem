@@ -1,0 +1,16 @@
+[package]
+name = "pe-hh"
+description = "Hand-history parsing, reconstruction, simulation and statistics."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+pe-cards.workspace = true
+pe-eval.workspace = true
+pe-equity.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+rayon.workspace = true

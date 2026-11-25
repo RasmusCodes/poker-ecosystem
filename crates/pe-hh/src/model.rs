@@ -487,3 +487,65 @@ pub fn assign_positions(hand: &mut Hand) {
         p.position = if p.sitting_out { None } else { pos.get(&p.seat).map(|s| s.to_string()) };
     }
 }
+
+/// Tells ordinary straddles from Mississippi straddles. Hand-history text writes
+/// both as `posts straddle`; the seat decides. A straddle posted by the seat after
+/// the previous live blind (big blind → under the gun → the next seat for a
+/// re-straddle) is ordinary; one from any other seat, usually the button, is a
+/// Mississippi straddle, whose poster acts last before the flop.
+pub fn classify_straddles(hand: &mut Hand) {
+    let order = clockwise_from_button(&hand.dealt_seats(), hand.button);
+    let n = order.len();
+    let Some(bb) = hand.posts.iter().find(|p| p.kind == PostKind::Bb).map(|p| p.seat) else { return };
+    let Some(mut prev) = order.iter().position(|&s| s == bb) else { return };
+    for p in hand.posts.iter_mut() {
+        if matches!(p.kind, PostKind::Straddle | PostKind::Mississippi) {
+            let next = (prev + 1) % n;
+            if order[next] == p.seat {
+                p.kind = PostKind::Straddle;
+                prev = next;
+            } else {
+                p.kind = PostKind::Mississippi;
+            }
+        }
+    }
+}
+
+/// Seats in preflop acting order for the first round. Normally clockwise from the
+/// seat after the last live blind or straddle; a Mississippi straddler is moved to
+/// act last, after the blinds. Bomb pots have no preflop round (empty).
+pub fn preflop_order(hand: &Hand) -> Vec<u32> {
+    if hand.bomb_pot {
+        return Vec::new();
+    }
+    let order = clockwise_from_button(&hand.dealt_seats(), hand.button);
+    let n = order.len();
+    if n < 2 {
+        return order;
+    }
+    // heads-up the button posts the small blind and acts first
+    let mut last = if n == 2 { 0 } else { 2 % n };
+    if let Some(bb) = hand.posts.iter().find(|p| p.kind == PostKind::Bb) {
+        if let Some(i) = order.iter().position(|&s| s == bb.seat) {
+            last = i;
+        }
+    }
+    for p in &hand.posts {
+        if p.kind == PostKind::Straddle {
+            if let Some(i) = order.iter().position(|&s| s == p.seat) {
+                last = i;
+            }
+        }
+    }
+    let mut out: Vec<u32> = (1..=n).map(|k| order[(last + k) % n]).collect();
+    if n == 2 {
+        out = vec![order[0], order[1]];
+    }
+    if let Some(m) = hand.posts.iter().find(|p| p.kind == PostKind::Mississippi) {
+        if let Some(i) = out.iter().position(|&s| s == m.seat) {
+            let s = out.remove(i);
+            out.push(s);
+        }
+    }
+    out
+}

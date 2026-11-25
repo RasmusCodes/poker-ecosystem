@@ -14,6 +14,11 @@ Tables
   :mod:`poker_ecosystem.stats`): player, statistic, position, success, truth.
   Aggregates are ``GROUP BY`` queries over it. The cache is tagged with
   :data:`STATS_VERSION` and rebuilt from the raw JSON when that changes.
+* ``river_reviews``: one row per reviewed heads-up river decision with known
+  cards, imported from ``pe hh review FILE --out reviews.json``: the action
+  taken, the best action at the equilibrium of the reconstructed river, the
+  cost in big blinds and how often the equilibrium takes the action with that
+  hand. :func:`costliest_decisions` lists the most expensive ones.
 
 Importing is idempotent: a hand whose (site, id) already exists is skipped.
 "all-in" means some action put a player all-in or ``derived.allin`` is set.
@@ -27,6 +32,8 @@ Command line::
         --limit 50 --json]
     python -m poker_ecosystem.hhdb stats DB [--player NAME] [--by-position] [--stat vpip] [--json]
     python -m poker_ecosystem.hhdb players DB [--min-hands 100] [--json]
+    python -m poker_ecosystem.hhdb reviews DB REVIEWS.json
+    python -m poker_ecosystem.hhdb costly DB [--player NAME] [--limit 20] [--json]
 """
 
 from __future__ import annotations
@@ -96,6 +103,16 @@ CREATE TABLE IF NOT EXISTS stats_cache (
     player_pk INTEGER NOT NULL REFERENCES players(player_pk),
     stat TEXT NOT NULL, position TEXT NOT NULL, success INTEGER NOT NULL, truth REAL
 );
+CREATE TABLE IF NOT EXISTS river_reviews (
+    hand_id TEXT NOT NULL, idx INTEGER NOT NULL,
+    hand_pk INTEGER REFERENCES hands(hand_pk) ON DELETE CASCADE,
+    seat INTEGER NOT NULL, player_pk INTEGER REFERENCES players(player_pk),
+    cards TEXT NOT NULL, action TEXT NOT NULL, best TEXT NOT NULL,
+    ev_loss_bb REAL NOT NULL, frequency REAL NOT NULL, size_matched INTEGER NOT NULL,
+    board TEXT NOT NULL, pot_bb REAL NOT NULL, exploitability_pct REAL NOT NULL,
+    PRIMARY KEY (hand_id, idx)
+);
+CREATE INDEX IF NOT EXISTS ix_reviews_loss ON river_reviews(ev_loss_bb);
 CREATE INDEX IF NOT EXISTS ix_hands_game ON hands(game, limit_type);
 CREATE INDEX IF NOT EXISTS ix_hands_pot ON hands(pot_bb);
 CREATE INDEX IF NOT EXISTS ix_hands_flags ON hands(showdown, allin, synthetic);
@@ -510,6 +527,52 @@ def list_players(conn: sqlite3.Connection, *, min_hands: int = 0) -> list[dict[s
 # --------------------------------------------------------------------------- command line
 
 
+# --------------------------------------------------------------------------- river reviews
+
+
+def import_reviews(conn: sqlite3.Connection, reviews: Iterable[dict[str, Any]]) -> int:
+    """Stores the decisions with known cards of ``pe hh review`` results (the
+    ``reviews`` list of its JSON). Hands already in the database are linked by
+    id. Re-importing replaces earlier rows. Returns the number of decisions."""
+    cache: dict[str, int] = {}
+    count = 0
+    for r in reviews:
+        row = conn.execute("SELECT hand_pk FROM hands WHERE hand_id = ? ORDER BY hand_pk LIMIT 1", (str(r["id"]),)).fetchone()
+        hand_pk = row["hand_pk"] if row is not None else None
+        for d in r.get("decisions", []):
+            if d.get("ev_loss_bb") is None or d.get("hand") is None:
+                continue
+            conn.execute(
+                "INSERT OR REPLACE INTO river_reviews VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                (
+                    str(r["id"]), int(d["index"]), hand_pk, int(d["seat"]), _player_pk(conn, cache, d["name"]),
+                    d["hand"], d["actions"][d["taken"]], d["actions"][d["best"]], float(d["ev_loss_bb"]),
+                    float(d["frequency"]), int(bool(d["size_matched"])), r["board"], float(r["pot_bb"]), float(r["exploitability_pct"]),
+                ),
+            )
+            count += 1
+    conn.commit()
+    return count
+
+
+def costliest_decisions(conn: sqlite3.Connection, *, player: str | None = None, limit: int = 20) -> list[dict[str, Any]]:
+    """Reviewed river decisions, most expensive first (optionally for one player)."""
+    sql = (
+        "SELECT r.hand_id AS id, p.name AS player, r.cards, r.action, r.best, r.ev_loss_bb, r.frequency, r.board, r.pot_bb "
+        "FROM river_reviews r LEFT JOIN players p ON p.player_pk = r.player_pk"
+    )
+    args: list[Any] = []
+    if player:
+        sql += " WHERE p.name = ?"
+        args.append(player)
+    sql += " ORDER BY r.ev_loss_bb DESC, r.hand_id, r.idx LIMIT ?"
+    args.append(int(limit))
+    return [
+        {**dict(row), "ev_loss_bb": round(row["ev_loss_bb"], 3), "frequency": round(row["frequency"], 3), "pot_bb": round(row["pot_bb"], 2)}
+        for row in conn.execute(sql, args)
+    ]
+
+
 def _cell(value: Any) -> str:
     if value is None:
         return ""
@@ -563,6 +626,14 @@ def _parser() -> argparse.ArgumentParser:
     pl.add_argument("db")
     pl.add_argument("--min-hands", type=int, default=0)
     pl.add_argument("--json", action="store_true")
+    rv = sub.add_parser("reviews", help="import river reviews written by `pe hh review FILE --out REVIEWS.json`")
+    rv.add_argument("db")
+    rv.add_argument("file")
+    co = sub.add_parser("costly", help="the most expensive reviewed river decisions")
+    co.add_argument("db")
+    co.add_argument("--player")
+    co.add_argument("--limit", type=int, default=20)
+    co.add_argument("--json", action="store_true")
     return parser
 
 
@@ -611,6 +682,15 @@ def _run(conn: sqlite3.Connection, args: argparse.Namespace) -> int:
     if args.command == "stats":
         rows = player_stats(conn, player=args.player, by_position=args.by_position, stats=args.stat)
         _emit(rows, ["player", "stat", "position", "n", "k", "freq"], args.json)
+        return 0
+    if args.command == "reviews":
+        data = json.loads(Path(args.file).read_text(encoding="utf-8"))
+        n = import_reviews(conn, data["reviews"] if isinstance(data, dict) else data)
+        print(f"imported {n} reviewed river decisions")
+        return 0
+    if args.command == "costly":
+        rows = costliest_decisions(conn, player=args.player, limit=args.limit)
+        _emit(rows, ["id", "player", "cards", "action", "best", "ev_loss_bb", "frequency", "board", "pot_bb"], args.json)
         return 0
     rows = list_players(conn, min_hands=args.min_hands)
     _emit(rows, ["player", "hands", "net_bb", "vpip", "pfr"], args.json)

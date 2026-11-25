@@ -35,6 +35,11 @@ pub struct SimConfig {
     pub stack_bb: f64,
     /// Chance that the player after the big blind straddles (2 bb, live).
     pub straddle_rate: f64,
+    /// Chance that the button posts a Mississippi straddle instead (2 bb, live;
+    /// action starts under the gun, skips the button, and the button acts last
+    /// before the flop). Tables of four or more.
+    #[serde(default)]
+    pub mississippi_rate: f64,
     /// Every n-th hand is a bomb pot (0 = never): everyone antes 2 bb, no preflop betting.
     pub bomb_pot_every: usize,
     /// Bomb pots use two boards, each worth half the pot.
@@ -58,6 +63,7 @@ impl Default for SimConfig {
             bb: 1000,
             stack_bb: 100.0,
             straddle_rate: 0.0,
+            mississippi_rate: 0.0,
             bomb_pot_every: 0,
             double_board_bombs: false,
             run_twice_rate: 0.0,
@@ -337,6 +343,7 @@ fn play_hand(cfg: &SimConfig, k: usize, sitting: &[usize], button_idx: usize, bo
     };
     let mut first_to_act;
     let mut current_bet;
+    let mut mississippi = false;
     if bomb {
         for i in 1..=n {
             post(&mut seats, &mut hand, after(i), PostKind::Bomb, 2 * bb);
@@ -354,8 +361,30 @@ fn play_hand(cfg: &SimConfig, k: usize, sitting: &[usize], button_idx: usize, bo
             post(&mut seats, &mut hand, st_i, PostKind::Straddle, 2 * bb);
             current_bet = 2 * bb;
             first_to_act = after(4);
+        } else if n > 3 && cfg.mississippi_rate > 0.0 && rng.next_f64() < cfg.mississippi_rate {
+            // the button straddles: under the gun starts, the button acts last
+            post(&mut seats, &mut hand, after(0), PostKind::Mississippi, 2 * bb);
+            current_bet = 2 * bb;
+            first_to_act = after(3);
+            mississippi = true;
         }
     }
+    // the next seat to act: clockwise, except that before the flop a Mississippi
+    // straddler is skipped by the cutoff and acts after the big blind
+    let next_seat = |i: usize, street: StreetName| -> usize {
+        if mississippi && street == StreetName::Preflop {
+            if i == after(n - 1) {
+                return after(1);
+            }
+            if i == after(2) {
+                return after(0);
+            }
+            if i == after(0) {
+                return after(3);
+            }
+        }
+        (i + 1) % n
+    };
     let mut board_len = if bomb { 3 } else { 0 };
     let mut aggressor: Option<usize> = None;
     let mut preflop_opener: Option<usize> = None;
@@ -401,7 +430,7 @@ fn play_hand(cfg: &SimConfig, k: usize, sitting: &[usize], button_idx: usize, bo
                 break;
             }
             if !need[i] || seats[i].folded || seats[i].stack == 0 {
-                i = (i + 1) % n;
+                i = next_seat(i, sname);
                 continue;
             }
             let p = &bots[seats[i].bot].params;
@@ -584,7 +613,7 @@ fn play_hand(cfg: &SimConfig, k: usize, sitting: &[usize], button_idx: usize, bo
             }
             need[i] = false;
             actions.push(Action { seat: seats[i].seat, kind, amount, to: seats[i].street, all_in, truth: Some(truth) });
-            i = (i + 1) % n;
+            i = next_seat(i, sname);
         }
         if !actions.is_empty() {
             hand.streets.push(Street { name: sname, actions });

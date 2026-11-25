@@ -84,7 +84,7 @@ The clairvoyance game: the bettor holds the nuts or air (half each), the caller 
 | Compiled CFR vs. a plain reference CFR | Identical exploitability on Leduc after 10 and 40 iterations (difference below 1e-12) |
 | Two-player multiway solver vs. heads-up solver | The joint-enumeration solver and the sweep solver agree to 1e-7 |
 | Run-it-twice statistics | Exact inclusion-exclusion result equals brute force over ordered pairs of runouts |
-| JavaScript engine vs. Rust engine | 6,344 checks: every evaluator value, exact equities, run-it-twice moments, tree sizes, solver values, exploitability and per-hand strategies after the same iterations, and the hand-history parser on 411 hands |
+| JavaScript engine vs. Rust engine | 26,612 checks: every evaluator value, exact equities, run-it-twice moments, tree sizes, solver values, exploitability and per-hand strategies after the same iterations, the hand-history parser on 412 hands, street-by-street range probabilities (equal to the last bit) and river reviews |
 
 ## A bug the validation caught
 
@@ -316,6 +316,105 @@ Each run is marginally a uniformly random runout, so the expected share is exact
 """)
 
 
+def hand_histories():
+    g = load("bench-ranges.json")
+    pc = lambda x: f"{100 * x:.0f}%"  # noqa: E731
+    grid_rows = [[f"{x['noise']:.1f}", f"{x['tuning_half']['mean_bits']:+.2f}", f"{x['tuning_half']['median_bits']:+.2f}", pc(x['tuning_half']['coverage_50']), pc(x['tuning_half']['coverage_80']), pc(x['tuning_half']['coverage_90']), pc(x['tuning_half']['mean_effective_share'])] for x in g["grid"]]
+    held = g["held_out"]
+    snap_name = {"flop": "start of the flop", "turn": "start of the turn", "river": "start of the river", "end": "end of the hand"}
+    snap_rows = [[snap_name[s["snapshot"]], f"{s['metrics']['n']:,}", f"{s['metrics']['mean_bits']:+.2f}", pc(s['metrics']['coverage_50']), pc(s['metrics']['coverage_80']), pc(s['metrics']['coverage_90']), pc(s['metrics']['mean_effective_share'])] for s in held["by_snapshot"]]
+    ab = g["ablations"]
+    abl_rows = [
+        ["fitted model (player frequencies, noise)", f"{held['all']['mean_bits']:+.2f}", pc(held['all']['coverage_90'])],
+        ["population frequencies only", f"{ab['population_frequencies_only']['all']['mean_bits']:+.2f}", pc(ab['population_frequencies_only']['all']['coverage_90'])],
+        ["no noise (pure threshold play)", f"{ab['no_noise']['all']['mean_bits']:+.2f}", pc(ab['no_noise']['all']['coverage_90'])],
+    ]
+    style_rows = [[s["style"].replace("_", "-"), f"{s['river']['n']:,}", f"{s['river']['mean_bits']:+.2f}", pc(s['river']['coverage_90'])] for s in held["by_style"]]
+    f1 = fig("ranges_noise_fit", svg.line_chart([Series("mean bits about the true hand", [x["noise"] for x in g["grid"]], [x["tuning_half"]["mean_bits"] for x in g["grid"]])], title="Fitting the noise level: log score of the true hands", x_label="noise (share of actions treated as uninformative)", y_label="bits", reference=0.0, reference_label="uniform range"))
+    levels = [0.5, 0.8, 0.9]
+    f2 = fig("ranges_calibration", svg.line_chart(
+        [Series(snap_name[s["snapshot"]], levels, [s["metrics"][f"coverage_{int(100 * q)}"] for q in levels]) for s in held["by_snapshot"]] + [Series("perfect calibration", levels, levels)],
+        title="Calibration on held-out hands: true hands inside the credible region", x_label="credible level", y_label="share of true hands inside", x_min=0.45, x_max=0.95, y_min=0.4, y_max=1.0))
+    review_part = ""
+    try:
+        r = load("bench-review.json")
+        def srow(name, s):
+            return [name, f"{s['decisions']['n']:,}", pc(s["share_on_path"]), f"{s['on_path']['mean_loss_bb']:.2f}", f"{s['on_path']['median_loss_bb']:.2f}", f"{s['on_path']['p90_loss_bb']:.2f}", pc(s["on_path"]["share_over_1bb"]), pc(s["share_rarely_played"]), f"{s['decisions']['mean_loss_bb']:.2f}"]
+        srows = [srow(s["style"].replace("_", "-"), s["stats"]) for s in r["by_style"] if s["style"]] + [srow("all", r["overall"])]
+        arows = [[a["action"], f"{a['stats']['decisions']['n']:,}", pc(a["stats"]["share_on_path"]), f"{a['stats']['on_path']['mean_loss_bb']:.2f}", pc(a["stats"]["on_path"]["share_over_1bb"])] for a in r["by_action"]]
+        crow = [[c["hand"], f"{c['player']} ({c['style'].replace('_', '-')})", c["cards"], c["action"], c["best"], f"{c['loss_bb']:.2f}", pc(c["frequency"])] for c in r["costliest_on_path"][:8]]
+        off_examples = [c for c in r["costliest"] if not c["on_path"]][:3]
+        off_note = "; ".join(
+            f"hand {c['hand']}, {c['cards']} {c['action'].lower()} ({c['loss_bb']:.0f} bb; "
+            + (f"the opponent's line has an equilibrium probability of {100 * c['opponent_path_probability']:.2f}%" if c["opponent_path_probability"] < 0.02 else f"the player's own line has an equilibrium probability of {100 * c['path_probability']:.2f}%")
+            + f"; the solver's frequency for the action there is {pc(c['frequency'])})"
+            for c in off_examples
+        )
+        review_part = f"""
+## River review
+
+`pe bench review` reviews the heads-up river decisions in the first {r['hands']:,} hands of the corpus: {r['reviewed_hands']:,} rivers, {r['decisions']:,} decisions. Each river is solved with the reconstructed ranges (on average {r['mean_combos'][0]:,.0f} and {r['mean_combos'][1]:,.0f} combos: the noise keeps every combo above the pruning threshold) to {r['mean_exploitability_pct']:.2f}% of the pot on average, in {r['mean_iterations']:.0f} iterations.
+
+A decision is **on the equilibrium path** when the equilibrium reaches it with the player's own line at least 5% of the time and with the opponent's range at least 2%. Off the path, the solver explores the decision little (low exploitability says nothing about play that is almost never reached), so its strategy and values there are rough; the tables report costs on the path and, in the last column, over all decisions.
+
+{table(['Style', 'Decisions', 'On the path', 'Mean cost on path (bb)', 'Median', '90th percentile', 'Cost above 1 bb', 'Rarely played at equilibrium', 'Mean cost, all decisions'], srows)}
+
+{table(['Action taken', 'Decisions', 'On the path', 'Mean cost on path (bb)', 'Cost above 1 bb'], arows)}
+
+The costliest decisions on the path:
+
+{table(['Hand', 'Player', 'Cards', 'Taken', 'Best', 'Cost (bb)', 'Played at eq.'], crow)}
+
+Off the path the costs can look larger and contradict the frequencies, for example {off_note}. These are the cases the path flag is for.
+
+Reading the numbers: a cost is the value of the best action minus the value of the action taken, both with equilibrium play afterwards, against the reconstructed ranges. "Rarely played": on-path decisions the equilibrium takes less than 5% of the time with that hand. The costs are heavy-tailed: most decisions cost nothing or little, and a few cost tens of big blinds. The ranges are estimates and the opponent is assumed balanced, so these are costs in a model; they rank decisions for study, they are not the bots' true losses.
+"""
+    except FileNotFoundError:
+        pass
+    write("hand-histories.md", f"""
+# Street-by-street ranges and the river review
+
+Corpus: the 20,000 simulated hands of [opponent-model.md](opponent-model.md) ({g['corpus']['players']} bots of six styles), regenerated in process from the same seed. The frequency table is built from all {g['corpus']['frequency_hands']:,} hands, as a player would build it from a database; the ranges are scored on {g['corpus']['evaluated_hands']:,} hands that reach the flop, where every player's cards are known.
+
+## The model
+
+Each player starts with the 1,326 combos equally likely. Each action multiplies the combo weights by the probability a model of play gives it: a threshold strategy built from the player's frequencies in that context (strongest hands raise, weakest fold; after the flop value from the top and bluffs from the bottom), mixed with a share *noise* of actions that follow the frequencies regardless of the cards. The method is in [docs/HAND-HISTORIES.md](../../docs/HAND-HISTORIES.md) and [docs/ALGORITHMS.md](../../docs/ALGORITHMS.md).
+
+Two scores per player and snapshot (start of each street, end of the hand):
+
+* **bits**: log2 of the probability of the true combo times the number of combos possible: how much more likely the reconstructed range makes the true hand than a uniform range does (0 = no information, negative = misleading);
+* **coverage**: whether the true combo lies inside the 50%, 80% and 90% most likely part of the range. A calibrated model covers at those rates.
+
+## Fitting the noise
+
+The noise level is fitted on the first half of the evaluated hands by the mean log score (a proper scoring rule) and then fixed.
+
+{f1}
+
+{table(['Noise', 'Mean bits', 'Median bits', '50% region', '80% region', '90% region', 'Range kept (effective share)'], grid_rows)}
+
+Without noise the model treats every action as fully revealing: the median hand is still located (positive median), but each slow-play or float rules the true hand nearly out, so the mean log score is strongly negative and the 90% regions cover the truth half the time. The chosen level is **{g['chosen_noise']}**.
+
+## Held-out results
+
+{table(['Snapshot', 'Players', 'Mean bits', '50% region', '80% region', '90% region', 'Range kept'], snap_rows)}
+
+{f2}
+
+{table(['Variant (held-out half)', 'Mean bits', '90% region'], abl_rows)}
+
+* Player-specific frequencies matter: they reveal {held['all']['mean_bits'] - ab['population_frequencies_only']['all']['mean_bits']:.2f} bits per snapshot more than population frequencies.
+* Calibration: overall the 50%, 80% and 90% regions hold the true hand {pc(held['all']['coverage_50'])}, {pc(held['all']['coverage_80'])} and {pc(held['all']['coverage_90'])} of the time, a little conservative; most so at the start of the flop ({pc(held['by_snapshot'][0]['metrics']['coverage_50'])}, {pc(held['by_snapshot'][0]['metrics']['coverage_80'])}, {pc(held['by_snapshot'][0]['metrics']['coverage_90'])}), and close to nominal by the end of the hand ({pc(held['by_snapshot'][-1]['metrics']['coverage_50'])}, {pc(held['by_snapshot'][-1]['metrics']['coverage_80'])}, {pc(held['by_snapshot'][-1]['metrics']['coverage_90'])}).
+* Tight players are easier to read than loose ones at the river:
+
+{table(['Style', 'River snapshots', 'Mean bits', '90% region'], style_rows)}
+{review_part}
+## Limits
+
+The bots are a parametric model of player types; real players adapt and mix in ways a fitted noise level may not capture, so read these scores as a best case for this model. Ranges are hold'em only and taken from an observer's point of view.
+""")
+
+
 def index():
     write("README.md", """
 # Research reports
@@ -330,6 +429,7 @@ def index():
 | [exploitation.md](exploitation.md) | Equilibrium vs exploitative play against an opponent model (restricted Nash responses) |
 | [equity.md](equity.md) | Exact equity, Monte Carlo error and interval coverage, running it twice |
 | [opponent-model.md](opponent-model.md) | How well does the Bayesian opponent model recover simulated players' tendencies? |
+| [hand-histories.md](hand-histories.md) | How much do street-by-street ranges reveal about hidden hands, are they calibrated, and what does a river review find? |
 
 Raw results are in `../results/`, produced by `scripts/run-benchmarks.ps1` (Rust) and `python -m poker_ecosystem.evaluate` (Python); `scripts/make_reports.py` regenerates these reports and the figures in `../figures/`.
 """)
@@ -344,4 +444,5 @@ if __name__ == "__main__":
     multiplayer()
     exploitation()
     equity()
+    hand_histories()
     index()

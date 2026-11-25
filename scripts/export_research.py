@@ -74,6 +74,10 @@ def main() -> None:
                            "curve": [[p["iteration"], p["nash_conv"]] for p in r["curve"]]} for r in pl["runs"]]
     if (x := load("bench-exploit.json")):
         out["exploit"] = x
+    if (rg := load("bench-ranges.json")):
+        out["ranges"] = {k: rg[k] for k in ("corpus", "chosen_noise", "grid", "held_out", "ablations")}
+    if (rv := load("bench-review.json")):
+        out["review"] = {k: rv[k] for k in ("hands", "reviewed_hands", "decisions", "mean_exploitability_pct", "mean_iterations", "mean_combos", "by_style", "by_action", "costliest")}
     if (o := load("opponent_model.json")):
         out["opponent"] = {
             "hands_total": find_key(o.get("corpus", {}), "hands"),

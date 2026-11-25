@@ -93,6 +93,18 @@ impl Spot {
     }
 
     pub fn from_config(config: SpotConfig) -> Result<Spot, String> {
+        Spot::build(config, None)
+    }
+
+    /// A spot whose ranges are given as weighted hand lists (for example ranges
+    /// reconstructed from a hand history) instead of range notation; the strings
+    /// in `config.ranges` are kept only as descriptions. Hands must not touch the
+    /// board or the dead cards.
+    pub fn from_lists(config: SpotConfig, lists: Vec<HandList>) -> Result<Spot, String> {
+        Spot::build(config, Some(lists))
+    }
+
+    fn build(config: SpotConfig, lists: Option<Vec<HandList>>) -> Result<Spot, String> {
         let game = Game::parse(&config.game)?;
         let board = parse_cards(&config.board)?;
         if !(3..=5).contains(&board.len()) {
@@ -122,19 +134,38 @@ impl Spot {
         if bm & dead != 0 {
             return Err("a dead card is on the board".into());
         }
-        let n = config.ranges.len();
+        let n = lists.as_ref().map_or(config.ranges.len(), |l| l.len());
         if !(2..=6).contains(&n) {
             return Err("2 to 6 players".into());
         }
-        let ranking = crate::preflop_ranking();
-        let mut ranges = Vec::new();
-        for (i, r) in config.ranges.iter().enumerate() {
-            let list = parse_hand_list(&game, r, bm | dead, Some(&ranking)).map_err(|e| format!("range {}: {e}", i + 1))?;
-            if list.is_empty() {
-                return Err(format!("range {} is empty on this board", i + 1));
+        let ranges = match lists {
+            Some(lists) => {
+                for (i, l) in lists.iter().enumerate() {
+                    if l.is_empty() {
+                        return Err(format!("range {} is empty", i + 1));
+                    }
+                    if l.hands.iter().any(|h| h.len() != game.hole_cards || mask_of(h) & (bm | dead | !game.deck()) != 0) {
+                        return Err(format!("range {} holds a hand that touches the board or is not a {} hand", i + 1, game.code()));
+                    }
+                    if l.weights.iter().any(|w| !(*w >= 0.0) || !w.is_finite()) {
+                        return Err(format!("range {} has an invalid weight", i + 1));
+                    }
+                }
+                lists
             }
-            ranges.push(list);
-        }
+            None => {
+                let ranking = crate::preflop_ranking();
+                let mut ranges = Vec::new();
+                for (i, r) in config.ranges.iter().enumerate() {
+                    let list = parse_hand_list(&game, r, bm | dead, Some(&ranking)).map_err(|e| format!("range {}: {e}", i + 1))?;
+                    if list.is_empty() {
+                        return Err(format!("range {} is empty on this board", i + 1));
+                    }
+                    ranges.push(list);
+                }
+                ranges
+            }
+        };
         let stacks = match config.stacks.len() {
             0 => return Err("give the remaining stack".into()),
             1 => vec![config.stacks[0]; n],

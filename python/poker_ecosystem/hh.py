@@ -216,7 +216,7 @@ def big_blind(hand: Hand) -> int:
     if bb > 0:
         return bb
     posts = hand.get("posts") or []
-    live = [int(p.get("amount") or 0) for p in posts if p.get("kind") in ("bb", "straddle")]
+    live = [int(p.get("amount") or 0) for p in posts if p.get("kind") in ("bb", "straddle", "mississippi")]
     any_post = [int(p.get("amount") or 0) for p in posts]
     for candidates in (live, any_post):
         if candidates and max(candidates) > 0:

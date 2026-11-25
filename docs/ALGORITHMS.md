@@ -51,3 +51,15 @@ At a chance node each child card zeroes the hands containing it and the children
 ## Bayesian opponent model
 
 Each statistic (VPIP, 3-bet, fold to a c-bet, check-raise, fold to a river bet, …) is a count of successes in opportunities with a precise definition ([python/README.md](../python/README.md)). A population Beta prior is fitted by maximum marginal likelihood with a weak penalty on the between-player spread; position-level priors are centred on the population at that position shifted by the player's overall deviation on the logit scale; posteriors are Beta with equal-tailed 90% intervals. Bet sizes use Dirichlet-multinomial posteriors. Clustering runs k-means and a diagonal Gaussian mixture (BIC selects *k*) on standardised logit posterior means.
+
+## Street-by-street ranges
+
+A player's range is a posterior over the 1,326 hold'em combos given the public actions. With prior weights *w(c)* (uniform, then zero for combos the board blocks), an action *a* in context *x* updates
+
+*w(c) ← w(c) · [(1 − λ − ε) σ(c, a) + λ f(a) + ε / k]*,
+
+where *f* are the player's frequencies of fold, check/call and bet/raise in context *x* (counts shrunk towards the population with a Dirichlet-multinomial posterior mean), *σ* is a threshold strategy that cuts the current range, ordered by strength, into consecutive bands with those frequencies (polarised after the flop: bluffs at the bottom, then folds, calls, value at the top), *k* is the number of available actions, *λ* = 0.5 the share of actions that carry no information about the cards and *ε* = 0.001 a uniform tremble. Strength is the preflop equity order before the flop, the exact equity against a random hand over every remaining runout on the flop and turn (computed with a counting sweep: for each runout, combos are sorted by hand value and each combo's wins and ties against all other combos come from running totals per card, with exact card removal), and the share of hands beaten on the river. *λ* maximises the mean log probability of the true hands on simulated hands (`pe bench ranges`), and the posterior credible regions are checked for calibration on held-out hands.
+
+## River review
+
+The two reconstructed river ranges, the hand's pot and stacks and a menu containing the sizes used define a heads-up river game, solved by Discounted CFR to 0.5% of the pot. Walking the actions taken through its tree gives, for each known hand, the equilibrium strategy and the counterfactual value of every action under the equilibrium continuation; the cost of a decision is the best action's value minus the value of the action taken.

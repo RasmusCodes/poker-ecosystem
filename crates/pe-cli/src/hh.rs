@@ -12,8 +12,65 @@ pub fn run(args: &Args) -> Result<Value, String> {
         "parse" => parse(args),
         "simulate" => sim(args),
         "summary" => summary(args),
-        _ => Err("usage: pe hh parse FILE.txt [--jsonl OUT] | pe hh simulate [--hands N] [--seed S] [--dir DIR] | pe hh summary FILE".into()),
+        "ranges" => ranges(args),
+        "review" => review(args),
+        _ => Err("usage: pe hh parse FILE.txt [--jsonl OUT] | pe hh simulate [--hands N] [--seed S] [--mississippi P] [--dir DIR] | pe hh summary FILE | pe hh ranges FILE [--id ID] [--limit N] [--tremble E] | pe hh review FILE [--limit N] [--top N] [--out FILE]".into()),
     }
+}
+
+fn range_options(args: &Args) -> Result<pe_hh::RangeOptions, String> {
+    let d = pe_hh::RangeOptions::default();
+    Ok(pe_hh::RangeOptions {
+        noise: args.num("noise", d.noise)?,
+        tremble: args.num("tremble", d.tremble)?,
+        player_prior: args.num("player-prior", d.player_prior)?,
+        population_prior: args.num("population-prior", d.population_prior)?,
+    })
+}
+
+/// Street-by-street ranges of every hand in a file (or of one hand with `--id`);
+/// the frequencies come from all hands in the file.
+fn ranges(args: &Args) -> Result<Value, String> {
+    let path = args.positional.get(1).ok_or("give a hand-history file")?;
+    let hands = load(path)?;
+    let table = pe_hh::FrequencyTable::from_hands(&hands);
+    let opts = range_options(args)?;
+    let limit: usize = args.num("limit", 50)?;
+    let chosen: Vec<&Hand> = match args.get("id") {
+        Some(id) => hands.iter().filter(|h| h.id == id).collect(),
+        None => hands.iter().filter(|h| pe_hh::ranges::is_holdem(h)).take(limit).collect(),
+    };
+    if chosen.is_empty() {
+        return Err("no hold'em hand to reconstruct".into());
+    }
+    let out: Vec<Value> = chosen.par_iter().map(|h| pe_hh::reconstruct_ranges(h, &table, &opts).map_or_else(|e| json!({ "id": h.id, "error": e }), |r| json!(r))).collect();
+    Ok(json!({ "options": opts, "frequency_hands": table.hands, "hands": out }))
+}
+
+/// Reviews every heads-up river decision in a file against an equilibrium.
+fn review(args: &Args) -> Result<Value, String> {
+    let path = args.positional.get(1).ok_or("give a hand-history file")?;
+    let mut hands = load(path)?;
+    let table = pe_hh::FrequencyTable::from_hands(&hands);
+    let ropts = range_options(args)?;
+    let d = pe_hh::ReviewOptions::default();
+    let opts = pe_hh::ReviewOptions {
+        max_iterations: args.num("iterations", d.max_iterations)?,
+        target_pct: args.num("target", d.target_pct)?,
+        check_every: d.check_every,
+        prune: args.num("prune", d.prune)?,
+    };
+    let limit: usize = args.num("limit", usize::MAX)?;
+    hands.truncate(limit);
+    let sw = pe_cards::sys::Stopwatch::start();
+    let (reviews, failed) = pe_hh::review_hands(&hands, &table, &ropts, &opts);
+    let top: usize = args.num("top", 20)?;
+    let costliest: Vec<Value> = pe_hh::review::costliest(&reviews, top).into_iter().map(|(id, d)| json!({ "hand": id, "decision": d })).collect();
+    // `--out FILE` is handled by main (it writes the returned JSON)
+    Ok(json!({
+        "hands": hands.len(), "reviewed": reviews.len(), "failed": failed, "range_options": ropts, "options": opts,
+        "cpu_seconds": sw.process_cpu(), "costliest": costliest, "reviews": reviews,
+    }))
 }
 
 fn load(path: &str) -> Result<Vec<Hand>, String> {
@@ -47,6 +104,7 @@ fn sim(args: &Args) -> Result<Value, String> {
         bots: args.num("bots", 24)?,
         seed: args.num("seed", 1)?,
         straddle_rate: args.num("straddle", 0.0)?,
+        mississippi_rate: args.num("mississippi", 0.0)?,
         bomb_pot_every: args.num("bomb-every", 0)?,
         double_board_bombs: args.flag("double-board"),
         run_twice_rate: args.num("run-twice", 0.0)?,

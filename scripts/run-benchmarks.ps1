@@ -8,7 +8,7 @@ if (-not $Exe) { $Exe = Join-Path $root 'target\release\pe.exe' }
 try { (Get-Process -Id $PID).PriorityClass = 'BelowNormal' } catch {}
 $env:RAYON_NUM_THREADS = '4'
 New-Item -ItemType Directory -Force research\results | Out-Null
-$suites = 'eval', 'equity', 'cfr', 'analytic', 'river', 'abstraction', 'exploit', 'multiway', 'players', 'turn'
+$suites = 'eval', 'equity', 'cfr', 'analytic', 'river', 'abstraction', 'exploit', 'multiway', 'players', 'turn', 'ranges', 'review'
 foreach ($s in $suites) {
     $t = [Diagnostics.Stopwatch]::StartNew()
     $args = @('bench', $s, '--out', "research/results/bench-$s.json")

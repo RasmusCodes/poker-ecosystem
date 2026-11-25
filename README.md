@@ -1,6 +1,6 @@
 # Poker Ecosystem
 
-A poker research platform: exact hand evaluation and equity, a family of game-theoretic solvers with exact error measurement, range-vs-range postflop solving, Bayesian opponent modelling, exploitative play against a model, hand-history analysis, and an interactive lab that runs in the browser.
+A poker research platform: exact hand evaluation and equity, a family of game-theoretic solvers with exact error measurement, range-vs-range postflop solving, Bayesian opponent modelling, exploitative play against a model, hand-history analysis with street-by-street ranges and an automatic river review, and an interactive lab that runs in the browser.
 
 **[Open the interactive lab](https://rasmuscodes.github.io/apps/poker-ecosystem/)** · [Project write-up](https://rasmuscodes.github.io/projects/poker-ecosystem/) · [Research reports](research/reports/README.md)
 
@@ -21,6 +21,8 @@ It is built to say plainly what each number is. Every solver result carries its 
 | Exploitative strategies | **Best response / restricted Nash response to a model** | Value against the model and own exploitability both reported ([exploitation.md](research/reports/exploitation.md)) |
 | Opponent models | **Bayesian estimates** with 90% credible intervals | Calibrated on simulated players with known true frequencies ([opponent-model.md](research/reports/opponent-model.md)) |
 | Profile → strategy mapping | **Heuristic model** | Threshold play on the reaching range; a modelling assumption, stated as such |
+| Street-by-street ranges | **Bayesian estimate under a model of play** | Scored on simulated hands with known cards: the true hand is twice as likely as under a uniform range (+1.0 bit), and 90% regions contain it 94% of the time ([hand-histories.md](research/reports/hand-histories.md)) |
+| River review | **Equilibrium of an abstracted river with estimated ranges** | Exploitability of each solve computed exactly; a decision's cost assumes an opponent playing that equilibrium |
 
 ## Headline results
 
@@ -33,7 +35,8 @@ All numbers below are measured, from [`research/results`](research/results); see
 * **More players:** exact multiway rivers cost about twelve times more per added player (280 → 3,490 → 38,885 joint hands); NashConv still falls to about 0.03% of the pot in 300 iterations, an observation rather than a guarantee.
 * **Exploitation:** against a button that folds 70% to river bets, a restricted Nash response with p = 0.5 wins 37% of the pot more than equilibrium play and remains exploitable for 20% of the pot; the pure best response wins 42% more but is exploitable for 45%.
 * **Opponent model:** on 24 simulated players, the posterior error falls from 0.077 (50 hands each) to 0.019 (2,500 hands), half the error of raw frequencies; 90% intervals contain the truth 88-93% of the time; clustering recovers the six true styles (adjusted Rand index 0.95).
-* **Hand histories:** 20,000 simulated hands (straddles, bomb pots, double boards, run-it-twice, rake) all reconstruct to the cent and survive a PokerStars text round trip; the browser parser matches the Rust parser field by field.
+* **Hand histories:** 20,000 simulated hands (straddles, bomb pots, double boards, run-it-twice, rake) all reconstruct to the cent and survive a PokerStars text round trip; Mississippi straddles are told from ordinary ones by seat and act last before the flop; the browser parser matches the Rust parser field by field.
+* **Street-by-street ranges:** on held-out simulated hands the reconstructed ranges make the true hand 2.0 times as likely as a uniform range (+1.0 bit), against 1.5 times with population frequencies only; with the fitted noise level the 50/80/90% regions contain the true hand 57/87/94% of the time, where pure threshold play manages 29/45/51%.
 
 ## Components
 
@@ -44,7 +47,7 @@ All numbers below are measured, from [`research/results`](research/results); see
 | `crates/pe-equity` | Exact and Monte Carlo equity, ranges, double boards, hi-lo, the O(n) card-removal showdown sweep, exact run-it-twice statistics |
 | `crates/pe-cfr` | Compiled game trees; CFR, CFR+, Linear CFR, Discounted CFR, Predictive CFR+; external- and outcome-sampling MCCFR; exact best response, NashConv, exploitability; Kuhn and Leduc for N players, a clairvoyance river; infoset abstraction |
 | `crates/pe-solver` | Range-vs-range postflop solving: betting trees for 2-6 players, heads-up vector CFR with exact card removal (hold'em, Omaha, Short Deck, Omaha hi-lo, double boards, rake, the 7-2 bounty), node locking, opponent models, best and restricted Nash responses, river card buckets; exact-enumeration multiway rivers |
-| `crates/pe-hh` | The `pe-hh/1` hand model, PokerStars parser and writer, pot reconstruction with side pots and rake, all-in equity, river showdown strength, a simulator of bots with known styles |
+| `crates/pe-hh` | The `pe-hh/1` hand model, PokerStars parser and writer (ordinary and Mississippi straddles), pot reconstruction with side pots and rake, all-in equity, river showdown strength, a simulator of bots with known styles, street-by-street Bayesian ranges, and an automatic review of heads-up river decisions against an equilibrium |
 | `crates/pe-cli` | The `pe` command: evaluation, equity, run it twice, solving, hand histories, benchmarks, test vectors |
 | `python/poker_ecosystem` | Research tooling (standard library only): statistics, hierarchical Beta-Binomial opponent model, clustering, SQLite hand database, leak finder, SVG charts, model evaluation |
 | `web/` | The interactive lab: a JavaScript port of the engine (checked against the Rust engine to the last digit), Web Worker solving, five tabs |
@@ -56,7 +59,7 @@ All numbers below are measured, from [`research/results`](research/results); see
 Requirements: Rust 1.85+ (edition 2024), Python 3.10+, and Node 18+ for the JavaScript tests. The Rust engine depends only on serde, serde_json and rayon; the Python package and the web lab have no dependencies.
 
 ```sh
-cargo test --workspace                 # 67 Rust tests, including exhaustive evaluator checks
+cargo test --workspace                 # 74 Rust tests, including exhaustive evaluator checks
 cargo build --release                  # builds target/release/pe
 
 pe eval AsKsQsJsTs                     # "a Royal Flush"
@@ -66,25 +69,28 @@ pe cfr --game leduc --algo dcfr --iters 2000       # convergence curve with exac
 pe solve research/spots/srp-river.json --iters 1000 --target 0.1
 pe hh simulate --hands 20000 --seed 1 --dir data/synthetic
 pe hh parse data/samples/pokerstars-sample.txt --jsonl hands.jsonl
+pe hh ranges data/samples/pokerstars-sample.txt --id 300000000012   # street-by-street ranges
+pe hh review data/synthetic/hands.jsonl --limit 2000 --out reviews.json   # river decisions vs equilibrium
 pe bench river --out research/results/bench-river.json
 
-python -m unittest discover -s python/tests -t python      # 107 tests
+python -m unittest discover -s python/tests -t python      # 109 tests
 python -m poker_ecosystem.evaluate --hands data/synthetic/hands.jsonl --players data/synthetic/players.json
-node web/tests/run.mjs                 # 6,344 parity checks against the Rust engine
+python -m poker_ecosystem.hhdb reviews hands.sqlite reviews.json && python -m poker_ecosystem.hhdb costly hands.sqlite
+node web/tests/run.mjs                 # 26,612 parity checks against the Rust engine
 python -m http.server 8766 --directory web                # the lab at http://localhost:8766
 ```
 
-Regenerating everything: `scripts/run-benchmarks.ps1`, then `python scripts/make_reports.py`, `python scripts/export_research.py` and `python scripts/export_web_data.py`.
+Regenerating everything: `scripts/run-benchmarks.ps1`, then `python scripts/make_reports.py`, `python scripts/export_research.py`, `python scripts/export_web_data.py`, `pe vectors` and `pe hh review web/data/hands-sample.json --out web/data/hands-sample-reviews.json` (the lab's precomputed river reviews of its simulated sample).
 
 ## Design notes
 
-* **One engine, two languages.** The browser lab is a port of the Rust engine rather than WebAssembly (the development machine had no WebAssembly toolchain). `pe vectors` writes evaluator values, exact equities, trees and solver results; `web/tests/run.mjs` checks the port against them: 6,344 checks, all equal to 1e-7 or better.
+* **One engine, two languages.** The browser lab is a port of the Rust engine rather than WebAssembly (the development machine had no WebAssembly toolchain). `pe vectors` writes evaluator values, exact equities, trees, solver results, street-by-street ranges and river reviews; `web/tests/run.mjs` checks the port against them: 26,612 checks, range probabilities equal to the last bit and everything else to 1e-6 or better.
 * **Deterministic.** Every random choice flows from an explicit seed; DCFR's discount powers use correctly rounded operations so Rust and JavaScript agree bit for bit.
 * **Measured, not assumed.** Benchmarks report CPU seconds (the development laptop is shared) and deterministic quantities: iterations, nodes touched, exploitability.
 
 ## Limitations
 
-The short version (full list in [docs/LIMITATIONS.md](docs/LIMITATIONS.md)): postflop solving starts on the turn or river with given ranges; there is no preflop or flop solver here (see the NLH and PLO solver projects below); bet menus are an abstraction whose cost against off-menu sizes is not bounded; multiway solving is exact only for small ranges and carries no equilibrium guarantee; the opponent model is validated on simulated players, who are more stationary than people; hand-history support covers PokerStars and documented extensions for bomb pots and double boards.
+The short version (full list in [docs/LIMITATIONS.md](docs/LIMITATIONS.md)): postflop solving starts on the turn or river with given ranges; there is no preflop or flop solver here (see the NLH and PLO solver projects below); bet menus are an abstraction whose cost against off-menu sizes is not bounded; multiway solving is exact only for small ranges and carries no equilibrium guarantee; the opponent model and the street-by-street ranges are validated on simulated players, who are more stationary than people; the river review measures costs against an equilibrium opponent with estimated ranges, and covers heads-up hold'em rivers only; hand-history support covers PokerStars and documented extensions for bomb pots and double boards; stud and draw games are not covered.
 
 ## Related projects
 

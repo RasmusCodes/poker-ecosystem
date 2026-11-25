@@ -32,7 +32,7 @@ The clairvoyance game: the bettor holds the nuts or air (half each), the caller 
 | Compiled CFR vs. a plain reference CFR | Identical exploitability on Leduc after 10 and 40 iterations (difference below 1e-12) |
 | Two-player multiway solver vs. heads-up solver | The joint-enumeration solver and the sweep solver agree to 1e-7 |
 | Run-it-twice statistics | Exact inclusion-exclusion result equals brute force over ordered pairs of runouts |
-| JavaScript engine vs. Rust engine | 6,344 checks: every evaluator value, exact equities, run-it-twice moments, tree sizes, solver values, exploitability and per-hand strategies after the same iterations, and the hand-history parser on 411 hands |
+| JavaScript engine vs. Rust engine | 26,612 checks: every evaluator value, exact equities, run-it-twice moments, tree sizes, solver values, exploitability and per-hand strategies after the same iterations, the hand-history parser on 412 hands, street-by-street range probabilities (equal to the last bit) and river reviews |
 
 ## A bug the validation caught
 

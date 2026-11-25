@@ -162,7 +162,9 @@ class FixtureModelTests(unittest.TestCase):
     def test_preflop_range(self) -> None:
         rng = self.model.preflop_range("Alice", "BTN")
         self.assertEqual(rng.classes[0], "AA")
-        self.assertEqual(rng.source, "chen-formula")
+        # the equity ranking written by `pe vectors` when present, else the Chen fallback
+        path = ranges.default_ranking_path()
+        self.assertEqual(rng.source, str(path) if path.exists() else "chen-formula")
         self.assertLessEqual(abs(rng.combos / ranges.TOTAL_COMBOS - rng.fraction), 6 / ranges.TOTAL_COMBOS)
         self.assertLessEqual(rng.classes_at_lo, len(rng.classes))
         self.assertGreaterEqual(rng.classes_at_hi, len(rng.classes))

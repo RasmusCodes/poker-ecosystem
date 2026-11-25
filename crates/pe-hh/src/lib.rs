@@ -1,21 +1,28 @@
 //! Hand histories: the `pe-hh/1` model, a PokerStars parser and writer, pot
-//! reconstruction, all-in expected value, river showdown strength and a
-//! simulator for synthetic corpora with ground truth.
+//! reconstruction, all-in expected value, river showdown strength, a simulator
+//! for synthetic corpora with ground truth, street-by-street ranges
+//! ([`ranges`]) and an automatic review of heads-up river decisions against an
+//! equilibrium ([`review`]).
 //!
-//! Statistics and opponent models live in the Python package
-//! (`python/poker_ecosystem`), which reads the JSON this crate writes.
+//! The Bayesian opponent model with credible intervals, clustering and the
+//! hand database live in the Python package (`python/poker_ecosystem`), which
+//! reads the JSON this crate writes.
 
 pub mod allin;
 pub mod model;
 pub mod pokerstars;
+pub mod ranges;
 pub mod reconstruct;
+pub mod review;
 pub mod sim;
 pub mod writer;
 
 pub use allin::{annotate_allin, annotate_river_strength, river_strength};
 pub use model::{Hand, read_file, read_hands, to_jsonl};
 pub use pokerstars::parse_pokerstars;
+pub use ranges::{FrequencyTable, HandRanges, RangeOptions, reconstruct_ranges};
 pub use reconstruct::reconstruct;
+pub use review::{ReviewOptions, RiverReview, review_hands, review_river};
 pub use sim::{BotInfo, SimConfig, SimOutput, simulate};
 pub use writer::write_pokerstars;
 
@@ -80,14 +87,107 @@ mod tests {
     use super::*;
 
     fn config(hands: usize) -> SimConfig {
-        SimConfig { hands, seed: 7, straddle_rate: 0.1, bomb_pot_every: 25, double_board_bombs: true, run_twice_rate: 0.3, rake_pct: 5.0, ..Default::default() }
+        SimConfig {
+            hands,
+            seed: 7,
+            straddle_rate: 0.1,
+            mississippi_rate: 0.1,
+            bomb_pot_every: 25,
+            double_board_bombs: true,
+            run_twice_rate: 0.3,
+            rake_pct: 5.0,
+            ..Default::default()
+        }
+    }
+
+    /// The first `k` preflop actions follow `model::preflop_order`.
+    fn follows_preflop_order(h: &Hand) -> bool {
+        let order = model::preflop_order(h);
+        match h.street(model::StreetName::Preflop) {
+            Some(pre) => {
+                let k = pre.actions.len().min(order.len());
+                pre.actions.iter().take(k).map(|a| a.seat).eq(order[..k].iter().copied())
+            }
+            None => true,
+        }
+    }
+
+    #[test]
+    fn mississippi_straddles_act_last_before_the_flop() {
+        let out = simulate(&SimConfig { hands: 400, seed: 11, mississippi_rate: 1.0, ..Default::default() });
+        let mut seen = 0;
+        for h in &out.hands {
+            let m: Vec<&model::Post> = h.posts.iter().filter(|p| p.kind == model::PostKind::Mississippi).collect();
+            assert_eq!(m.len(), 1, "hand {}", h.id);
+            let button = model::clockwise_from_button(&h.dealt_seats(), h.button)[0];
+            assert_eq!(m[0].seat, button, "hand {}: the button straddles", h.id);
+            // under the gun acts first, the cutoff passes to the small blind, the button acts last
+            let order = model::preflop_order(h);
+            assert_eq!(*order.last().unwrap(), button);
+            assert!(follows_preflop_order(h), "hand {}: {:?} vs {:?}", h.id, h.streets[0].actions.iter().map(|a| a.seat).collect::<Vec<_>>(), order);
+            // the written text carries only "posts straddle": the parser recovers the kind from the seat
+            let (parsed, warnings) = parse_pokerstars(&write_pokerstars(h));
+            assert!(warnings.is_empty(), "{warnings:?}");
+            assert_eq!(parsed[0].posts, h.posts);
+            let mut a = parsed[0].clone();
+            analyse(&mut a);
+            assert!(a.derived.as_ref().unwrap().ok, "hand {}: {:?}", h.id, a.derived.as_ref().unwrap().issues);
+            seen += 1;
+        }
+        assert_eq!(seen, 400);
+    }
+
+    #[test]
+    fn parser_tells_straddle_kinds_apart() {
+        let text = "PokerStars Hand #9100:  Hold'em No Limit ($1/$2 USD) - 2026/11/05 21:00:00 ET
+Table 'T' 6-max Seat #1 is the button
+Seat 1: A ($200 in chips)
+Seat 2: B ($200 in chips)
+Seat 3: C ($200 in chips)
+Seat 4: D ($200 in chips)
+Seat 5: E ($200 in chips)
+B: posts small blind $1
+C: posts big blind $2
+A: posts straddle $4
+*** HOLE CARDS ***
+D: folds
+E: calls $4
+B: folds
+C: folds
+A: checks
+*** FLOP *** [2c 7d 9h]
+E: checks
+A: checks
+*** TURN *** [2c 7d 9h] [3s]
+E: checks
+A: checks
+*** RIVER *** [2c 7d 9h 3s] [4d]
+E: checks
+A: checks
+*** SHOW DOWN ***
+E: shows [Ah As]
+A: shows [Kd Kc]
+E collected $11 from pot
+*** SUMMARY ***
+Total pot $11 | Rake $0
+Board [2c 7d 9h 3s 4d]
+";
+        let (hands, warnings) = parse_pokerstars(text);
+        assert!(warnings.is_empty(), "{warnings:?}");
+        let h = &hands[0];
+        assert_eq!(h.posts[2].kind, model::PostKind::Mississippi, "the button's straddle");
+        assert_eq!(model::preflop_order(h), vec![4, 5, 2, 3, 1]);
+        assert!(follows_preflop_order(h));
+        // the same post from under the gun is an ordinary straddle (only the post matters here)
+        let (hands, _) = parse_pokerstars(&text.replace("A: posts straddle $4", "D: posts straddle $4"));
+        assert_eq!(hands[0].posts[2].kind, model::PostKind::Straddle);
     }
 
     #[test]
     fn simulated_hands_reconstruct_and_round_trip() {
         let out = simulate(&config(2500));
         assert_eq!(out.hands.len(), 2500);
-        let mut special = (0, 0, 0);
+        let mut special = (0, 0, 0, 0);
         for h in &out.hands {
             let mut a = h.clone();
             reconstruct(&mut a);
@@ -124,8 +224,12 @@ mod tests {
             if h.posts.iter().any(|p| p.kind == model::PostKind::Straddle) {
                 special.2 += 1;
             }
+            if h.posts.iter().any(|p| p.kind == model::PostKind::Mississippi) {
+                special.3 += 1;
+            }
+            assert!(follows_preflop_order(h), "hand {}", h.id);
         }
-        assert!(special.0 > 0 && special.1 > 0 && special.2 > 0, "{special:?}");
+        assert!(special.0 > 0 && special.1 > 0 && special.2 > 0 && special.3 > 0, "{special:?}");
     }
 
     #[test]

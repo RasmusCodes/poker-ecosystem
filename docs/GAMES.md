@@ -15,7 +15,7 @@
 | Bomb pots | – | multiway flop equity | solving starts postflop anyway | documented extension; simulator deals them | everyone antes, no preflop betting |
 | Double-board bomb pots | – | exact / MC | rivers | documented extension; simulator deals them | |
 | The 7-2 game | – | – | bounty in every payoff (folds and showdowns) | – | zero-sum side payments |
-| Mississippi / button straddles | – | – | preflop structure only | straddle posts parsed; positions from the button | no preflop solver here |
+| Mississippi / button straddles | – | – | preflop structure only | told apart from ordinary straddles by seat; the simulator deals button straddles, with the button acting last before the flop | no preflop solver here |
 | Mixed games (rotation) | components above | | | | rotation is a scheduling concern; each component is supported |
 
 ## Priorities: strategic complexity against feasibility
@@ -29,4 +29,4 @@ The order of work followed the value of each format to a research platform and w
 5. **Double boards and bomb pots**: payoff and dealing changes on top of existing solvers; the strategic novelty is ranges that must play on two boards at once.
 6. **The 7-2 game**: a single payoff rule with a surprising equilibrium effect (the defender calls wider, which can make 72o bluff *less*).
 7. **Short Deck**: an evaluator change; the 36-card deck increases equity running closer, which the solver handles unchanged.
-8. **Straddles and mixed games**: mostly preflop structure and scheduling, outside the postflop solver's scope; supported in parsing, positions and evaluation.
+8. **Straddles and mixed games**: mostly preflop structure and scheduling, outside the postflop solver's scope; supported in parsing, positions, action order (`model::preflop_order` puts a Mississippi straddler last) and evaluation. Mixed games here means the flop games above; stud and draw games (Razz, Stud, 2-7 Triple Draw) are not covered.

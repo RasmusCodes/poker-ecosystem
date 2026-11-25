@@ -125,6 +125,18 @@ class ReplayTests(unittest.TestCase):
         self.assertIsNone(rp.preflop_aggressor)
         self.assertEqual(rp.by_street["turn"][0].pot_before, 7500)
 
+    def test_mississippi_straddle_is_live(self) -> None:
+        import copy
+
+        hand = copy.deepcopy(fixtures.by_id("STRADDLE-1"))
+        for p in hand["posts"]:
+            if p["kind"] == "straddle":
+                p["kind"] = "mississippi"
+        rp = hh.replay(hand)
+        self.assertEqual([d.to_call for d in rp.by_street["preflop"]], [2000, 2000, 2000, 1500, 1000, 0])
+        hand["bb"] = 0
+        self.assertEqual(hh.big_blind(hand), 2000)
+
     def test_preflop_aggressor(self) -> None:
         self.assertEqual(hh.preflop_aggressor(fixtures.by_id("HU-1")), 1)
         self.assertEqual(hh.preflop_aggressor(fixtures.by_id("ALLIN-1")), 2)

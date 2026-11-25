@@ -12,10 +12,10 @@
    ┌──────▼─────┐ └─────┬──────┘ │            │
    │ pe-equity  │       │        │            │
    │ equity,    ├───────┼────────►  pe-hh     │  parser, writer, reconstruction,
-   │ sweeps, RIT│       │        │            │  all-in EV, simulator
-   └──────┬─────┘       │        └─────┬──────┘
-   ┌──────▼─────────────▼──┐           │
-   │       pe-solver       │           │
+   │ sweeps, RIT│       │        │            │  all-in EV, simulator,
+   └──────┬─────┘       │        └──▲──┬──────┘  street-by-street ranges,
+   ┌──────▼─────────────▼──┐        │  │         river review
+   │       pe-solver       ├────────┘  │
    │ trees, vector CFR,    │           │
    │ BR, models, multiway  │           │
    └──────────┬────────────┘           │
@@ -36,13 +36,13 @@
 * **Rust workspace (`crates/`)**: everything performance-critical. Seven crates with one direction of dependency. The only outside dependencies are serde, serde_json and rayon; evaluator tables, the RNG, the hand-history parser and the benchmark harness are our own, so results are reproducible across dependency upgrades.
 * **Command line (`pe`)**: the boundary between the engine and everything else. Every command prints JSON or writes it with `--out`, so Python, scripts and the web build consume the same data.
 * **Python (`python/poker_ecosystem`)**: research tooling with no dependencies beyond the standard library: hand statistics, the hierarchical Beta-Binomial opponent model, clustering, a SQLite hand database, leak detection, SVG charts and the model evaluation. It reads the `pe-hh/1` JSON that the Rust parser and simulator write ([schema](HAND-HISTORY-SCHEMA.md)).
-* **Web (`web/`)**: the interactive lab, static files with no build step. `web/js/engine` is a line-by-line JavaScript port of the evaluator, equity, tree, vector-CFR solver, opponent-profile mapping and PokerStars parser. Solving runs in a module Web Worker. The port is tied to the Rust engine by test vectors (`pe vectors`) and 6,344 parity checks (`node web/tests/run.mjs`): identical evaluator values, exact equities to 1e-12, identical trees, and solver values, exploitability and per-hand strategies after the same iterations to 1e-7.
+* **Web (`web/`)**: the interactive lab, static files with no build step. `web/js/engine` is a line-by-line JavaScript port of the evaluator, equity, tree, vector-CFR solver, opponent-profile mapping, PokerStars parser, street-by-street ranges and river review. Solving and range work run in module Web Workers. The port is tied to the Rust engine by test vectors (`pe vectors`) and 26,612 parity checks (`node web/tests/run.mjs`): identical evaluator values, exact equities to 1e-12, identical trees, solver values, exploitability and per-hand strategies after the same iterations to 1e-7, the parser on 412 hands, range probabilities equal to the last bit, and river reviews to 1e-6.
 
 ## Data flow for the research results
 
 1. `pe hh simulate` deals a synthetic corpus with bots of known styles (`data/synthetic/`, regenerated from a seed; not committed).
 2. `python -m poker_ecosystem.evaluate` fits the opponent model at several sample sizes and scores it against the bots' true frequencies.
-3. `scripts/run-benchmarks.ps1` runs the ten `pe bench` suites into `research/results/`.
+3. `scripts/run-benchmarks.ps1` runs the twelve `pe bench` suites into `research/results/` (`ranges` and `review` regenerate the 20,000-hand corpus in process).
 4. `scripts/make_reports.py` turns results into `research/reports/*.md` and `research/figures/*.svg`; `scripts/export_research.py` and `scripts/export_web_data.py` write the lab's `web/data/*.json`.
 
 ## Key representations

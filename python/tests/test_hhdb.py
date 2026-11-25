@@ -89,6 +89,33 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(hhdb.player_stats(self.conn, player="Alice", stats=["vpip"])[0]["n"], 7)
 
 
+REVIEW = {
+    "id": "3H-SD", "board": "Kh8d3c2s2h", "pot_bb": 20.5, "exploitability_pct": 0.3,
+    "decisions": [
+        {"index": 9, "seat": 1, "name": "Alice", "hand": "AhKd", "actions": ["Check", "Bet 33%", "Bet 75%"], "taken": 0, "best": 2,
+         "ev_loss_bb": 1.25, "frequency": 0.04, "size_matched": True},
+        {"index": 10, "seat": 2, "name": "Bob", "hand": "8c8h", "actions": ["Check", "Bet 33%"], "taken": 1, "best": 1,
+         "ev_loss_bb": 0.0, "frequency": 0.9, "size_matched": True},
+        {"index": 11, "seat": 3, "name": "Carol", "hand": None, "actions": ["Fold", "Call"], "taken": 1, "best": None,
+         "ev_loss_bb": None, "frequency": None, "size_matched": True},
+    ],
+}
+
+
+class ReviewTests(unittest.TestCase):
+    def test_import_and_rank_river_reviews(self) -> None:
+        conn = hhdb.connect(":memory:")
+        hhdb.import_hands(conn, fixtures.all_hands())
+        # the decision with unknown cards is skipped; re-importing replaces rows
+        self.assertEqual(hhdb.import_reviews(conn, [REVIEW]), 2)
+        self.assertEqual(hhdb.import_reviews(conn, [REVIEW]), 2)
+        rows = hhdb.costliest_decisions(conn)
+        self.assertEqual([(r["player"], r["action"], r["best"], r["ev_loss_bb"]) for r in rows], [("Alice", "Check", "Bet 75%", 1.25), ("Bob", "Bet 33%", "Bet 33%", 0.0)])
+        self.assertEqual([r["id"] for r in hhdb.costliest_decisions(conn, player="Bob")], ["3H-SD"])
+        linked = conn.execute("SELECT COUNT(*) FROM river_reviews WHERE hand_pk IS NOT NULL").fetchone()[0]
+        self.assertEqual(linked, 2)
+
+
 class CommandLineTests(unittest.TestCase):
     def run_cli(self, *args: str) -> tuple[int, str, str]:
         out, err = io.StringIO(), io.StringIO()
@@ -115,6 +142,12 @@ class CommandLineTests(unittest.TestCase):
             code, out, _ = self.run_cli("players", db, "--min-hands", "8")
             self.assertEqual(code, 0)
             self.assertIn("Alice", out)
+            reviews = Path(tmp) / "reviews.json"
+            reviews.write_text(json.dumps({"reviews": [REVIEW]}), encoding="utf-8")
+            code, out, _ = self.run_cli("reviews", db, str(reviews))
+            self.assertEqual((code, out.strip()), (0, "imported 2 reviewed river decisions"))
+            code, out, _ = self.run_cli("costly", db, "--limit", "1", "--json")
+            self.assertEqual([(r["player"], r["ev_loss_bb"]) for r in json.loads(out)], [("Alice", 1.25)])
             code, _, err = self.run_cli("query", db, "--position", "BTN")
             self.assertEqual(code, 2)
             self.assertIn("needs a player", err)

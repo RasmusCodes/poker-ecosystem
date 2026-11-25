@@ -1,0 +1,625 @@
+{
+  "by_action": [
+    {
+      "action": "All-in",
+      "stats": {
+        "decisions": {
+          "mean_loss_bb": 1.641923837608148,
+          "median_loss_bb": 0.0,
+          "n": 408,
+          "p90_loss_bb": 4.882299669321423,
+          "share_over_1bb": 0.27941176470588236
+        },
+        "on_path": {
+          "mean_loss_bb": 1.484316965417047,
+          "median_loss_bb": 0.0,
+          "n": 391,
+          "p90_loss_bb": 4.58439257027181,
+          "share_over_1bb": 0.26854219948849106
+        },
+        "share_on_path": 0.9583333333333334,
+        "share_rarely_played": 0.2966751918158568
+      }
+    },
+    {
+      "action": "Bet",
+      "stats": {
+        "decisions": {
+          "mean_loss_bb": 1.3622554412726822,
+          "median_loss_bb": 0.3893707940587525,
+          "n": 905,
+          "p90_loss_bb": 3.714463242286122,
+          "share_over_1bb": 0.32154696132596683
+        },
+        "on_path": {
+          "mean_loss_bb": 1.360002505651539,
+          "median_loss_bb": 0.3893707940587525,
+          "n": 904,
+          "p90_loss_bb": 3.714463242286122,
+          "share_over_1bb": 0.32079646017699115
+        },
+        "share_on_path": 0.9988950276243094,
+        "share_rarely_played": 0.5630530973451328
+      }
+    },
+    {
+      "action": "Call",
+      "stats": {
+        "decisions": {
+          "mean_loss_bb": 2.1206299166503544,
+          "median_loss_bb": 0.0036706419530208216,
+          "n": 1127,
+          "p90_loss_bb": 5.9924349465460365,
+          "share_over_1bb": 0.2795031055900621
+        },
+        "on_path": {
+          "mean_loss_bb": 1.5464318294521742,
+          "median_loss_bb": 0.0,
+          "n": 893,
+          "p90_loss_bb": 4.406783948755539,
+          "share_over_1bb": 0.24188129899216126
+        },
+        "share_on_path": 0.7923691215616682,
+        "share_rarely_played": 0.24188129899216126
+      }
+    },
+    {
+      "action": "Check",
+      "stats": {
+        "decisions": {
+          "mean_loss_bb": 0.7884922083029989,
+          "median_loss_bb": 0.0,
+          "n": 1905,
+          "p90_loss_bb": 0.9361212178890241,
+          "share_over_1bb": 0.09501312335958005
+        },
+        "on_path": {
+          "mean_loss_bb": 0.7897358868649911,
+          "median_loss_bb": 0.0,
+          "n": 1902,
+          "p90_loss_bb": 0.9361212178890241,
+          "share_over_1bb": 0.09516298633017876
+        },
+        "share_on_path": 0.9984251968503937,
+        "share_rarely_played": 0.1529968454258675
+      }
+    },
+    {
+      "action": "Fold",
+      "stats": {
+        "decisions": {
+          "mean_loss_bb": 0.09962402555984258,
+          "median_loss_bb": 0.0,
+          "n": 154,
+          "p90_loss_bb": 0.3026055043549753,
+          "share_over_1bb": 0.032467532467532464
+        },
+        "on_path": {
+          "mean_loss_bb": 0.12158002220483922,
+          "median_loss_bb": 0.0,
+          "n": 119,
+          "p90_loss_bb": 0.39827620634262856,
+          "share_over_1bb": 0.04201680672268908
+        },
+        "share_on_path": 0.7727272727272727,
+        "share_rarely_played": 0.01680672268907563
+      }
+    },
+    {
+      "action": "Raise",
+      "stats": {
+        "decisions": {
+          "mean_loss_bb": 2.4189029946531657,
+          "median_loss_bb": 1.3838089441683508,
+          "n": 44,
+          "p90_loss_bb": 6.344918548020685,
+          "share_over_1bb": 0.5681818181818182
+        },
+        "on_path": {
+          "mean_loss_bb": 1.5484816631978369,
+          "median_loss_bb": 1.3372732252701987,
+          "n": 28,
+          "p90_loss_bb": 5.973089283195321,
+          "share_over_1bb": 0.5
+        },
+        "share_on_path": 0.6363636363636364,
+        "share_rarely_played": 0.5714285714285714
+      }
+    }
+  ],
+  "by_style": [
+    {
+      "stats": {
+        "decisions": {
+          "mean_loss_bb": 1.1645711551153004,
+          "median_loss_bb": 0.01125605970118393,
+          "n": 858,
+          "p90_loss_bb": 3.2357007720639506,
+          "share_over_1bb": 0.23543123543123542
+        },
+        "on_path": {
+          "mean_loss_bb": 0.9900476160622619,
+          "median_loss_bb": 0.009673367863484827,
+          "n": 802,
+          "p90_loss_bb": 2.8611949729791566,
+          "share_over_1bb": 0.21820448877805487
+        },
+        "share_on_path": 0.9347319347319347,
+        "share_rarely_played": 0.30673316708229426
+      },
+      "style": "lag"
+    },
+    {
+      "stats": {
+        "decisions": {
+          "mean_loss_bb": 1.8662762731934386,
+          "median_loss_bb": 0.011228404276445003,
+          "n": 1071,
+          "p90_loss_bb": 4.733783200370133,
+          "share_over_1bb": 0.26330532212885155
+        },
+        "on_path": {
+          "mean_loss_bb": 1.5203517417686037,
+          "median_loss_bb": 0.006783241427778641,
+          "n": 1022,
+          "p90_loss_bb": 4.23007555743898,
+          "share_over_1bb": 0.25244618395303325
+        },
+        "share_on_path": 0.954248366013072,
+        "share_rarely_played": 0.3199608610567515
+      },
+      "style": "maniac"
+    },
+    {
+      "stats": {
+        "decisions": {
+          "mean_loss_bb": 1.4636639100347792,
+          "median_loss_bb": 0.0,
+          "n": 350,
+          "p90_loss_bb": 3.1645690411465353,
+          "share_over_1bb": 0.21428571428571427
+        },
+        "on_path": {
+          "mean_loss_bb": 1.3042551542420766,
+          "median_loss_bb": 0.0,
+          "n": 321,
+          "p90_loss_bb": 2.6610876050486247,
+          "share_over_1bb": 0.2087227414330218
+        },
+        "share_on_path": 0.9171428571428571,
+        "share_rarely_played": 0.24610591900311526
+      },
+      "style": "nit"
+    },
+    {
+      "stats": {
+        "decisions": {
+          "mean_loss_bb": 1.167907206942191,
+          "median_loss_bb": 0.0,
+          "n": 1235,
+          "p90_loss_bb": 2.3813429383327858,
+          "share_over_1bb": 0.16761133603238867
+        },
+        "on_path": {
+          "mean_loss_bb": 1.0903749484198872,
+          "median_loss_bb": 0.0,
+          "n": 1143,
+          "p90_loss_bb": 2.0066165856915887,
+          "share_over_1bb": 0.15485564304461943
+        },
+        "share_on_path": 0.9255060728744939,
+        "share_rarely_played": 0.2440944881889764
+      },
+      "style": "station"
+    },
+    {
+      "stats": {
+        "decisions": {
+          "mean_loss_bb": 0.9497237191374956,
+          "median_loss_bb": 0.00144414696122884,
+          "n": 585,
+          "p90_loss_bb": 2.483687104595745,
+          "share_over_1bb": 0.1829059829059829
+        },
+        "on_path": {
+          "mean_loss_bb": 0.7446480642871426,
+          "median_loss_bb": 0.0002407005996225564,
+          "n": 537,
+          "p90_loss_bb": 1.994829367779121,
+          "share_over_1bb": 0.16387337057728119
+        },
+        "share_on_path": 0.9179487179487179,
+        "share_rarely_played": 0.26256983240223464
+      },
+      "style": "tag"
+    },
+    {
+      "stats": {
+        "decisions": {
+          "mean_loss_bb": 0.9196563518439312,
+          "median_loss_bb": 0.0,
+          "n": 444,
+          "p90_loss_bb": 1.9728131573637855,
+          "share_over_1bb": 0.13063063063063063
+        },
+        "on_path": {
+          "mean_loss_bb": 0.8204340754118833,
+          "median_loss_bb": 0.0,
+          "n": 412,
+          "p90_loss_bb": 1.337055853911572,
+          "share_over_1bb": 0.11165048543689321
+        },
+        "share_on_path": 0.9279279279279279,
+        "share_rarely_played": 0.18932038834951456
+      },
+      "style": "weak_tight"
+    }
+  ],
+  "costliest": [
+    {
+      "action": "Check",
+      "best": "All-in",
+      "cards": "9d9c",
+      "frequency": 0.000011648223645894002,
+      "hand": "3415",
+      "loss_bb": 60.3364699560468,
+      "on_path": true,
+      "opponent_path_probability": 1.0,
+      "path_probability": 1.0,
+      "player": "Player18",
+      "style": "weak_tight"
+    },
+    {
+      "action": "Call",
+      "best": "Fold",
+      "cards": "Ah6d",
+      "frequency": 0.0006600864284993193,
+      "hand": "5915",
+      "loss_bb": 51.60991907850067,
+      "on_path": false,
+      "opponent_path_probability": 0.013953300893253437,
+      "path_probability": 0.00037312278424654296,
+      "player": "Player11",
+      "style": "maniac"
+    },
+    {
+      "action": "Call",
+      "best": "Fold",
+      "cards": "QdQc",
+      "frequency": 0.923107042200876,
+      "hand": "3694",
+      "loss_bb": 43.56918605564415,
+      "on_path": false,
+      "opponent_path_probability": 0.0006342430140628665,
+      "path_probability": 1.0,
+      "player": "Player08",
+      "style": "tag"
+    },
+    {
+      "action": "Call",
+      "best": "Fold",
+      "cards": "Kh9c",
+      "frequency": 0.4325538526797729,
+      "hand": "649",
+      "loss_bb": 43.19048610097981,
+      "on_path": false,
+      "opponent_path_probability": 0.0848470191502683,
+      "path_probability": 0.00002165184596861168,
+      "player": "Player05",
+      "style": "maniac"
+    },
+    {
+      "action": "Call",
+      "best": "Fold",
+      "cards": "KdJc",
+      "frequency": 0.3894149247245285,
+      "hand": "1895",
+      "loss_bb": 42.93750706632184,
+      "on_path": false,
+      "opponent_path_probability": 0.19402995717041882,
+      "path_probability": 0.00003967538399014231,
+      "player": "Player09",
+      "style": "lag"
+    },
+    {
+      "action": "Call",
+      "best": "Fold",
+      "cards": "4s4h",
+      "frequency": 0.3395220210816429,
+      "hand": "1439",
+      "loss_bb": 41.25200698396192,
+      "on_path": false,
+      "opponent_path_probability": 0.483077557148677,
+      "path_probability": 0.00030266730517917973,
+      "player": "Player05",
+      "style": "maniac"
+    },
+    {
+      "action": "Bet 100%",
+      "best": "Check",
+      "cards": "Ad3d",
+      "frequency": 4.659289458357604e-6,
+      "hand": "3956",
+      "loss_bb": 37.22868653097603,
+      "on_path": true,
+      "opponent_path_probability": 1.0,
+      "path_probability": 1.0,
+      "player": "Player10",
+      "style": "station"
+    },
+    {
+      "action": "Call",
+      "best": "Fold",
+      "cards": "Tc9s",
+      "frequency": 0.006202344525442793,
+      "hand": "2362",
+      "loss_bb": 36.31547253258098,
+      "on_path": false,
+      "opponent_path_probability": 0.0019196442604476568,
+      "path_probability": 1.0,
+      "player": "Player05",
+      "style": "maniac"
+    },
+    {
+      "action": "All-in",
+      "best": "Check",
+      "cards": "QhJs",
+      "frequency": 0.000073090103711824,
+      "hand": "3694",
+      "loss_bb": 34.60234840406754,
+      "on_path": true,
+      "opponent_path_probability": 1.0,
+      "path_probability": 1.0,
+      "player": "Player23",
+      "style": "maniac"
+    },
+    {
+      "action": "Call",
+      "best": "Fold",
+      "cards": "QdTs",
+      "frequency": 0.1524615926377392,
+      "hand": "798",
+      "loss_bb": 34.43941021346643,
+      "on_path": false,
+      "opponent_path_probability": 0.04161804807397233,
+      "path_probability": 0.00008161394385407439,
+      "player": "Player17",
+      "style": "maniac"
+    },
+    {
+      "action": "Call",
+      "best": "Fold",
+      "cards": "Ts5d",
+      "frequency": 0.00004102502259921889,
+      "hand": "7",
+      "loss_bb": 34.29845599484793,
+      "on_path": true,
+      "opponent_path_probability": 0.1617755650266804,
+      "path_probability": 0.3549121642079176,
+      "player": "Player17",
+      "style": "maniac"
+    },
+    {
+      "action": "Call",
+      "best": "Fold",
+      "cards": "Kd3d",
+      "frequency": 5.556968630990247e-6,
+      "hand": "2687",
+      "loss_bb": 33.3541021524613,
+      "on_path": true,
+      "opponent_path_probability": 0.5382307713054556,
+      "path_probability": 0.6987156979157001,
+      "player": "Player05",
+      "style": "maniac"
+    }
+  ],
+  "costliest_on_path": [
+    {
+      "action": "Check",
+      "best": "All-in",
+      "cards": "9d9c",
+      "frequency": 0.000011648223645894002,
+      "hand": "3415",
+      "loss_bb": 60.3364699560468,
+      "on_path": true,
+      "opponent_path_probability": 1.0,
+      "path_probability": 1.0,
+      "player": "Player18",
+      "style": "weak_tight"
+    },
+    {
+      "action": "Bet 100%",
+      "best": "Check",
+      "cards": "Ad3d",
+      "frequency": 4.659289458357604e-6,
+      "hand": "3956",
+      "loss_bb": 37.22868653097603,
+      "on_path": true,
+      "opponent_path_probability": 1.0,
+      "path_probability": 1.0,
+      "player": "Player10",
+      "style": "station"
+    },
+    {
+      "action": "All-in",
+      "best": "Check",
+      "cards": "QhJs",
+      "frequency": 0.000073090103711824,
+      "hand": "3694",
+      "loss_bb": 34.60234840406754,
+      "on_path": true,
+      "opponent_path_probability": 1.0,
+      "path_probability": 1.0,
+      "player": "Player23",
+      "style": "maniac"
+    },
+    {
+      "action": "Call",
+      "best": "Fold",
+      "cards": "Ts5d",
+      "frequency": 0.00004102502259921889,
+      "hand": "7",
+      "loss_bb": 34.29845599484793,
+      "on_path": true,
+      "opponent_path_probability": 0.1617755650266804,
+      "path_probability": 0.3549121642079176,
+      "player": "Player17",
+      "style": "maniac"
+    },
+    {
+      "action": "Call",
+      "best": "Fold",
+      "cards": "Kd3d",
+      "frequency": 5.556968630990247e-6,
+      "hand": "2687",
+      "loss_bb": 33.3541021524613,
+      "on_path": true,
+      "opponent_path_probability": 0.5382307713054556,
+      "path_probability": 0.6987156979157001,
+      "player": "Player05",
+      "style": "maniac"
+    },
+    {
+      "action": "Check",
+      "best": "All-in",
+      "cards": "6h6d",
+      "frequency": 0.00003882741215298006,
+      "hand": "3064",
+      "loss_bb": 31.89512335844283,
+      "on_path": true,
+      "opponent_path_probability": 0.8529368284480324,
+      "path_probability": 1.0,
+      "player": "Player22",
+      "style": "station"
+    },
+    {
+      "action": "Check",
+      "best": "All-in",
+      "cards": "7s7c",
+      "frequency": 0.000038827412152979984,
+      "hand": "5716",
+      "loss_bb": 31.86637791814752,
+      "on_path": true,
+      "opponent_path_probability": 0.5652608194031677,
+      "path_probability": 1.0,
+      "player": "Player04",
+      "style": "station"
+    },
+    {
+      "action": "Call",
+      "best": "All-in",
+      "cards": "AsAc",
+      "frequency": 1.998598983220908e-6,
+      "hand": "5922",
+      "loss_bb": 31.148598322553624,
+      "on_path": true,
+      "opponent_path_probability": 0.038270025014014206,
+      "path_probability": 0.7770926029474192,
+      "player": "Player07",
+      "style": "nit"
+    },
+    {
+      "action": "Check",
+      "best": "All-in",
+      "cards": "4s4d",
+      "frequency": 0.00003583198372216177,
+      "hand": "3534",
+      "loss_bb": 30.286947891211383,
+      "on_path": true,
+      "opponent_path_probability": 0.7490847001519741,
+      "path_probability": 1.0,
+      "player": "Player16",
+      "style": "station"
+    },
+    {
+      "action": "Check",
+      "best": "All-in",
+      "cards": "AsAh",
+      "frequency": 0.00003882741215298002,
+      "hand": "1090",
+      "loss_bb": 29.613179460098294,
+      "on_path": true,
+      "opponent_path_probability": 0.9975284728197329,
+      "path_probability": 1.0,
+      "player": "Player22",
+      "style": "station"
+    },
+    {
+      "action": "All-in",
+      "best": "Check",
+      "cards": "JdJc",
+      "frequency": 0.000029120559114735032,
+      "hand": "3646",
+      "loss_bb": 28.572370310300652,
+      "on_path": true,
+      "opponent_path_probability": 0.68686514169486,
+      "path_probability": 1.0,
+      "player": "Player03",
+      "style": "lag"
+    },
+    {
+      "action": "Check",
+      "best": "Bet 33%",
+      "cards": "AsJs",
+      "frequency": 5.911038865080537e-7,
+      "hand": "3192",
+      "loss_bb": 28.489021458214967,
+      "on_path": true,
+      "opponent_path_probability": 1.0,
+      "path_probability": 1.0,
+      "player": "Player13",
+      "style": "nit"
+    }
+  ],
+  "cpu_seconds": 1242.515625,
+  "decisions": 4543,
+  "failed": [],
+  "hands": 6000,
+  "mean_combos": [
+    1081.0,
+    1081.0
+  ],
+  "mean_exploitability_pct": 0.2846703428259793,
+  "mean_iterations": 102.2879177377892,
+  "meta": {
+    "note": "CPU seconds on a shared laptop (AMD Ryzen AI 7 PRO 350, 8 cores / 16 threads) running other jobs; compare iterations and nodes touched for convergence",
+    "peak_working_set_bytes": 211435520,
+    "process_cpu_seconds": 1242.796875,
+    "quick": false,
+    "suite": "review",
+    "threads": 4,
+    "wall_seconds": 333.7366346
+  },
+  "note": "Costs are big blinds against an opponent playing the equilibrium of the reconstructed river game (model-based ranges, the hand's own bet sizes); they illustrate the review, they are not the bots' true losses. On path: the equilibrium reaches the decision with the hand's own line at least 5% of the time and with the opponent's range at least 2%; off the path the solver explores little and its values are rough. share_rarely_played: on-path decisions the equilibrium takes less than 5% of the time.",
+  "options": {
+    "check_every": 50,
+    "max_iterations": 600,
+    "prune": 0.0001,
+    "target_pct": 0.5
+  },
+  "overall": {
+    "decisions": {
+      "mean_loss_bb": 1.3023437166363698,
+      "median_loss_bb": 0.0,
+      "n": 4543,
+      "p90_loss_bb": 3.1434915426608754,
+      "share_over_1bb": 0.2049306625577812
+    },
+    "on_path": {
+      "mean_loss_bb": 1.121236013291712,
+      "median_loss_bb": 0.0,
+      "n": 4237,
+      "p90_loss_bb": 2.7294311738229804,
+      "share_over_1bb": 0.1914090158130753
+    },
+    "share_on_path": 0.9326436275588817,
+    "share_rarely_played": 0.2714184564550389
+  },
+  "range_options": {
+    "noise": 0.5,
+    "player_prior": 10.0,
+    "population_prior": 20.0,
+    "tremble": 0.001
+  },
+  "reviewed_hands": 1945
+}

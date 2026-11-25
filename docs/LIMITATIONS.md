@@ -19,8 +19,10 @@
 ## Hand histories
 
 * PokerStars is the supported site format. Bomb pots and double boards use documented extensions; other sites need adapters.
+* Straddles are told apart by seat: the seat after the big blind (or after the previous straddler) posts an ordinary straddle, any other seat a Mississippi straddle, which acts last before the flop. House rules that let other seats straddle with different action orders need an adapter.
 * There is no real hand-history data in the repository: samples are hand-written and the research corpus is simulated.
-* The street-by-street analysis covers reconstruction, all-in EV, river strength and statistics; decision review against solver output is done in the lab by loading a spot into the solver, not automatically for every hand of a database.
+* **Street-by-street ranges are a model.** They follow from Bayes' rule with a threshold model of play (strongest hands raise, polarised bets after the flop) driven by each player's estimated frequencies, plus noise for slow-plays and floats. The noise level is fitted on simulated bots; with it, the true hand lies inside the 50%, 80% and 90% credible regions 57%, 87% and 94% of the time on held-out simulated hands: a little conservative, most of all at the start of the flop, and close to nominal by the end of a hand. Real players may differ from the bots in ways the fit does not capture. Ranges are reconstructed for hold'em only, from an observer's point of view (a hero's own cards are not removed from the opponents' ranges), and double-board hands rank hands on the first board.
+* **The river review is a review against a model.** It covers hold'em rivers played heads-up on one board. A decision's cost is measured against an opponent who plays the equilibrium of the river with the reconstructed ranges and a bet menu containing the sizes used; it is not money lost against the actual opponent, and earlier streets are not reviewed (turn solves take about a minute in the browser). Decisions the equilibrium would rarely reach (the player's own line under 5% or the opponent's under 2%) are flagged as off the path: CFR explores them little, so their strategies and values are rough even when the solve's exploitability is small.
 
 ## Engineering
 

@@ -99,39 +99,6 @@ fn compiled_cfr_matches_independent_reference() {
 }
 
 #[test]
-#[ignore]
-fn debug_leduc_current_vs_average() {
-    let t = Tree::compile(&Leduc::new(2));
-    for algo in [Algorithm::CfrPlus, Algorithm::Linear, Algorithm::DCFR, Algorithm::PredictiveCfrPlus] {
-        let mut s = Cfr::new(&t, algo);
-        let mut line = String::new();
-        for mark in [100u64, 1000, 5000] {
-            while s.iterations < mark {
-                s.iterate();
-            }
-            let avg = nash_conv(&t, &s.average_strategy()).exploitability.unwrap();
-            let cur = nash_conv(&t, &s.current_strategy()).exploitability.unwrap();
-            line += &format!(" {mark}: avg {avg:.5} cur {cur:.5} |");
-        }
-        println!("{}{line}", algo.name());
-    }
-}
-
-#[test]
-#[ignore]
-fn debug_leduc_curves() {
-    let t = Tree::compile(&Leduc::new(2));
-    for algo in [Algorithm::Cfr, Algorithm::CfrPlus, Algorithm::Linear, Algorithm::DCFR, Algorithm::PredictiveCfrPlus] {
-        let (_, rep) = run_cfr(&t, algo, &[10, 100, 1000]);
-        let c: Vec<String> = rep.curve.iter().map(|p| format!("{}:{:.5}", p.iteration, p.exploitability.unwrap())).collect();
-        println!("{} {}", algo.name(), c.join(" "));
-    }
-    let (_, rep) = run_mccfr(&t, Sampling::External, &[1000, 10000, 100000], 1);
-    let c: Vec<String> = rep.curve.iter().map(|p| format!("{}:{:.5}", p.iteration, p.exploitability.unwrap())).collect();
-    println!("ES {}", c.join(" "));
-}
-
-#[test]
 fn uniform_exploitability_matches_known_values() {
     // OpenSpiel's reference values for the uniform random policy
     let k2 = Tree::compile(&Kuhn::new(2));

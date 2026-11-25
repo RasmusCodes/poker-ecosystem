@@ -98,8 +98,10 @@ name = "pe-hh"
 version = "0.1.0"
 dependencies = [
  "pe-cards",
+ "pe-cfr",
  "pe-equity",
  "pe-eval",
+ "pe-solver",
  "rayon",
  "serde",
  "serde_json",

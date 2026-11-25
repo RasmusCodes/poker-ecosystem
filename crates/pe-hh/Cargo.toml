@@ -1,6 +1,6 @@
 [package]
 name = "pe-hh"
-description = "Hand-history parsing, reconstruction, simulation and statistics."
+description = "Hand-history parsing, reconstruction, simulation, street-by-street ranges and river review."
 version.workspace = true
 edition.workspace = true
 rust-version.workspace = true
@@ -11,6 +11,8 @@ publish.workspace = true
 pe-cards.workspace = true
 pe-eval.workspace = true
 pe-equity.workspace = true
+pe-cfr.workspace = true
+pe-solver.workspace = true
 serde.workspace = true
 serde_json.workspace = true
 rayon.workspace = true

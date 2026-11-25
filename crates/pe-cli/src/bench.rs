@@ -27,6 +27,8 @@ pub fn run(args: &Args) -> Result<Value, String> {
         "multiway" => multiway(quick),
         "exploit" => exploit(quick),
         "analytic" => analytic(quick),
+        "ranges" => ranges(quick),
+        "review" => review(quick),
         "all" => {
             let mut all = serde_json::Map::new();
             for s in ["eval", "equity", "cfr", "players", "river", "turn", "abstraction", "multiway", "exploit", "analytic"] {
@@ -505,6 +507,220 @@ fn exploit(quick: bool) -> Result<Value, String> {
         }));
     }
     Ok(json!({ "spot": name, "iterations": iters, "profiles": out }))
+}
+
+// ---------------------------------------------------------------- street-by-street ranges
+
+/// The research corpus (`pe hh simulate --hands 20000 --seed 1 --straddle 0.05
+/// --bomb-every 50 --double-board --run-twice 0.2 --rake 5`), regenerated in
+/// process: the simulator is deterministic, so this is the same 20,000 hands.
+fn research_corpus() -> pe_hh::SimOutput {
+    pe_hh::simulate(&pe_hh::SimConfig {
+        hands: 20_000,
+        seed: 1,
+        straddle_rate: 0.05,
+        bomb_pot_every: 50,
+        double_board_bombs: true,
+        run_twice_rate: 0.2,
+        rake_pct: 5.0,
+        ..Default::default()
+    })
+}
+
+#[derive(Clone, Copy)]
+struct RangeRecord {
+    half: usize,
+    label: usize,
+    style: usize,
+    bits: f64,
+    quantile: f64,
+    share: f64,
+}
+
+const LABELS: [&str; 4] = ["flop", "turn", "river", "end"];
+
+fn summarise_records(records: &[&RangeRecord]) -> Value {
+    let n = records.len();
+    if n == 0 {
+        return json!({ "n": 0 });
+    }
+    let mean = |f: &dyn Fn(&RangeRecord) -> f64| records.iter().map(|r| f(r)).sum::<f64>() / n as f64;
+    let mut bits: Vec<f64> = records.iter().map(|r| r.bits).collect();
+    bits.sort_by(|a, b| a.partial_cmp(b).unwrap());
+    let cover = |level: f64| records.iter().filter(|r| r.quantile <= level).count() as f64 / n as f64;
+    json!({
+        "n": n,
+        "mean_bits": mean(&|r| r.bits),
+        "median_bits": bits[n / 2],
+        "p10_bits": bits[n / 10],
+        "coverage_50": cover(0.5),
+        "coverage_80": cover(0.8),
+        "coverage_90": cover(0.9),
+        "mean_effective_share": mean(&|r| r.share),
+    })
+}
+
+/// Fits the noise level of the range model on simulated hands whose cards are
+/// all known and measures what the ranges reveal (bits about the true hand
+/// against a uniform range) and whether their credible regions are calibrated.
+fn ranges(quick: bool) -> Result<Value, String> {
+    use rayon::prelude::*;
+    let sw = Stopwatch::start();
+    let corpus = research_corpus();
+    let styles: Vec<String> = pe_hh::sim::STYLES.iter().map(|s| s.to_string()).collect();
+    let style_of: std::collections::BTreeMap<String, usize> =
+        corpus.bots.iter().map(|b| (b.name.clone(), styles.iter().position(|s| *s == b.style).unwrap_or(0))).collect();
+    let table = pe_hh::FrequencyTable::from_hands(&corpus.hands);
+    let n_eval = if quick { 600 } else { 4000 };
+    let eval: Vec<&pe_hh::Hand> = corpus.hands.iter().take(n_eval).filter(|h| pe_hh::ranges::is_holdem(h) && h.streets.len() > 1).collect();
+    let strengths: Vec<Vec<Vec<f64>>> = eval.par_iter().map(|h| pe_hh::ranges::street_strengths(h)).collect();
+    let strength_cpu = sw.process_cpu();
+    let run = |opts: &pe_hh::RangeOptions| -> Vec<RangeRecord> {
+        eval.par_iter()
+            .zip(strengths.par_iter())
+            .enumerate()
+            .flat_map_iter(|(k, (h, s))| {
+                let half = usize::from(k * 2 >= eval.len());
+                let r = pe_hh::ranges::reconstruct_with(h, &table, opts, s).expect("hold'em hand");
+                let mut v = Vec::new();
+                for snap in &r.snapshots {
+                    let Some(label) = LABELS.iter().position(|l| *l == snap.label) else { continue };
+                    for seat in &snap.seats {
+                        if let Some(a) = &seat.actual {
+                            v.push(RangeRecord {
+                                half,
+                                label,
+                                style: style_of.get(&seat.name).copied().unwrap_or(0),
+                                bits: a.bits,
+                                quantile: a.hpd_quantile,
+                                share: seat.effective_combos / seat.possible_combos as f64,
+                            });
+                        }
+                    }
+                }
+                v
+            })
+            .collect()
+    };
+    let base = pe_hh::RangeOptions::default();
+    let noises = if quick { vec![0.0, 0.2, 0.4, 0.6] } else { vec![0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8] };
+    let mut grid = Vec::new();
+    let mut best = (f64::NEG_INFINITY, base.noise);
+    for &noise in &noises {
+        let opts = pe_hh::RangeOptions { noise, ..base.clone() };
+        let recs = run(&opts);
+        let tune: Vec<&RangeRecord> = recs.iter().filter(|r| r.half == 0).collect();
+        let s = summarise_records(&tune);
+        let mean_bits = s["mean_bits"].as_f64().unwrap_or(f64::NEG_INFINITY);
+        if mean_bits > best.0 {
+            best = (mean_bits, noise);
+        }
+        grid.push(json!({ "noise": noise, "tuning_half": s }));
+    }
+    // the chosen noise on the held-out half, by snapshot and by style
+    let chosen = pe_hh::RangeOptions { noise: best.1, ..base.clone() };
+    let recs = run(&chosen);
+    let test: Vec<&RangeRecord> = recs.iter().filter(|r| r.half == 1).collect();
+    let by_label: Vec<Value> = (0..LABELS.len())
+        .map(|l| json!({ "snapshot": LABELS[l], "metrics": summarise_records(&test.iter().copied().filter(|r| r.label == l).collect::<Vec<_>>()) }))
+        .collect();
+    let by_style: Vec<Value> = (0..styles.len())
+        .map(|s| json!({ "style": styles[s], "river": summarise_records(&test.iter().copied().filter(|r| r.style == s && r.label == 2).collect::<Vec<_>>()) }))
+        .collect();
+    // ablations on the held-out half: population frequencies only, and no noise
+    let ablation = |opts: pe_hh::RangeOptions| -> Value {
+        let recs = run(&opts);
+        let t: Vec<&RangeRecord> = recs.iter().filter(|r| r.half == 1).collect();
+        let river: Vec<&RangeRecord> = t.iter().copied().filter(|r| r.label == 2).collect();
+        json!({ "all": summarise_records(&t), "river": summarise_records(&river) })
+    };
+    let population_only = ablation(pe_hh::RangeOptions { player_prior: 1e12, ..chosen.clone() });
+    let no_noise = ablation(pe_hh::RangeOptions { noise: 0.0, ..chosen.clone() });
+    Ok(json!({
+        "corpus": { "hands": corpus.hands.len(), "players": corpus.bots.len(), "frequency_hands": table.hands, "evaluated_hands": eval.len() },
+        "options": chosen,
+        "chosen_noise": best.1,
+        "grid": grid,
+        "held_out": { "all": summarise_records(&test), "by_snapshot": by_label, "by_style": by_style },
+        "ablations": { "population_frequencies_only": population_only, "no_noise": no_noise },
+        "strength_cpu_seconds": strength_cpu,
+        "note": "bits = log2(probability of the true combo x combos possible); 0 = no better than a uniform range. coverage_q = share of true combos inside the q credible region (calibrated when equal to q). Noise fitted on the first half of the evaluated hands, metrics on the second.",
+    }))
+}
+
+/// Reviews the heads-up river decisions of simulated hands and summarises the
+/// cost of each style's decisions against the equilibrium.
+fn review(quick: bool) -> Result<Value, String> {
+    let sw = Stopwatch::start();
+    let corpus = research_corpus();
+    let table = pe_hh::FrequencyTable::from_hands(&corpus.hands);
+    let style_of: std::collections::BTreeMap<String, String> = corpus.bots.iter().map(|b| (b.name.clone(), b.style.clone())).collect();
+    let n = if quick { 1500 } else { 6000 };
+    let ropts = pe_hh::RangeOptions::default();
+    let opts = pe_hh::ReviewOptions::default();
+    let (reviews, failed) = pe_hh::review_hands(&corpus.hands[..n], &table, &ropts, &opts);
+    // (cost, frequency, on the equilibrium path) per decision with known cards
+    let mut by_style: std::collections::BTreeMap<String, Vec<(f64, f64, bool)>> = Default::default();
+    let mut by_action: std::collections::BTreeMap<String, Vec<(f64, f64, bool)>> = Default::default();
+    for r in &reviews {
+        for d in &r.decisions {
+            if let (Some(loss), Some(freq)) = (d.ev_loss_bb, d.frequency) {
+                let style = style_of.get(&d.name).cloned().unwrap_or_default();
+                let action = d.actions[d.taken].split(' ').next().unwrap_or("").to_string();
+                let on = pe_hh::review::on_path(d);
+                by_style.entry(style).or_default().push((loss, freq, on));
+                by_action.entry(action).or_default().push((loss, freq, on));
+            }
+        }
+    }
+    let stats = |v: &[f64]| -> Value {
+        let mut s = v.to_vec();
+        s.sort_by(|a, b| a.partial_cmp(b).unwrap());
+        let n = s.len();
+        if n == 0 {
+            return json!({ "n": 0 });
+        }
+        json!({ "n": n, "mean_loss_bb": s.iter().sum::<f64>() / n as f64, "median_loss_bb": s[n / 2], "p90_loss_bb": s[(n * 9) / 10], "share_over_1bb": s.iter().filter(|x| **x > 1.0).count() as f64 / n as f64 })
+    };
+    let group = |v: &[(f64, f64, bool)]| -> Value {
+        let all: Vec<f64> = v.iter().map(|x| x.0).collect();
+        // strategies and values are reliable where both players get with some regularity
+        let on: Vec<&(f64, f64, bool)> = v.iter().filter(|x| x.2).collect();
+        let on_losses: Vec<f64> = on.iter().map(|x| x.0).collect();
+        let rare = on.iter().filter(|x| x.1 < 0.05).count() as f64 / on.len().max(1) as f64;
+        json!({ "decisions": stats(&all), "on_path": stats(&on_losses), "share_on_path": on.len() as f64 / v.len().max(1) as f64, "share_rarely_played": rare })
+    };
+    let styles: Vec<Value> = by_style.iter().map(|(style, v)| json!({ "style": style, "stats": group(v) })).collect();
+    let actions: Vec<Value> = by_action.iter().map(|(a, v)| json!({ "action": a, "stats": group(v) })).collect();
+    let all: Vec<(f64, f64, bool)> = by_style.values().flatten().copied().collect();
+    let solves = reviews.len().max(1) as f64;
+    let describe = |id: &str, d: &pe_hh::review::ReviewedDecision| {
+        json!({ "hand": id, "player": d.name, "style": style_of.get(&d.name), "cards": d.hand, "action": d.actions[d.taken], "best": d.best.map(|b| d.actions[b].clone()), "loss_bb": d.ev_loss_bb, "frequency": d.frequency, "path_probability": d.path_probability, "opponent_path_probability": d.opponent_path_probability, "on_path": pe_hh::review::on_path(d) })
+    };
+    let costliest: Vec<Value> = pe_hh::review::costliest(&reviews, 12).iter().map(|(id, d)| describe(id, d)).collect();
+    let on_path_reviews: Vec<pe_hh::RiverReview> = reviews
+        .iter()
+        .map(|r| pe_hh::RiverReview { decisions: r.decisions.iter().filter(|d| pe_hh::review::on_path(d)).cloned().collect(), ..r.clone() })
+        .collect();
+    let costliest_on_path: Vec<Value> = pe_hh::review::costliest(&on_path_reviews, 12).iter().map(|(id, d)| describe(id, d)).collect();
+    Ok(json!({
+        "hands": n,
+        "reviewed_hands": reviews.len(),
+        "failed": failed,
+        "decisions": by_style.values().map(|v| v.len()).sum::<usize>(),
+        "mean_exploitability_pct": reviews.iter().map(|r| r.exploitability_pct).sum::<f64>() / solves,
+        "mean_iterations": reviews.iter().map(|r| r.iterations as f64).sum::<f64>() / solves,
+        "mean_combos": [reviews.iter().map(|r| r.combos[0] as f64).sum::<f64>() / solves, reviews.iter().map(|r| r.combos[1] as f64).sum::<f64>() / solves],
+        "overall": group(&all),
+        "by_style": styles,
+        "by_action": actions,
+        "costliest": costliest,
+        "costliest_on_path": costliest_on_path,
+        "range_options": ropts,
+        "options": opts,
+        "cpu_seconds": sw.process_cpu(),
+        "note": "Costs are big blinds against an opponent playing the equilibrium of the reconstructed river game (model-based ranges, the hand's own bet sizes); they illustrate the review, they are not the bots' true losses. On path: the equilibrium reaches the decision with the hand's own line at least 5% of the time and with the opponent's range at least 2%; off the path the solver explores little and its values are rough. share_rarely_played: on-path decisions the equilibrium takes less than 5% of the time.",
+    }))
 }
 
 // ---------------------------------------------------------------- analytic benchmarks

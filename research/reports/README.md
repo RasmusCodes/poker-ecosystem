@@ -10,5 +10,6 @@
 | [exploitation.md](exploitation.md) | Equilibrium vs exploitative play against an opponent model (restricted Nash responses) |
 | [equity.md](equity.md) | Exact equity, Monte Carlo error and interval coverage, running it twice |
 | [opponent-model.md](opponent-model.md) | How well does the Bayesian opponent model recover simulated players' tendencies? |
+| [hand-histories.md](hand-histories.md) | How much do street-by-street ranges reveal about hidden hands, are they calibrated, and what does a river review find? |
 
 Raw results are in `../results/`, produced by `scripts/run-benchmarks.ps1` (Rust) and `python -m poker_ecosystem.evaluate` (Python); `scripts/make_reports.py` regenerates these reports and the figures in `../figures/`.

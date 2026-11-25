@@ -13,7 +13,10 @@
 //!   `*** RIVER 2 ***` lines for the second board, and the pot split by
 //!   `*** FIRST SHOW DOWN ***` / `*** SECOND SHOW DOWN ***` sections as when a
 //!   hand is run twice;
-//! * `posts straddle $X` lines (as several sites write them).
+//! * `posts straddle $X` lines (as several sites write them). The seat decides
+//!   the kind: the seat after the big blind (or after the previous straddler)
+//!   posts an ordinary straddle, any other seat (usually the button) a
+//!   Mississippi straddle (see `model::classify_straddles`).
 //!
 //! Unknown lines are skipped and reported as warnings; nothing panics.
 
@@ -477,6 +480,7 @@ fn parse_block(lines: &[&str], warnings: &mut Vec<String>) -> Option<Hand> {
         }
     }
     assign_positions(&mut hand);
+    crate::model::classify_straddles(&mut hand);
     Some(hand)
 }
 

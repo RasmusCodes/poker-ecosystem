@@ -138,5 +138,61 @@ pub fn run(args: &Args) -> Result<Value, String> {
         }));
     }
     write(&dir, "solver.json", &json!(solves))?;
-    Ok(json!({ "wrote": dir, "files": ["eval.json", "equity.json", "preflop_ranking.json", "solver.json"] }))
+    write(&dir, "ranges.json", &ranges_vectors()?)?;
+    Ok(json!({ "wrote": dir, "files": ["eval.json", "equity.json", "preflop_ranking.json", "solver.json", "ranges.json"] }))
+}
+
+/// Street-by-street ranges and river reviews for the sample hands and a small
+/// simulated table (with ordinary and Mississippi straddles). The hands are
+/// stored in the file, so the browser builds the same frequency table.
+fn ranges_vectors() -> Result<Value, String> {
+    let text = std::fs::read_to_string("data/samples/pokerstars-sample.txt").map_err(|e| format!("data/samples/pokerstars-sample.txt: {e}"))?;
+    let (mut hands, _) = pe_hh::parse_pokerstars(&text);
+    let sim = pe_hh::simulate(&pe_hh::SimConfig { hands: 160, seed: 5, straddle_rate: 0.05, mississippi_rate: 0.08, ..Default::default() });
+    let samples = hands.len();
+    for mut h in sim.hands {
+        for st in h.streets.iter_mut() {
+            for a in st.actions.iter_mut() {
+                a.truth = None;
+            }
+        }
+        hands.push(h);
+    }
+    let table = pe_hh::FrequencyTable::from_hands(&hands);
+    let opts = pe_hh::RangeOptions::default();
+    let compact = |r: &pe_hh::HandRanges| -> Value {
+        json!({
+            "id": r.id,
+            "snapshots": r.snapshots.iter().map(|s| json!({
+                "label": s.label, "board": s.board,
+                "seats": s.seats.iter().map(|x| json!({
+                    "seat": x.seat, "effective_combos": x.effective_combos, "possible_combos": x.possible_combos,
+                    "checksum": x.probs.iter().enumerate().map(|(i, p)| p * (i + 1) as f64).fold(0.0, |a, b| a + b),
+                    "sample": x.probs.iter().step_by(17).copied().collect::<Vec<f64>>(),
+                    "top": x.top, "actual": x.actual,
+                })).collect::<Vec<_>>(),
+            })).collect::<Vec<_>>(),
+            "actions": r.actions,
+        })
+    };
+    // every hold'em sample hand, then simulated hands that reach the turn
+    let mut cases = Vec::new();
+    for (i, h) in hands.iter().enumerate() {
+        let take = if i < samples { pe_hh::ranges::is_holdem(h) } else { h.streets.len() >= 3 && cases.len() < samples + 8 };
+        if take {
+            cases.push(json!({ "hand": i, "ranges": compact(&pe_hh::reconstruct_ranges(h, &table, &opts)?) }));
+        }
+    }
+    // river reviews with a fixed number of iterations (no early stop), so both engines do the same work
+    let ropts = pe_hh::ReviewOptions { max_iterations: 60, target_pct: -1.0, check_every: 60, prune: 1e-3 };
+    let mut reviews = Vec::new();
+    for (i, h) in hands.iter().enumerate() {
+        if reviews.len() >= 4 {
+            break;
+        }
+        if let Some(r) = pe_hh::review_river(h, &table, &opts, &ropts)? {
+            reviews.push(json!({ "hand": i, "review": r }));
+        }
+    }
+    Ok(json!({ "options": opts, "review_options": ropts, "hands": hands, "cases": cases, "reviews": reviews }))
 }

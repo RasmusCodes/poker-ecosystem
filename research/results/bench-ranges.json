@@ -1,0 +1,337 @@
+{
+  "ablations": {
+    "no_noise": {
+      "all": {
+        "coverage_50": 0.293952538912988,
+        "coverage_80": 0.447307986731309,
+        "coverage_90": 0.5075274304669558,
+        "mean_bits": -4.911963842945044,
+        "mean_effective_share": 0.20538480473502285,
+        "median_bits": 0.46912804044054207,
+        "n": 7838,
+        "p10_bits": -18.74273541998308
+      },
+      "river": {
+        "coverage_50": 0.19901719901719903,
+        "coverage_80": 0.3181818181818182,
+        "coverage_90": 0.35565110565110564,
+        "mean_bits": -7.450628064391878,
+        "mean_effective_share": 0.12897151641068713,
+        "median_bits": -6.430633387670363,
+        "n": 1628,
+        "p10_bits": -20.597435722613596
+      }
+    },
+    "population_frequencies_only": {
+      "all": {
+        "coverage_50": 0.4599387598877265,
+        "coverage_80": 0.749298290380199,
+        "coverage_90": 0.886323041592243,
+        "mean_bits": 0.6317245900087574,
+        "mean_effective_share": 0.558710636548123,
+        "median_bits": 0.790861519967318,
+        "n": 7838,
+        "p10_bits": -1.4482555078843133
+      },
+      "river": {
+        "coverage_50": 0.41646191646191644,
+        "coverage_80": 0.7223587223587223,
+        "coverage_90": 0.8501228501228502,
+        "mean_bits": 0.6439858096762703,
+        "mean_effective_share": 0.5032177424367106,
+        "median_bits": 0.794851715044756,
+        "n": 1628,
+        "p10_bits": -1.6761150775076485
+      }
+    }
+  },
+  "chosen_noise": 0.5,
+  "corpus": {
+    "evaluated_hands": 1903,
+    "frequency_hands": 20000,
+    "hands": 20000,
+    "players": 24
+  },
+  "grid": [
+    {
+      "noise": 0.0,
+      "tuning_half": {
+        "coverage_50": 0.29800386349001934,
+        "coverage_80": 0.4421120412105602,
+        "coverage_90": 0.5025112685125563,
+        "mean_bits": -5.026063720086373,
+        "mean_effective_share": 0.19745349005339496,
+        "median_bits": 0.4963421991142048,
+        "n": 7765,
+        "p10_bits": -18.834432812720877
+      }
+    },
+    {
+      "noise": 0.1,
+      "tuning_half": {
+        "coverage_50": 0.3314874436574372,
+        "coverage_80": 0.5320025756600129,
+        "coverage_90": 0.6159690920798455,
+        "mean_bits": -0.10834756657723187,
+        "mean_effective_share": 0.2636475465503109,
+        "median_bits": 1.0463415059619356,
+        "n": 7765,
+        "p10_bits": -5.332253717364571
+      }
+    },
+    {
+      "noise": 0.2,
+      "tuning_half": {
+        "coverage_50": 0.35840309079201543,
+        "coverage_80": 0.6190598840952994,
+        "coverage_90": 0.7370251126851256,
+        "mean_bits": 0.562341189326496,
+        "mean_effective_share": 0.33239223508289517,
+        "median_bits": 1.1013582718422608,
+        "n": 7765,
+        "p10_bits": -3.011791048251149
+      }
+    },
+    {
+      "noise": 0.3,
+      "tuning_half": {
+        "coverage_50": 0.40914359304571796,
+        "coverage_80": 0.7084352865421765,
+        "coverage_90": 0.8351577591757888,
+        "mean_bits": 0.8902384242573204,
+        "mean_effective_share": 0.40948911950379147,
+        "median_bits": 1.151109932176824,
+        "n": 7765,
+        "p10_bits": -1.7683650488545917
+      }
+    },
+    {
+      "noise": 0.4,
+      "tuning_half": {
+        "coverage_50": 0.4934964584674823,
+        "coverage_80": 0.7942047649710239,
+        "coverage_90": 0.8981326464906633,
+        "mean_bits": 1.0507215859758454,
+        "mean_effective_share": 0.49548372796829626,
+        "median_bits": 1.1355388413785639,
+        "n": 7765,
+        "p10_bits": -1.297062988899181
+      }
+    },
+    {
+      "noise": 0.5,
+      "tuning_half": {
+        "coverage_50": 0.5790083708950419,
+        "coverage_80": 0.8707018673535093,
+        "coverage_90": 0.941017385705087,
+        "mean_bits": 1.10048180035263,
+        "mean_effective_share": 0.5904591965501091,
+        "median_bits": 1.0749786436641797,
+        "n": 7765,
+        "p10_bits": -0.8906142285076472
+      }
+    },
+    {
+      "noise": 0.6,
+      "tuning_half": {
+        "coverage_50": 0.6826786864133935,
+        "coverage_80": 0.9171925305859626,
+        "coverage_90": 0.9648422408242112,
+        "mean_bits": 1.0517578494100808,
+        "mean_effective_share": 0.692326418797345,
+        "median_bits": 0.9604716480384646,
+        "n": 7765,
+        "p10_bits": -0.5578790790953794
+      }
+    },
+    {
+      "noise": 0.7,
+      "tuning_half": {
+        "coverage_50": 0.7638119768190599,
+        "coverage_80": 0.9456535737282679,
+        "coverage_90": 0.9774629748873149,
+        "mean_bits": 0.9267152538604857,
+        "mean_effective_share": 0.7966144825616871,
+        "median_bits": 0.7935643963043078,
+        "n": 7765,
+        "p10_bits": -0.348586707605514
+      }
+    },
+    {
+      "noise": 0.8,
+      "tuning_half": {
+        "coverage_50": 0.8267868641339343,
+        "coverage_80": 0.9636831938184159,
+        "coverage_90": 0.9850611719253058,
+        "mean_bits": 0.7312406841443179,
+        "mean_effective_share": 0.8941974766008424,
+        "median_bits": 0.589542171606221,
+        "n": 7765,
+        "p10_bits": -0.18933417267109592
+      }
+    }
+  ],
+  "held_out": {
+    "all": {
+      "coverage_50": 0.568512375606022,
+      "coverage_80": 0.8727991834651697,
+      "coverage_90": 0.9416943097729013,
+      "mean_bits": 1.0232124660766055,
+      "mean_effective_share": 0.5991918636451175,
+      "median_bits": 1.021203602195119,
+      "n": 7838,
+      "p10_bits": -0.9149805683569393
+    },
+    "by_snapshot": [
+      {
+        "metrics": {
+          "coverage_50": 0.6777292576419214,
+          "coverage_80": 0.9471615720524017,
+          "coverage_90": 0.9960698689956332,
+          "mean_bits": 0.946648711211226,
+          "mean_effective_share": 0.719462013840022,
+          "median_bits": 0.8947988970637681,
+          "n": 2290,
+          "p10_bits": -0.9375770489730898
+        },
+        "snapshot": "flop"
+      },
+      {
+        "metrics": {
+          "coverage_50": 0.5410243659870712,
+          "coverage_80": 0.8836399801093983,
+          "coverage_90": 0.9462953754351069,
+          "mean_bits": 1.0103577454656707,
+          "mean_effective_share": 0.6146112818940436,
+          "median_bits": 0.9943950777436134,
+          "n": 2011,
+          "p10_bits": -0.7620337601774181
+        },
+        "snapshot": "turn"
+      },
+      {
+        "metrics": {
+          "coverage_50": 0.5227272727272727,
+          "coverage_80": 0.8329238329238329,
+          "coverage_90": 0.9103194103194103,
+          "mean_bits": 1.0413125430887111,
+          "mean_effective_share": 0.5399525038460029,
+          "median_bits": 1.094405003862883,
+          "n": 1628,
+          "p10_bits": -0.9992940304642003
+        },
+        "snapshot": "river"
+      },
+      {
+        "metrics": {
+          "coverage_50": 0.5055002619172342,
+          "coverage_80": 0.8061812467260345,
+          "coverage_90": 0.8983761131482452,
+          "mean_bits": 1.1131626580172158,
+          "mean_effective_share": 0.4891942647493705,
+          "median_bits": 1.1884940210832957,
+          "n": 1909,
+          "p10_bits": -1.1035731459946363
+        },
+        "snapshot": "end"
+      }
+    ],
+    "by_style": [
+      {
+        "river": {
+          "coverage_50": 0.6186440677966102,
+          "coverage_80": 0.847457627118644,
+          "coverage_90": 0.9152542372881356,
+          "mean_bits": 1.5924231026765474,
+          "mean_effective_share": 0.4068616348017891,
+          "median_bits": 2.016936459124185,
+          "n": 118,
+          "p10_bits": -1.7178262895749443
+        },
+        "style": "nit"
+      },
+      {
+        "river": {
+          "coverage_50": 0.5302325581395348,
+          "coverage_80": 0.8604651162790697,
+          "coverage_90": 0.9069767441860465,
+          "mean_bits": 1.166933122220688,
+          "mean_effective_share": 0.48903220229658784,
+          "median_bits": 1.2639644493821764,
+          "n": 215,
+          "p10_bits": -1.1664249115857321
+        },
+        "style": "tag"
+      },
+      {
+        "river": {
+          "coverage_50": 0.5241157556270096,
+          "coverage_80": 0.819935691318328,
+          "coverage_90": 0.9163987138263665,
+          "mean_bits": 1.054590577683438,
+          "mean_effective_share": 0.5465959619174788,
+          "median_bits": 1.1569477644468327,
+          "n": 311,
+          "p10_bits": -1.0097490662502528
+        },
+        "style": "lag"
+      },
+      {
+        "river": {
+          "coverage_50": 0.5422993492407809,
+          "coverage_80": 0.8676789587852495,
+          "coverage_90": 0.9327548806941431,
+          "mean_bits": 1.057369444606472,
+          "mean_effective_share": 0.5835697936125847,
+          "median_bits": 1.0826517307455532,
+          "n": 461,
+          "p10_bits": -0.719511830409724
+        },
+        "style": "station"
+      },
+      {
+        "river": {
+          "coverage_50": 0.4696132596685083,
+          "coverage_80": 0.7983425414364641,
+          "coverage_90": 0.9005524861878453,
+          "mean_bits": 0.6696832026999557,
+          "mean_effective_share": 0.5981873700781106,
+          "median_bits": 0.751560926566919,
+          "n": 362,
+          "p10_bits": -1.2825883346008609
+        },
+        "style": "maniac"
+      },
+      {
+        "river": {
+          "coverage_50": 0.5031055900621118,
+          "coverage_80": 0.7888198757763976,
+          "coverage_90": 0.8571428571428571,
+          "mean_bits": 1.2336022966125835,
+          "mean_effective_share": 0.4368337446018704,
+          "median_bits": 1.5843285769706,
+          "n": 161,
+          "p10_bits": -1.7033758412394324
+        },
+        "style": "weak_tight"
+      }
+    ]
+  },
+  "meta": {
+    "note": "CPU seconds on a shared laptop (AMD Ryzen AI 7 PRO 350, 8 cores / 16 threads) running other jobs; compare iterations and nodes touched for convergence",
+    "peak_working_set_bytes": 252063744,
+    "process_cpu_seconds": 351.65625,
+    "quick": false,
+    "suite": "ranges",
+    "threads": 4,
+    "wall_seconds": 210.8866623
+  },
+  "note": "bits = log2(probability of the true combo x combos possible); 0 = no better than a uniform range. coverage_q = share of true combos inside the q credible region (calibrated when equal to q). Noise fitted on the first half of the evaluated hands, metrics on the second.",
+  "options": {
+    "noise": 0.5,
+    "player_prior": 10.0,
+    "population_prior": 20.0,
+    "tremble": 0.001
+  },
+  "strength_cpu_seconds": 268.71875
+}

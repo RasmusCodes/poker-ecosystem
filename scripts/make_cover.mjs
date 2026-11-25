@@ -9,10 +9,12 @@ import { classOf, className } from '../web/js/engine/cards.js';
 import { PRESETS } from '../web/js/ui/presets.js';
 
 const cfg = PRESETS[0].config;
+// the restricted Nash response is solved from scratch, as in the benchmarks: warm-starting
+// it from the equilibrium would leave the equilibrium's strategy sums in the average
 const solve = (model) => {
   const s = new HuSolver(prepareSpot(cfg), { algo: 'DCFR' });
+  if (model) s.setModel(1, model, 0.5);
   for (let i = 0; i < 400; i++) s.iterate();
-  if (model) { s.setModel(1, model, 0.5); for (let i = 0; i < 400; i++) s.iterate(); }
   return s;
 };
 const gto = solve(null);
